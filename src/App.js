@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-import { ConnectedRouter } from 'react-router-redux'
+import { ConnectedRouter } from 'connected-react-router'
 import { StylesProvider } from '@material-ui/styles'
 
 import { store, persistor, history } from 'store'
@@ -17,7 +17,9 @@ function App() {
           <Provider store={store}>
               <PersistGate loading={null} persistor={persistor}>
                   <ConnectedRouter history={history}>
-                    <Router history={history}/>
+                      <Fragment>
+                          <Router history={history}/>
+                      </Fragment>
                   </ConnectedRouter>
               </PersistGate>
           </Provider>
