@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import { ConnectedRouter } from 'react-router-redux'
+import { StylesProvider } from '@material-ui/styles'
+
+import { store, persistor, history } from 'store'
+import Router from './Router'
+
+
+import 'bootstrap/dist/css/bootstrap.css'
+import './App.scss'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <StylesProvider injectFirst>
+          <Provider store={store}>
+              <PersistGate loading={null} persistor={persistor}>
+                  <ConnectedRouter history={history}>
+                    <Router history={history}/>
+                  </ConnectedRouter>
+              </PersistGate>
+          </Provider>
+      </StylesProvider>
+  )
 }
 
-export default App;
+export default App

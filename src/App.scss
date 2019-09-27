@@ -1,0 +1,30 @@
+@import 'styles/index';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: map-get($colors, light-blue);
+  font-family: 'Nunito', Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
