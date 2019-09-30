@@ -1,0 +1,64 @@
+@import "../../styles/variables";
+
+.typography {
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  margin: 0px;
+}
+
+.h1 {
+
+}
+
+.h2 {
+  font-size: 40px;
+  color: map-get($colors, black);
+  letter-spacing: 0;
+  font-weight: 900;
+  margin-bottom: 32px;
+}
+
+.h3 {
+
+}
+
+.h4 {
+
+}
+
+.h5 {
+  color: map-get($colors, black);
+  font-size: 14px;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.h6 {
+
+}
+
+.subhead {
+
+}
+
+.body {
+
+}
+
+.caption {
+}
+
+.align {
+  &--left {
+    text-align: left;
+  }
+  &--center {
+    text-align: center;
+  }
+  &--right {
+    text-align: right;
+  }
+}
+
+.bold {
+  font-weight: 700;
+}
