@@ -7,6 +7,8 @@ import { Router, Switch, Redirect, Route } from 'react-router-dom'
 import Preview from './views/Preview'
 import Settings from './views/Settings'
 import Templates from './views/Templates'
+import Hello from './views/Hello'
+
 
 function AppRouter({ history }) {
     return (
@@ -30,15 +32,20 @@ function AppRouter({ history }) {
                     exact
                     component={Templates}
                 />
+                <Route
+                    path="/hello"
+                    exact
+                    component={Hello}
+                />
             </Switch>
         </Router>
     )
 }
 
 export default compose(
-  connect(
-    (state) => ({
-      someprops: 'test',
-    })
-  ),
+    connect(
+        (state) => ({
+            someprops: 'test',
+        })
+    ),
 )(AppRouter)
