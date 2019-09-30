@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import Typography from 'common/components/Typography'
 import styles from './Templates.module.scss'
-import mockTemplate from 'assets/mockTemplate.png'
+import mockTemplate from 'assets/email-template-1.svg'
 
 
 function Templates({ templates }) {
