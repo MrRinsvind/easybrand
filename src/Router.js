@@ -3,13 +3,12 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Router, Switch, Redirect, Route } from 'react-router-dom'
 
-// components
+// views
 import Preview from './views/Preview'
 import Settings from './views/Settings'
 import Templates from './views/Templates'
 
 function AppRouter({ history }) {
-  console.log('history',history)
     return (
         <Router history={history}>
             <Route exact path="/" render={() => (

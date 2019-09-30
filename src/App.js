@@ -17,9 +17,7 @@ function App() {
           <Provider store={store}>
               <PersistGate loading={null} persistor={persistor}>
                   <ConnectedRouter history={history}>
-                      <Fragment>
-                          <Router history={history}/>
-                      </Fragment>
+                      <Router history={history}/>
                   </ConnectedRouter>
               </PersistGate>
           </Provider>

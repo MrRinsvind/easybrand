@@ -38,6 +38,8 @@ function Templates({ templates }) {
                 </div>
             </div>
         </div>
+
+
     )
 }
 
