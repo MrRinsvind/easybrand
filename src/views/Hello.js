@@ -1,8 +1,10 @@
 import React, {Fragment} from 'react'
+import {Link} from "react-router-dom"
+
 import Typography from 'common/components/Typography'
+import TopBar from "common/layouts/TopBar"
 import styles from './Hello.module.scss'
 import thinkingMan from 'assets/thinking-man.svg'
-import TopBar from "../common/layouts/TopBar"
 
 export default function Hello() {
     return (
@@ -17,9 +19,7 @@ export default function Hello() {
                     <Typography variant="body" align="center" className={styles.description}>
                         This is gonna be your first template! Your colleagues will be able to apply this masterpiece to their E-mail Signatures.
                     </Typography>
-                    <button className={styles.btn}>
-                        Create a template
-                    </button>
+                    <Link to="/templates" className={styles.createLink}>Create a template</Link>
                 </div>
             </div>
         </Fragment>

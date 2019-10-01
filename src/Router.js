@@ -4,24 +4,17 @@ import { connect } from 'react-redux'
 import { Router, Switch, Redirect, Route } from 'react-router-dom'
 
 // views
-import Preview from './views/Preview'
 import Settings from './views/Settings'
 import Templates from './views/Templates'
 import Hello from './views/Hello'
-
 
 function AppRouter({ history }) {
     return (
         <Router history={history}>
             <Route exact path="/" render={() => (
-                <Redirect to="/preview"/>
+                <Redirect to="/hello"/>
             )}/>
             <Switch>
-                <Route
-                    path="/preview"
-                    exact
-                    component={Preview}
-                />
                 <Route
                     path="/settings"
                     exact
