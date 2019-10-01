@@ -2,34 +2,41 @@
 
 .typography {
   font-family: 'Montserrat', Helvetica, sans-serif;
-  margin: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 .h1 {
-
+  font-size: 2.5rem;
+  color: map-get($colors, black);
+  font-weight: 900;
+  line-height: 2.5rem;
 }
 
 .h2 {
-  font-size: 40px;
+  font-size: 1.375rem;
   color: map-get($colors, black);
-  letter-spacing: 0;
   font-weight: 900;
-  margin-bottom: 32px;
+  line-height: 1.625rem;
 }
 
 .h3 {
-
+  font-size: 1.25rem;
+  color: map-get($colors, black);
+  font-weight: 700;
+  line-height: 1.5rem;
 }
 
 .h4 {
-
-}
-
-.h5 {
   color: map-get($colors, black);
   font-size: 14px;
   letter-spacing: 0;
   font-weight: 700;
+  line-height: 1.125;
+}
+
+.h5 {
+
 }
 
 .h6 {
