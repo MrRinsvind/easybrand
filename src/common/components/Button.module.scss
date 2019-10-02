@@ -1,0 +1,50 @@
+@import "../../styles/variables";
+
+.root {
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.primary {
+  background-color: map-get($pink, default);
+  color: map-get($colors, white);
+  &:hover {
+    background-color: map-get($pink, hover);
+  }
+  &:active {
+    background-color: map-get($pink, pressed);
+  }
+  &:focus {
+    background-color: map-get($pink, pressed);
+  }
+  &:disabled {
+    background-color: map-get($pink, disabled);
+  }
+  &:hover, &:active, &:focus, &:disabled {
+    color: map-get($colors, white);
+    text-decoration: none;
+  }
+}
+
+.secondary {
+  background-color: map-get($colors, white);
+  color: map-get($pink, default);
+  border: 0.125rem solid map-get($pink, default);
+  &:hover {
+    background-color: map-get($pink, default);
+    border: 0.125rem solid map-get($pink, default);
+  }
+  &:active {
+    background-color: map-get($pink, pressed);
+    border: 0.125rem solid map-get($pink, pressed);
+  }
+  &:focus {
+    background-color: map-get($pink, pressed);
+    border: 0.125rem solid map-get($pink, pressed);
+  }
+  &:hover, &:active, &:focus, &:disabled {
+    color: map-get($colors, white);
+    text-decoration: none;
+  }
+}
