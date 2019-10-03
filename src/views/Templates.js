@@ -21,7 +21,7 @@ function Templates({ templates }) {
                 </Typography>
                 <div className="row">
                     <div className="col-4 mb-4">
-                        <Link to="/" className={styles.NewTemplateButton}>
+                        <Link to="/builder" className={styles.NewTemplateButton}>
                             <div className={styles.NewTemplateButton__ContentBlock}>
                                 <button className={styles.NewTemplateButton__PlusButton}><PlusIcon/></button>
                                 <Typography variant="body" className={styles.NewTemplateButton__ContentText}>

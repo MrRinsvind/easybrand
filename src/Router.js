@@ -3,10 +3,14 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Router, Switch, Redirect, Route } from 'react-router-dom'
 
+//layouts
+import BaseLayout from 'common/layouts/BaseLayout'
 // views
-import Settings from './views/Settings'
-import Templates from './views/Templates'
-import Hello from './views/Hello'
+import Settings from 'views/Settings'
+import Templates from 'views/Templates'
+import Hello from 'views/Hello'
+import Builder from 'views/Builder'
+
 
 function AppRouter({ history }) {
     return (
@@ -18,17 +22,34 @@ function AppRouter({ history }) {
                 <Route
                     path="/settings"
                     exact
-                    component={Settings}
+                    render={(routeProps) => (
+                        <BaseLayout>
+                            <Settings {...routeProps}/>
+                        </BaseLayout>
+                    )} />
                 />
                 <Route
                     path="/templates"
                     exact
-                    component={Templates}
+                    render={(routeProps) => (
+                        <BaseLayout>
+                            <Templates {...routeProps}/>
+                        </BaseLayout>
+                    )} />
                 />
                 <Route
                     path="/hello"
                     exact
-                    component={Hello}
+                    render={(routeProps) => (
+                        <BaseLayout>
+                            <Hello {...routeProps}/>
+                        </BaseLayout>
+                    )} />
+                />
+                <Route
+                    path="/builder"
+                    exact
+                    component={Builder}
                 />
             </Switch>
         </Router>
