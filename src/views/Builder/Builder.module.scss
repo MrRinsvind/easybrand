@@ -1,0 +1,113 @@
+@import "../../styles/variables";
+
+.BuilderWrapper {
+  background-color: yellow;
+  min-width: 80rem;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+.BuilderAside {
+  background-color: map-get($purple, default);
+  width: 27.5rem;
+  min-height: 100%;
+  display: flex;
+}
+
+.BuilderContent {
+  background-color: white;
+  width: calc(100% - 27.5rem);
+  min-height: 100%;
+}
+
+.TabAsideNavigation {
+  width: 4.375rem;
+  min-height: 100%;
+  background-color: map-get($purple, secondary);
+}
+.TabAsideNavigationItem {
+  height: 4.8125rem;
+  background-color: map-get($purple, secondary);
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    margin: 0rem 0rem 0.3125rem;
+    fill: #9C8EBF;
+  }
+
+  span {
+    font-size: 0.625rem;
+    color: #9C8EBF;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  &--active {
+    background-color: map-get($purple, default);
+
+    svg, span {
+      fill: white;
+      color: white;
+    }
+  }
+}
+
+.AsideContent {
+  width: calc(100% - 4.375rem);
+  padding: 1.6875rem 1.875rem 1.5625rem 1.75rem;
+  overflow-y: scroll;
+}
+
+.AsideContentHeading {
+  color: white;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+}
+
+
+///////////////PARTS////////////
+
+.TemplatePartWrapper {
+  padding-top: 0.5rem;
+}
+
+.TemplatePartHeading {
+  font-size: 0.8125rem;
+  color: #B8B5EA;
+  letter-spacing: 0;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.TemplatePartItem {
+  height: 13.75rem;
+  background-color: white;
+  margin-bottom: 1rem;
+  border: 0.1875rem solid white;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  cursor: pointer;
+
+  svg {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    display: none;
+  }
+
+  &--active {
+    border: 0.1875rem solid map-get($colors, green);
+
+    svg {
+      display: block;
+    }
+  }
+}
