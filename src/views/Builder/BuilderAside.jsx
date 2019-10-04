@@ -5,7 +5,6 @@ import styles from './Builder.module.scss'
 import Typography from 'common/components/Typography'
 import { BUILDER_TABS } from './constants/BuilderTabs'
 
-
 export default function BuilderAside({ selectedTab, toggleTab, selectType, toggleType }) {
     const ContentAside = BUILDER_TABS[selectedTab].component
     return (

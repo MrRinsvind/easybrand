@@ -3,7 +3,7 @@ import { reduxForm } from 'redux-form';
 
 import styles from './Builder.module.scss'
 import BuilderAside from './BuilderAside'
-
+import BuilderContent from './BuilderContent'
 
 function BuilderContainer (props) {
     const [selectedTab, toggleTab] = React.useState(0)
@@ -19,7 +19,7 @@ function BuilderContainer (props) {
                     toggleType={toggleType}
                 />
                 <div className={styles.BuilderContent}>
-                     Выбраный тип темплейта - {selectType + 1}
+                    <BuilderContent selectType={selectType} />
                 </div>
             </main>
         </React.Fragment>

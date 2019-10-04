@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 
 .root {
   border: none;
@@ -8,7 +8,11 @@
 
 .primary {
   background-color: map-get($pink, default);
-  color: map-get($colors, white);
+  font-size: 0.75rem;
+  padding: 0.84rem 1.8rem;
+  color: map_get($colors, white);
+  font-weight: bold;
+  letter-spacing: 0.0134rem;
   &:hover {
     background-color: map-get($pink, hover);
   }
