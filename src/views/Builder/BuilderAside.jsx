@@ -20,6 +20,7 @@ export default function BuilderAside({ selectedTab, toggleTab, selectType, toggl
 
                         )}
                         onClick={() => toggleTab(tabInd)}
+                        key={tab.id}
                     >
                         <tab.iconTab fill="white"/>
                         <Typography variant="caption">
