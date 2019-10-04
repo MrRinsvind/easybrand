@@ -1,0 +1,139 @@
+@import "../../styles/variables";
+
+.Wrapper {
+  padding: 0 3.75rem 6rem;
+  min-width: 60rem;
+  position: relative;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.CloseButton {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  align-items: center;
+  border: none;
+  background: transparent;
+  outline: none;
+  transition: opacity 0.2s;
+  &:hover{
+    opacity: 0.8;
+  }
+  &__Text {
+    text-transform: uppercase;
+    font-size: 0.5625rem;
+    padding-top: 0.2rem;
+    color: map_get($colors, gray);
+    font-weight: 700;
+    letter-spacing: 0.08rem;
+  }
+}
+
+.Template {
+  width: 100%;
+  max-width: 60rem;
+  margin: 3rem auto;
+}
+
+.TemplateName {
+  margin-bottom: 1.5rem;
+  display: flex;
+}
+
+.Letters {
+  width: 100%;
+  position: relative;
+}
+
+.Letter {
+  position: absolute;
+  background-color: white;
+  border-radius: 0.2rem;
+  height: 12.5rem;
+  box-shadow: 0 0.125rem 0.75rem 0 rgba(0, 0, 0, 0.1);
+  &_First {
+    width: 85%;
+    left: calc((100% - 85%) / 2);
+  }
+  &_Second {
+    top: 0.7rem;
+    width: 90%;
+    left: calc((100% - 90%) / 2);
+  }
+  &_Third {
+    top: 1.4rem;
+    width: 95%;
+    left: calc((100% - 95%) / 2);
+  }
+}
+
+.MainLetter {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  top: 2.1rem;
+  background-color: white;
+  border-radius: 0.2rem;
+  box-shadow: 0 0.125rem 0.75rem 0 rgba(0, 0, 0, 0.1);
+}
+.Header{
+  height: 2.6rem;
+  border-bottom: solid 0.0625rem #CFD5E5;
+}
+.Circles {
+  padding-left: 1.8rem;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.Circle {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  margin-right: 0.45rem;
+  &:last-child{
+    margin-right: 0;
+  }
+  &_Green {
+    background-color: #01BDA5;
+  }
+  &_Orange {
+    background-color: #F5C26B;
+    background-color: #F5C26B;
+  }
+  &_Red {
+    background-color: #F2545B;
+  }
+}
+.LetterContent {
+  padding: 0.9375rem 1.6875rem;
+}
+.MetaHeaderItem {
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: baseline;
+}
+.MetaHeaderTitle {
+  margin-right: 1rem;
+}
+.Recipient {
+  background-color: #E3E8F4;
+  border-radius: 1rem;
+  padding: 0.2rem 1rem;
+}
+.DummyData {
+  padding: 1.5rem 0 4rem;
+}
+.actionWrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 4rem;
+}
+.actionButton{
+  display: inherit;
+}
