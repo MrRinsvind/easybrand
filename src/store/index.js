@@ -19,7 +19,7 @@ const initialStore = {}
 const persistConfig = {
   key: 'root',
   storage: storage,
-  // whitelist: ['template'],
+  whitelist: ['template'],
   blacklist: ['router'],
   stateReconciler: autoMergeLevel2
 }
@@ -38,16 +38,15 @@ const composeEnhancers =
 
 export const epic$ = new BehaviorSubject(epics)
 
-const rootEpic = (action$, state$) => epic$.mergeMap(epic => epic(action$, state$));
+const rootEpic = (action$, state$) => epic$.mergeMap(epic => epic(action$, state$))
 
-const epicMiddleware = createEpicMiddleware(rootEpic);
+const epicMiddleware = createEpicMiddleware(rootEpic)
 
 export const store = createStore(
   createRootReducer(history),
   initialStore,
   composeEnhancers(applyMiddleware(epicMiddleware, routerMiddleware(history)))
-);
-console.log(store)
+)
 
-export const persistor = persistStore(store);
+export const persistor = persistStore(store)
 

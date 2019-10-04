@@ -23,6 +23,6 @@ export default function (state = initialState, action) {
               error: null,
           }
       default:
-          return state;
+          return state
     }
 }
