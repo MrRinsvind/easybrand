@@ -27,7 +27,11 @@ export default function SelectInput({ onChange, value, name }) {
                     icon: styles.Icon
                 }}
             >
+<<<<<<< HEAD
                 <MenuItem value={'Arial'}>Arial</MenuItem>
+=======
+                <MenuItem value={'Ariel'}>Ariel</MenuItem>
+>>>>>>> BN-13 create styles part
                 <MenuItem value={'Times New Roman'}>Times New Roman</MenuItem>
                 <MenuItem value={'Roboto'}>Roboto</MenuItem>
             </Select>

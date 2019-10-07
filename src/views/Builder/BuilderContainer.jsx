@@ -28,6 +28,7 @@ function BuilderContainer ({ formMeta, formValue }) {
 }
 
 export default compose(
+<<<<<<< HEAD
     connect((state) => ({
         initialValues: {
             templateName: "Template initial value",
@@ -35,6 +36,14 @@ export default compose(
             textColor: "#cc5562",
             linkColor: "#557ED8",
             font: "Arial",
+=======
+    connect(state => ({
+        initialValues : {
+            themeColor: '#a6e9cb',
+            textColor: "#cc5562",
+            linkColor: "#557ED8",
+            font: "Ariel",
+>>>>>>> BN-13 create styles part
             size: 1,
         }
     })),
