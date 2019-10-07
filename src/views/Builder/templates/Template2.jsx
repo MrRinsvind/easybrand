@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { TransformFontSize } from 'common/utils/helpers'
+
 export default function Template2({data}) {
     return (
         <table id="template2" cellPadding={0} cellSpacing={0}
@@ -22,8 +24,8 @@ export default function Template2({data}) {
                                             <tbody>
                                             <tr>
                                                 <td style={{textAlign: 'center'}}>
-                                                    <img width={90} src={data.profilePhoto}
-                                                         style={{maxWidth: '90px', display: 'block'}}/>
+                                                    <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.profilePhoto}
+                                                         style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`, display: 'block'}}/>
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -45,9 +47,9 @@ export default function Template2({data}) {
                                                         <td>
                                                             <h3 color="#000" style={{
                                                                 margin: '0px',
-                                                                fontSize: '20px',
+                                                                fontSize: `${TransformFontSize(20, data.fontSize)}`,
                                                                 color: `${data.colors.textColor}`,
-                                                                paddingRight: '8px'
+                                                                paddingRight: `${TransformFontSize(8, data.fontSize)}`
                                                             }}>
                                                                 {`${data.firstName} ${data.lastName}`}
                                                             </h3>
@@ -55,7 +57,7 @@ export default function Template2({data}) {
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <div style={{height: '8px'}}></div>
+                                                            <div style={{height: `${TransformFontSize(8, data.fontSize)}`}}></div>
                                                         </td>
                                                     </tr>
                                                     </tbody>
@@ -71,7 +73,7 @@ export default function Template2({data}) {
                                                                 <p color={data.colors.textColor} style={{
                                                                     margin: '0px',
                                                                     padding: '0',
-                                                                    fontSize: '14px',
+                                                                    fontSize: `${TransformFontSize(14, data.fontSize)}`,
                                                                     color: `${data.colors.textColor}`,
                                                                     opacity: 0.4
                                                                 }}>
@@ -82,9 +84,11 @@ export default function Template2({data}) {
                                                         {data.companyName && data.department && (
                                                             <td>
                                                                 <span color={data.colors.textColor} style={{
-                                                                    padding: '0 8px',
+                                                                    padding: '0',
+                                                                    paddingRight: `${TransformFontSize(8, data.fontSize)}`,
+                                                                    paddingLeft: `${TransformFontSize(8, data.fontSize)}`,
                                                                     fontWeight: '100',
-                                                                    fontSize: '14px',
+                                                                    fontSize: `${TransformFontSize(14, data.fontSize)}`,
                                                                     color: `${data.colors.textColor}`,
                                                                     opacity: 0.4,
                                                                 }}>|</span>
@@ -94,7 +98,7 @@ export default function Template2({data}) {
                                                             <td>
                                                                 <p color={data.colors.textColor} style={{
                                                                     margin: '0px',
-                                                                    fontSize: '14px',
+                                                                    fontSize: `${TransformFontSize(14, data.fontSize)}`,
                                                                     color: `${data.colors.textColor}`,
                                                                     opacity: 0.4
                                                                 }}>
@@ -105,7 +109,7 @@ export default function Template2({data}) {
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <div style={{height: '8px'}}></div>
+                                                            <div style={{height: `${TransformFontSize(8, data.fontSize)}`}}></div>
                                                         </td>
                                                     </tr>
                                                     </tbody>
@@ -119,8 +123,8 @@ export default function Template2({data}) {
                                                         <td>
                                                             <p color="#000" style={{
                                                                 margin: '0px',
-                                                                fontSize: '16px',
-                                                                lineHeight: '24px',
+                                                                fontSize: `${TransformFontSize(16, data.fontSize)}`,
+                                                                lineHeight: `${TransformFontSize(24, data.fontSize)}`,
                                                                 color: `${data.colors.textColor}`
                                                             }}>
                                                                 <span>{data.jobTitle}</span>
@@ -133,13 +137,13 @@ export default function Template2({data}) {
                                         </td>
                                         {data.companyLogo && (
                                             <td style={{textAlign: 'center', verticalAlign: 'bottom'}}>
-                                                <img width={90} src={data.companyLogo}
-                                                     style={{maxWidth: '90px', float: 'right', display: 'block'}}/>
+                                                <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo}
+                                                     style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`, float: 'right', display: 'block'}}/>
                                             </td>
                                         )}
                                     </tr>
                                     <tr>
-                                        <td style={{height: '16px'}}/>
+                                        <td style={{height: `${TransformFontSize(16, data.fontSize)}`}}/>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -152,7 +156,7 @@ export default function Template2({data}) {
                                 }}>
                                     <tbody>
                                     <tr>
-                                        <td style={{height: '16px'}}/>
+                                        <td style={{height: `${TransformFontSize(16, data.fontSize)}`}}/>
                                     </tr>
                                     <tr>
                                         <td>
@@ -164,9 +168,9 @@ export default function Template2({data}) {
                                                             <tbody>
                                                             {/* phone */}
                                                             {(data.mobileNumber || data.officeNumber) && (
-                                                                <tr height={25} style={{verticalAlign: 'middle'}}>
+                                                                <tr height={`${TransformFontSize(25, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
 
-                                                                    <td width={30} style={{verticalAlign: 'middle'}}>
+                                                                    <td width={`${TransformFontSize(30, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
                                                                         <table cellPadding={0} cellSpacing={0} style={{
                                                                             verticalAlign: '-webkit-baseline-middle',
                                                                             fontSize: 'medium',
@@ -175,20 +179,14 @@ export default function Template2({data}) {
                                                                             <tbody>
                                                                             <tr>
                                                                                 <td style={{verticalAlign: 'bottom'}}>
-                                                                                        <span width={11}
-                                                                                              color={data.colors.themeColor}
-                                                                                              style={{
-                                                                                                  display: 'block',
-                                                                                                  backgroundColor: `${data.colors.themeColor}`
-                                                                                              }}>
-                                                                                            <img width={13}
+
+                                                                                            <img width={`${TransformFontSize(13, data.fontSize)}`}
                                                                                                  src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/phone-icon-2x.png"
                                                                                                  color={data.colors.themeColor}
                                                                                                  style={{
                                                                                                      display: 'block',
                                                                                                      backgroundColor: `${data.colors.themeColor}`
                                                                                                  }}/>
-                                                                                        </span>
                                                                                 </td>
                                                                             </tr>
                                                                             </tbody>
@@ -214,15 +212,17 @@ export default function Template2({data}) {
                                                                                                    style={{
                                                                                                        textDecoration: 'none',
                                                                                                        color: `${data.colors.linkColor}`,
-                                                                                                       fontSize: '12px'
+                                                                                                       fontSize: `${TransformFontSize(12, data.fontSize)}`
                                                                                                    }}>
                                                                                                     <span>{data.officeNumber}</span>
                                                                                                 </a>
                                                                                                 {data.mobileNumber && (
                                                                                                     <span style={{
                                                                                                         color: `${data.colors.linkColor}`,
-                                                                                                        fontSize: '12px',
-                                                                                                        padding: '0 5px'
+                                                                                                        fontSize: `${TransformFontSize(12, data.fontSize)}`,
+                                                                                                        padding: '0',
+                                                                                                        paddingRight: `${TransformFontSize(5, data.fontSize)}`,
+                                                                                                        paddingLeft: `${TransformFontSize(5, data.fontSize)}`
                                                                                                     }}> | </span>
                                                                                                 )}
                                                                                             </>
@@ -233,7 +233,7 @@ export default function Template2({data}) {
                                                                                                style={{
                                                                                                    textDecoration: 'none',
                                                                                                    color: `${data.colors.linkColor}`,
-                                                                                                   fontSize: '12px'
+                                                                                                   fontSize: `${TransformFontSize(12, data.fontSize)}`
                                                                                                }}>
                                                                                                 <span>{data.mobileNumber}</span>
                                                                                             </a>
@@ -249,8 +249,8 @@ export default function Template2({data}) {
 
                                                             {/* email */}
                                                             {data.email && (
-                                                                <tr height={25} style={{verticalAlign: 'middle'}}>
-                                                                    <td width={30} style={{verticalAlign: 'middle'}}>
+                                                                <tr height={`${TransformFontSize(25, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
+                                                                    <td width={`${TransformFontSize(30, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
                                                                         <table cellPadding={0} cellSpacing={0} style={{
                                                                             verticalAlign: '-webkit-baseline-middle',
                                                                             fontSize: 'medium',
@@ -259,20 +259,14 @@ export default function Template2({data}) {
                                                                             <tbody>
                                                                             <tr>
                                                                                 <td style={{verticalAlign: 'bottom'}}>
-                                                                              <span width={11}
-                                                                                    color={data.colors.themeColor}
-                                                                                    style={{
-                                                                                        display: 'block',
-                                                                                        backgroundColor: `${data.colors.themeColor}`
-                                                                                    }}>
-                                                                                <img width={13}
+                                                                                <img width={`${TransformFontSize(13, data.fontSize)}`}
                                                                                      src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/email-icon-2x.png"
                                                                                      color={data.colors.themeColor}
                                                                                      style={{
                                                                                          display: 'block',
                                                                                          backgroundColor: `${data.colors.themeColor}`
                                                                                      }}/>
-                                                                              </span>
+
                                                                                 </td>
                                                                             </tr>
                                                                             </tbody>
@@ -286,7 +280,7 @@ export default function Template2({data}) {
                                                                            color={data.colors.linkColor} style={{
                                                                             textDecoration: 'none',
                                                                             color: `${data.colors.linkColor}`,
-                                                                            fontSize: '12px'
+                                                                            fontSize: `${TransformFontSize(12, data.fontSize)}`
                                                                         }}>
                                                                             <span>{data.email}</span>
                                                                         </a>
@@ -294,7 +288,7 @@ export default function Template2({data}) {
                                                                 </tr>
                                                             )}
                                                             <tr>
-                                                                <td height="4px"/>
+                                                                <td height={`${TransformFontSize(4, data.fontSize)}`}/>
                                                             </tr>
                                                             </tbody>
                                                         </table>
@@ -314,18 +308,18 @@ export default function Template2({data}) {
                                                                                 padding: '0px',
                                                                                 backgroundColor: `${data.colors.themeColor}`
                                                                             }}>
-                                                                                <img height={24}
+                                                                                <img height={`${TransformFontSize(24, data.fontSize)}`}
                                                                                      src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/facebook-icon-2x.png"
                                                                                      alt="facebook"
                                                                                      color={data.colors.themeColor}
                                                                                      style={{
                                                                                          backgroundColor: `${data.colors.themeColor}`,
-                                                                                         maxWidth: '135px',
+                                                                                         maxWidth: `${TransformFontSize(135, data.fontSize)}`,
                                                                                          display: 'block'
                                                                                      }}/>
                                                                             </a>
                                                                             <span style={{
-                                                                                width: '8px',
+                                                                                width: `${TransformFontSize(8, data.fontSize)}`,
                                                                                 display: 'inline-block'
                                                                             }}></span>
                                                                         </>
@@ -340,18 +334,18 @@ export default function Template2({data}) {
                                                                                 padding: '0px',
                                                                                 backgroundColor: `${data.colors.themeColor}`
                                                                             }}>
-                                                                                <img height={24}
+                                                                                <img height={`${TransformFontSize(24, data.fontSize)}`}
                                                                                      src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/twitter-icon-2x.png"
                                                                                      alt="twitter"
                                                                                      color={data.colors.themeColor}
                                                                                      style={{
                                                                                          backgroundColor: `${data.colors.themeColor}`,
-                                                                                         maxWidth: '135px',
+                                                                                         maxWidth: `${TransformFontSize(135, data.fontSize)}`,
                                                                                          display: 'block'
                                                                                      }}/>
                                                                             </a>
                                                                             <span style={{
-                                                                                width: '8px',
+                                                                                width: `${TransformFontSize(8, data.fontSize)}`,
                                                                                 display: 'inline-block'
                                                                             }}></span>
                                                                         </>
@@ -366,18 +360,18 @@ export default function Template2({data}) {
                                                                                 padding: '0px',
                                                                                 backgroundColor: `${data.colors.themeColor}`
                                                                             }}>
-                                                                                <img height={24}
+                                                                                <img height={`${TransformFontSize(24, data.fontSize)}`}
                                                                                      src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/linkedin-icon-2x.png"
                                                                                      alt="linkedin"
                                                                                      color={data.colors.themeColor}
                                                                                      style={{
                                                                                          backgroundColor: `${data.colors.themeColor}`,
-                                                                                         maxWidth: '135px',
+                                                                                         maxWidth: `${TransformFontSize(135, data.fontSize)}`,
                                                                                          display: 'block'
                                                                                      }}/>
                                                                             </a>
                                                                             <span style={{
-                                                                                width: '8px',
+                                                                                width: `${TransformFontSize(8, data.fontSize)}`,
                                                                                 display: 'inline-block'
                                                                             }}></span>
                                                                         </>
@@ -391,12 +385,12 @@ export default function Template2({data}) {
                                                                             padding: '0px',
                                                                             backgroundColor: `${data.colors.themeColor}`
                                                                         }}>
-                                                                            <img height={24}
+                                                                            <img height={`${TransformFontSize(24, data.fontSize)}`}
                                                                                  src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/instagram-icon-2x.png"
                                                                                  alt="instagram"
                                                                                  color={data.colors.themeColor} style={{
                                                                                 backgroundColor: `${data.colors.themeColor}`,
-                                                                                maxWidth: '135px',
+                                                                                maxWidth: `${TransformFontSize(135, data.fontSize)}`,
                                                                                 display: 'block'
                                                                             }}/>
                                                                         </a>
@@ -416,8 +410,8 @@ export default function Template2({data}) {
                                             <table>
                                                 <tbody>
                                                 {/* address */}
-                                                <tr height={25}>
-                                                    <td width={30} style={{verticalAlign: 'middle'}}>
+                                                <tr height={`${TransformFontSize(25, data.fontSize)}`}>
+                                                    <td width={`${TransformFontSize(30, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
                                                         <table cellPadding={0} cellSpacing={0} style={{
                                                             verticalAlign: '-webkit-baseline-middle',
                                                             fontSize: 'medium',
@@ -426,18 +420,13 @@ export default function Template2({data}) {
                                                             <tbody>
                                                             <tr>
                                                                 <td style={{verticalAlign: 'bottom'}}>
-                                                                      <span width={11} color={data.colors.themeColor}
-                                                                            style={{
-                                                                                display: 'block',
-                                                                                backgroundColor: `${data.colors.themeColor}`
-                                                                            }}>
-                                                                        <img width={13}
+
+                                                                        <img width={`${TransformFontSize(13, data.fontSize)}`}
                                                                              src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/address-icon-2x.png"
                                                                              color={data.colors.themeColor} style={{
                                                                             display: 'block',
                                                                             backgroundColor: `${data.colors.themeColor}`
                                                                         }}/>
-                                                                      </span>
                                                                 </td>
                                                             </tr>
                                                             </tbody>
@@ -449,12 +438,12 @@ export default function Template2({data}) {
                                                                 margin: 0,
                                                                 textDecoration: 'none',
                                                                 color: `${data.colors.textColor}`,
-                                                                fontSize: '12px'
+                                                                fontSize: `${TransformFontSize(12, data.fontSize)}`
                                                             }}>
                                                                 {data.addresses && !!data.addresses.length && data.addresses.map((address, id) => {
                                                                     const coma = id + 1 !== data.addresses.length ? ', ' : ''
                                                                     const divider = (id + 1) % 2 == 0 ? (
-                                                                        <div style={{height: '4px'}}/>) : ''
+                                                                        <div style={{height: `${TransformFontSize(4, data.fontSize)}`}}/>) : ''
                                                                     return <><span
                                                                         style={{color: `${data.colors.textColor}`}}>{address}</span>{coma}{divider}</>
                                                                 })}
@@ -464,8 +453,8 @@ export default function Template2({data}) {
                                                 </tr>
                                                 {/*  link  */}
                                                 {data.websiteUrl && (
-                                                    <tr height={25}>
-                                                        <td width={30} style={{verticalAlign: 'middle'}}>
+                                                    <tr height={`${TransformFontSize(25, data.fontSize)}`}>
+                                                        <td width={`${TransformFontSize(30, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
                                                             <table cellPadding={0} cellSpacing={0} style={{
                                                                 verticalAlign: '-webkit-baseline-middle',
                                                                 fontSize: 'medium',
@@ -474,18 +463,12 @@ export default function Template2({data}) {
                                                                 <tbody>
                                                                 <tr>
                                                                     <td style={{verticalAlign: 'bottom'}}>
-                                                                          <span width={11} color="rgb(252,165,75)"
-                                                                                style={{
-                                                                                    display: 'block',
-                                                                                    backgroundColor: `${data.colors.themeColor}`
-                                                                                }}>
-                                                                            <img width={13}
+                                                                            <img width={`${TransformFontSize(13, data.fontSize)}`}
                                                                                  src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/link-icon-2x.png"
                                                                                  color={data.colors.themeColor} style={{
                                                                                 display: 'block',
                                                                                 backgroundColor: `${data.colors.themeColor}`
                                                                             }}/>
-                                                                          </span>
                                                                     </td>
                                                                 </tr>
                                                                 </tbody>
@@ -496,7 +479,7 @@ export default function Template2({data}) {
                                                                style={{
                                                                    textDecoration: 'none',
                                                                    color: `${data.colors.linkColor}`,
-                                                                   fontSize: '12px'
+                                                                   fontSize: `${TransformFontSize(12, data.fontSize)}`
                                                                }}>
                                                                 <span>{data.websiteUrl}</span>
                                                             </a>
@@ -519,4 +502,3 @@ export default function Template2({data}) {
         </table>
     )
 }
-

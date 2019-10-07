@@ -3,16 +3,15 @@
 .root {
   border: none;
   cursor: pointer;
-  outline: none;
-}
-
-.primary {
-  background-color: map-get($pink, default);
   font-size: 0.75rem;
-  padding: 0.84rem 1.8rem;
-  color: map_get($colors, white);
+  outline: none;
   font-weight: bold;
   letter-spacing: 0.0134rem;
+}
+.primary {
+  background-color: map-get($pink, default);
+  padding: 0.84rem 1.8rem;
+  color: map_get($colors, white);
   &:hover {
     background-color: map-get($pink, hover);
   }

@@ -11,7 +11,7 @@ export default function BaseFieldLayout(props) {
     const { inputComponent: InputComponent, ...restProps } = props
 
     return (
-        <div>
+        <>
             {label && (
                 <Label>
                     {label}
@@ -21,6 +21,6 @@ export default function BaseFieldLayout(props) {
                 {...restProps}
                 {...props.input}
             />
-        </div>
+        </>
     )
 }
