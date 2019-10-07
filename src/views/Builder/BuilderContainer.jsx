@@ -9,7 +9,7 @@ import BuilderContent from './BuilderContent'
 
 
 function BuilderContainer ({ formMeta, formValue }) {
-    const [selectedTab, toggleTab] = React.useState(2)
+    const [selectedTab, toggleTab] = React.useState(1)
     const [selectType, toggleType] = React.useState(0)
 
     return (
@@ -30,11 +30,16 @@ function BuilderContainer ({ formMeta, formValue }) {
 export default compose(
     connect((state) => ({
         initialValues: {
-            templateName: "Template initial value"
+            templateName: "Template initial value",
+            themeColor: '#a6e9cb',
+            textColor: "#cc5562",
+            linkColor: "#557ED8",
+            font: "Arial",
+            size: 1,
         }
     })),
     reduxForm({
-        form: `@form/builder`,
+        form: '@form/builder',
         enableReinitialize: true,
     })
 )(BuilderContainer)

@@ -322,7 +322,7 @@ export default function Template1({data}) {
                                                 }}>
                                                     {data.addresses && !!data.addresses.length && data.addresses.map((address, id) => {
                                                         const prefix = id + 1 !== data.addresses.length ? ', ' : ''
-                                                        return <><span>{address}</span>{prefix}</>
+                                                        return <React.Fragment key={prefix+id}><span>{address}</span>{prefix}</React.Fragment>
                                                     })}
                                                 </p>
                                             </td>

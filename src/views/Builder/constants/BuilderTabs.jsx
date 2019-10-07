@@ -6,6 +6,8 @@ import { ReactComponent as ImageIcon } from 'assets/image-icon.svg'
 import { ReactComponent as TemplateIcon } from 'assets/template-icon.svg'
 import TemplatePart from '../components/TemplatePart'
 import ContentPart from '../components/ContentPart'
+import StylePart from '../components/StylePart'
+
 
 export const BUILDER_TABS = [
     {
@@ -20,7 +22,7 @@ export const BUILDER_TABS = [
         labelTab: "Style",
         iconTab: StyleIcon,
         asideLabel: "Stylize Your Signature",
-        component: ContentPart,
+        component: StylePart,
     },
     {
         id: "tab2",
