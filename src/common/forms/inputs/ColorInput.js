@@ -1,6 +1,7 @@
 import React from 'react'
 import { SketchPicker } from 'react-color'
 
+import Button from 'common/components/Button'
 import styles from './ColorInput.module.scss'
 
 
@@ -10,11 +11,14 @@ export default function ColorInput({ name, value, onChange }) {
 
     const handleChangeComplete = (color) => {
         onChange(color.hex.toUpperCase())
-        changePicker(!openPicker)
     }
 
     const handleInputChange = (e) => {
         onChange(e.target.value.toUpperCase())
+    }
+
+    const closePicker = () => {
+        changePicker(!openPicker)
     }
 
     return (
@@ -32,13 +36,21 @@ export default function ColorInput({ name, value, onChange }) {
                 name={name}
             />
             {openPicker && (
-                <SketchPicker
-                    name={name}
-                    color={ value }
-                    onChangeComplete={ handleChangeComplete }
-                    onChange={(color) => onChange(color.hex)}
-                    className={styles.ColorPicker}
-                />
+                <div className={styles.PickerWrapper}>
+                    <SketchPicker
+                        name={name}
+                        color={ value }
+                        onChangeComplete={ handleChangeComplete }
+                        onChange={(color) => onChange(color.hex)}
+                        className={styles.ColorPicker}
+                    />
+                    <Button
+                        className={styles.CloseButton}
+                        onClick={closePicker}
+                    >
+                        Close
+                    </Button>
+                </div >
             )}
         </div>
     )
