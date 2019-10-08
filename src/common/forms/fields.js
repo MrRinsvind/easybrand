@@ -14,7 +14,6 @@ const SliderField = BaseFieldHOC(SliderInput)
 const SelectField = BaseFieldHOC(SelectInput)
 
 export {
-    BuilderField,
     ColorField,
     SliderField,
     SelectField,
