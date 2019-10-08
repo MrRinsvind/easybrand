@@ -1,10 +1,12 @@
 import React from 'react'
 import { reduxForm } from 'redux-form'
 import { compose } from 'redux'
+import { connect } from 'react-redux'
 
 import styles from './Builder.module.scss'
 import BuilderAside from './BuilderAside'
 import BuilderContent from './BuilderContent'
+
 
 function BuilderContainer ({ formMeta, formValue }) {
     const [selectedTab, toggleTab] = React.useState(2)
@@ -26,8 +28,13 @@ function BuilderContainer ({ formMeta, formValue }) {
 }
 
 export default compose(
+    connect((state) => ({
+        initialValues: {
+            templateName: "Template initial value"
+        }
+    })),
     reduxForm({
-        form: '@form/builder',
+        form: `@form/builder`,
         enableReinitialize: true,
     })
 )(BuilderContainer)
