@@ -8,7 +8,7 @@ import BulderModal from './BulderModal'
 import closeIcon from 'assets/x-shape.svg'
 import Typography from 'common/components/Typography'
 import Button from 'common/components/Button'
-import { TemplateNameField } from 'common/forms'
+import { DefaultTextField } from 'common/forms'
 import { BUILDER_TEMPLATES } from './constants/BuilderTemplates'
 
 BuilderContent.defaultProps = {
@@ -59,7 +59,7 @@ function BuilderContent({ selectType, data}) {
                 <div className={styles.Template}>
                     <Typography variant={'subhead'}>Preview</Typography>
                     <div className={styles.TemplateName}>
-                        <TemplateNameField placeholder={'Template name'} name="templateName"/>
+                        <DefaultTextField placeholder={'Template name'} name="templateName"/>
                     </div>
                     <div className={styles.Letters}>
                         <div className={classnames(styles.Letter,styles[`Letter_First`])}></div>
@@ -91,7 +91,11 @@ function BuilderContent({ selectType, data}) {
                                         <rect y="66" width="208" height="8" rx="1" fill="#E6EBF1"/>
                                     </svg>
                                 </div>
-                                <SelectedTemplate data={data}/>
+                                <div data-flip-id="browser" data-flip-config="{&quot;translate&quot;:true,&quot;scale&quot;:true,&quot;opacity&quot;:true}" data-portal-key="portal">
+                                    <div fontSize="medium" style={{ userSelect: "all" }}>
+                                        <SelectedTemplate data={data}/>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

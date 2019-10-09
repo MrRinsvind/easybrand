@@ -8,7 +8,6 @@ import mockTemplate from 'assets/email-template-1.svg'
 import { ReactComponent as EditIcon } from 'assets/edit-icon.svg'
 import { ReactComponent as TrashIcon } from 'assets/trash-icon.svg'
 import { ReactComponent as PlusIcon } from 'assets/plus-icon.svg'
-
 import Button from 'common/components/Button'
 
 

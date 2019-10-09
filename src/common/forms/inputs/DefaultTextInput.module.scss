@@ -1,0 +1,51 @@
+.TemplateInput{
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.625rem;
+  border: transparent;
+  outline: none;
+  display: block;
+  width: 100%;
+}
+
+.SettingInput {
+  border: none;
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-size: 0.875rem;
+  color: #000000;
+  letter-spacing: 0.001875rem;
+  line-height: 1.625rem;
+  outline: none;
+  width: 100%;
+  border-bottom: 0.0625rem solid #D6D6E5;
+  font-weight: 700;
+  padding: 0 0.625rem 0.3125rem 0;
+  margin-bottom: 1.25rem;
+
+  &::-webkit-input-placeholder { /* Edge */
+    font-size: 0.875rem;
+    color: #A4A4A4;
+    letter-spacing: 0;
+    line-height: 1.625rem;
+    font-weight: 400;
+  }
+
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-size: 0.875rem;
+    color: #A4A4A4;
+    letter-spacing: 0;
+    line-height: 1.625rem;
+    font-weight: 400;
+  }
+
+  &::placeholder {
+    font-size: 0.875rem;
+    color: #A4A4A4;
+    letter-spacing: 0;
+    line-height: 1.625rem;
+    font-weight: 400;
+  }
+}
