@@ -36,6 +36,8 @@ export default compose(
             linkColor: "#557ED8",
             font: "Arial",
             size: 1,
+            profilePicture: true,
+            imageCompany: true,
             firstName: {
                 text: "Rad",
                 status: ""

@@ -10,7 +10,7 @@ export default function Template6({data}) {
             width: `${TransformFontSize(360, data.fontSize)}`
         }}>
             <tbody>
-            {data.profilePhoto && (
+            {data.profilePhoto && data.profilePicture &&(
                 <>
                     <tr>
                         <td>
@@ -390,7 +390,7 @@ export default function Template6({data}) {
                                 </table>
                             </td>
 
-                            {data.companyLogo && (
+                            {data.companyLogo && data.imageCompany &&(
                                 <td style={{verticalAlign: 'top', textAlign: 'right'}}>
                                     <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo} role="presentation"
                                          style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`, display: 'inline', textAlign: 'left'}}/>

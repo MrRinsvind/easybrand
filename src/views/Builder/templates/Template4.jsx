@@ -16,7 +16,7 @@ export default function Template4({data}) {
                            style={{verticalAlign: '-webkit-baseline-middle', fontFamily: `${data.fontFamily}`}}>
                         <tbody>
                         <tr>
-                            {data.profilePhoto && (
+                            {data.profilePhoto && data.profilePicture &&(
                                 <>
                                     <td style={{verticalAlign: 'top'}}>
                                         <table cellPadding={0} cellSpacing={0} style={{
@@ -391,7 +391,7 @@ export default function Template4({data}) {
                                 </table>
                             </td>
 
-                            {data.profilePhoto && (
+                            {data.companyLogo && data.imageCompany &&(
                                 <td style={{verticalAlign: 'top', textAlign: 'right'}}>
                                     <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo} role="presentation"
                                          style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`, display: 'inline', textAlign: 'left'}}/>

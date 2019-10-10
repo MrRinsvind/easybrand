@@ -13,7 +13,7 @@ export default function Template2({data}) {
                            style={{verticalAlign: '-webkit-baseline-middle', fontFamily: `${data.fontFamily}`}}>
                         <tbody>
                         <tr>
-                            {data.profilePhoto && (
+                            {data.profilePhoto && data.profilePicture && (
                                 <>
                                     <td style={{verticalAlign: 'top'}}>
                                         <table cellPadding={0} cellSpacing={0} style={{
@@ -140,7 +140,7 @@ export default function Template2({data}) {
                                                 </table>
                                             )}
                                         </td>
-                                        {data.companyLogo && (
+                                        {data.companyLogo && data.imageCompany && (
                                             <td style={{textAlign: 'center', verticalAlign: 'bottom'}}>
                                                 <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo} style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`, float: 'right', display: 'block'}}/>
                                             </td>
@@ -465,12 +465,12 @@ export default function Template2({data}) {
                                                                 <tbody>
                                                                 <tr>
                                                                     <td style={{verticalAlign: 'bottom'}}>
-                                                                            <img width={`${TransformFontSize(13, data.fontSize)}`}
-                                                                                 src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/link-icon-2x.png"
-                                                                                 color={data.colors.themeColor} style={{
-                                                                                display: 'block',
-                                                                                backgroundColor: `${data.colors.themeColor}`
-                                                                            }}/>
+                                                                        <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                                                             src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/link-icon-2x.png"
+                                                                             color={data.colors.themeColor} style={{
+                                                                             display: 'block',
+                                                                             backgroundColor: `${data.colors.themeColor}`
+                                                                        }}/>
                                                                     </td>
                                                                 </tr>
                                                                 </tbody>

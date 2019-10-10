@@ -14,7 +14,7 @@ export default function Template1({data}) {
                            style={{verticalAlign: '-webkit-baseline-middle', fontFamily: `${data.fontFamily}`}}>
                         <tbody>
                         <tr>
-                            {data.profilePhoto || data.companyLogo || (data.socialLinks.facebook.text && data.socialLinks.facebook.status !== 'invisible') || (data.socialLinks.twitter.text && data.socialLinks.twitter.status !== 'invisible') || (data.socialLinks.instagram.text && data.socialLinks.instagram.status !== 'invisible') || (data.socialLinks.linkedin.text && data.socialLinks.linkedin.status !== 'invisible') ? (
+                            {(data.profilePhoto && data.profilePicture) || (data.companyLogo && data.imageCompany) || (data.socialLinks.facebook.text && data.socialLinks.facebook.status !== 'invisible') || (data.socialLinks.twitter.text && data.socialLinks.twitter.status !== 'invisible') || (data.socialLinks.instagram.text && data.socialLinks.instagram.status !== 'invisible') || (data.socialLinks.linkedin.text && data.socialLinks.linkedin.status !== 'invisible') ? (
                                 <>
                                     <td style={{verticalAlign: 'top'}}>
                                         <table cellPadding={0} cellSpacing={0} style={{
@@ -23,7 +23,8 @@ export default function Template1({data}) {
                                             width: `${TransformFontSize(180, data.fontSize)}`
                                         }}>
                                             <tbody>
-                                            {data.profilePhoto && (
+
+                                            {data.profilePhoto && data.profilePicture && (
                                                 <>
                                                     <tr>
                                                         <td style={{textAlign: 'center'}}>
@@ -39,7 +40,7 @@ export default function Template1({data}) {
                                                 </>
                                             )}
 
-                                            {data.companyLogo && (
+                                            {data.companyLogo && data.imageCompany && (
                                                 <>
                                                     <tr>
                                                         <td style={{textAlign: 'center'}}>

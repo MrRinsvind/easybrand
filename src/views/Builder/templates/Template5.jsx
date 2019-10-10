@@ -65,7 +65,7 @@ export default function Template5({data}) {
                                 )}
 
                             </td>
-                            {data.profilePhoto && (
+                            {data.profilePhoto && data.profilePicture &&(
                                 <td style={{textAlign: 'right'}}>
                                   <span style={{display: 'inline-block', textAlign: 'right', width: '100%'}}>
                                     <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.profilePhoto}
@@ -410,7 +410,7 @@ export default function Template5({data}) {
                                     </tbody>
                                 </table>
                             </td>
-                            {data.companyLogo && (
+                            {data.companyLogo && data.imageCompany &&(
                                 <td style={{verticalAlign: 'top', textAlign: 'right'}}>
                                     <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo}
                                          role="presentation"
