@@ -36,6 +36,78 @@ export default compose(
             linkColor: "#557ED8",
             font: "Arial",
             size: 1,
+            firstName: {
+                text: "Rad",
+                status: ""
+            },
+            lastName: {
+                text: "Pozniakov",
+                status: ""
+            },
+            department: {
+                text: "Sales",
+                status: ""
+            },
+            jobTitle: {
+                text: "Sofware developer",
+                status: ""
+            },
+            email: {
+              text: "rad@pozniakov.com",
+              status: ""
+            },
+            companyName: {
+                text: "Finty",
+                status: ""
+            },
+            websiteUrl: {
+                text: "www.finty.com",
+                status: ""
+            },
+            officeNumber: {
+                text: "+380977762565",
+                status: ""
+            },
+            mobileNumber: {
+                text: "+380993330214",
+                status: ""
+            },
+            addresses: {
+                0: {
+                    text: "Dnipro 1",
+                    status: ""
+                },
+                1: {
+                    text: "Dnipro 2",
+                    status: ""
+                },
+                2: {
+                    text: "Dnipro 3",
+                    status: ""
+                },
+                3: {
+                    text: "Dnipro 4",
+                    status: ""
+                }
+            },
+            socialLinks: {
+                facebook: {
+                    text: "facebook.com",
+                    status: ""
+                },
+                twitter: {
+                    text: "twitter.com",
+                    status: ""
+                },
+                instagram: {
+                    text: "instagram.com",
+                    status: ""
+                },
+                linkedin: {
+                    text: "linkedin.com",
+                    status: ""
+                }
+            }
         }
     })),
     reduxForm({

@@ -29,7 +29,10 @@ export default function SelectInput({ onChange, value, name }) {
             >
                 <MenuItem value={'Arial'}>Arial</MenuItem>
                 <MenuItem value={'Times New Roman'}>Times New Roman</MenuItem>
-                <MenuItem value={'Roboto'}>Roboto</MenuItem>
+                <MenuItem value={'Verdana'}>Verdana</MenuItem>
+                <MenuItem value={'Georgia'}>Georgia</MenuItem>
+                <MenuItem value={'Tahoma'}>Tahoma</MenuItem>
+                <MenuItem value={'Garamond'}>Garamond</MenuItem>
             </Select>
         </div>
     )

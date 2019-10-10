@@ -42,10 +42,6 @@ export default function ContentPart({ selectType, toggleType }) {
                  placeholder="Website URL"
              />
              <BuilderField
-                 name="lastName"
-                 label="Last name"
-             />
-             <BuilderField
                  name="addresses[0]"
                  label="Address"
                  placeholder="Address"
