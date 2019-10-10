@@ -12,7 +12,7 @@ export default function Template3({data}) {
             <tbody>
             <tr>
                 <td>
-                    {data.profilePhoto && (
+                    {data.profilePhoto && data.profilePicture && (
                         <table cellPadding={0} cellSpacing={0} style={{
                             verticalAlign: '-webkit-baseline-middle',
                             fontFamily: `${data.fontFamily}`,
@@ -358,7 +358,7 @@ export default function Template3({data}) {
                             </>
                         )}
 
-                        {data.companyLogo && (
+                        {data.companyLogo && data.imageCompany && (
                             <tr>
                                 <td>
                                     <p style={{margin: 0, textAlign: 'center'}}>

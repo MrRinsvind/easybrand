@@ -92,6 +92,8 @@ export default connect(state => ({
             textColor: get(state, 'form.@form/builder.values.textColor'),
             linkColor: get(state, 'form.@form/builder.values.linkColor'),
         },
+        profilePicture: get(state, 'form.@form/builder.values.profilePicture'),
+        imageCompany: get(state, 'form.@form/builder.values.imageCompany'),
         fontFamily: get(state, 'form.@form/builder.values.font'),
         fontSize: get(state, 'form.@form/builder.values.size'),
         profilePhoto: "https://avatarfiles.alphacoders.com/202/202402.png",
