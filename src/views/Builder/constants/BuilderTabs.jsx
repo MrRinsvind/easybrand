@@ -7,6 +7,7 @@ import { ReactComponent as TemplateIcon } from 'assets/template-icon.svg'
 import TemplatePart from '../components/TemplatePart'
 import ContentPart from '../components/ContentPart'
 import StylePart from '../components/StylePart'
+import ImagePart from '../components/ImagePart'
 
 
 export const BUILDER_TABS = [
@@ -36,6 +37,6 @@ export const BUILDER_TABS = [
         labelTab: "Image",
         iconTab: ImageIcon,
         asideLabel: "Upload Your Custom Signature Images",
-        component: React.Fragment,
+        component: ImagePart,
     },
 ]

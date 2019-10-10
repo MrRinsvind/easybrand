@@ -9,7 +9,7 @@ import BuilderContent from './BuilderContent'
 
 
 function BuilderContainer ({ formMeta, formValue }) {
-    const [selectedTab, toggleTab] = React.useState(1)
+    const [selectedTab, toggleTab] = React.useState(0)
     const [selectType, toggleType] = React.useState(0)
 
     return (
