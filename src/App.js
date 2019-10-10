@@ -8,7 +8,6 @@ import { store, persistor, history } from 'store'
 import Router from './Router'
 
 
-import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import './App.scss'
 
 function App() {

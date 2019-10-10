@@ -6,6 +6,7 @@ import Label from './Label'
 export default function BaseFieldLayout(props) {
     const {
             label,
+            settingStyle,
         } = props
 
     const { inputComponent: InputComponent, ...restProps } = props
@@ -13,7 +14,7 @@ export default function BaseFieldLayout(props) {
     return (
         <>
             {label && (
-                <Label>
+                <Label settingStyle={settingStyle}>
                     {label}
                 </Label>
             )}

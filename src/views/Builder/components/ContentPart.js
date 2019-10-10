@@ -2,7 +2,6 @@ import React from 'react'
 import classnames from 'classnames'
 
 import styles from '../Builder.module.scss'
-import { ReactComponent as IconCheck } from 'assets/x-circle.svg'
 import Typography from 'common/components/Typography'
 import { BuilderField } from 'common/forms'
 
