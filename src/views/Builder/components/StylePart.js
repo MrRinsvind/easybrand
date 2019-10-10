@@ -14,11 +14,11 @@ export default function StylePart({ }) {
             />
             <ColorField
                 name="textColor"
-                label="Theme Color"
+                label="Text Color"
             />
             <ColorField
                 name="linkColor"
-                label="Theme Color"
+                label="Links Color"
             />
             <Typography variant="h3" className={classnames(styles.AsideContentHeading, 'mt-5')}>
                 Brand Fonts

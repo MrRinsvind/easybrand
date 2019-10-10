@@ -6,8 +6,7 @@ export default function Template6({data}) {
     return (
         <table id="template6" cellPadding={0} cellSpacing={0} style={{
             verticalAlign: '-webkit-baseline-middle',
-            fontSize: 'small',
-            fontFamily: 'Arial',
+            fontFamily: `${data.fontFamily}`,
             width: `${TransformFontSize(360, data.fontSize)}`
         }}>
             <tbody>
@@ -17,8 +16,7 @@ export default function Template6({data}) {
                         <td>
                             <table cellPadding={0} cellSpacing={0} className style={{
                                 verticalAlign: '-webkit-baseline-middle',
-                                fontSize: 'small',
-                                fontFamily: 'Arial',
+                                fontFamily: `${data.fontFamily}`,
                                 width: '100%'
                             }}>
                                 <tbody>
@@ -37,8 +35,6 @@ export default function Template6({data}) {
                     </tr>
                 </>
             )}
-
-
             <tr>
                 <td height={`${TransformFontSize(2, data.fontSize)}`} direction="horizontal" style={{
                     width: '100%',
@@ -53,47 +49,61 @@ export default function Template6({data}) {
             <tr>
                 <td style={{verticalAlign: 'middle'}}>
                     <table cellPadding={0} cellSpacing={0}
-                           style={{verticalAlign: '-webkit-baseline-middle', fontSize: 'small', fontFamily: 'Arial'}}>
+                           style={{verticalAlign: '-webkit-baseline-middle', fontFamily: `${data.fontFamily}`}}>
                         <tbody>
                         <tr>
                             <td width={`${TransformFontSize(180, data.fontSize)}`}>
-                                {(data.firstName || data.lastName) && (
+
+                                {((data.firstName.text && data.firstName.status !== 'invisible') || (data.lastName.text && data.lastName.status !== 'invisible')) && (
                                     <h2 style={{
                                         margin: 0,
                                         paddingBottom: `${TransformFontSize(5, data.fontSize)}`,
                                         fontSize: `${TransformFontSize(20, data.fontSize)}`,
-                                        color: `${data.colors.textColor}`
+                                        color: `${data.colors.textColor}`,
+                                        fontFamily: `${data.fontFamily}`
                                     }}>
-                                        <span>{`${data.firstName} ${data.lastName}`}</span>
+
+                                    { data.firstName.status !== 'invisible' && (`${data.firstName.text} `) }
+                                    { data.lastName.status !== 'invisible' && (`${data.lastName.text}`) }
+
                                     </h2>
                                 )}
-                                {data.jobTitle && (
+
+
+                                {data.jobTitle.text && data.jobTitle.status !== 'invisible' && (
                                     <p style={{
                                         margin: 0,
                                         paddingBottom: `${TransformFontSize(10, data.fontSize)}`,
                                         fontSize: `${TransformFontSize(14, data.fontSize)}`,
-                                        color: `${data.colors.textColor}`
+                                        color: `${data.colors.textColor}`,
+                                        fontFamily: `${data.fontFamily}`
                                     }}>
-                                        <span>{data.jobTitle}</span>
+                                        <span style={{fontFamily: `${data.fontFamily}`}}>{data.jobTitle.text}</span>
                                     </p>
                                 )}
 
-                                {(data.companyName || data.department) && (
+                                {((data.companyName.text && data.companyName.status !== 'invisible') || (data.department.text && data.department.status !== 'invisible')) && (
                                     <p style={{
                                         margin: 0,
                                         fontSize: `${TransformFontSize(14, data.fontSize)}`,
                                         color: `${data.colors.textColor}`,
-                                        opacity: 0.5
+                                        opacity: 0.5,
+                                        fontFamily: `${data.fontFamily}`
                                     }}>
-                                        {data.companyName && (
+                                        {data.companyName.text && data.companyName.status !== 'invisible' && (
                                             <>
-                                                <span>{data.companyName}</span>
-                                                <span style={{padding: `0 ${TransformFontSize(5, data.fontSize)}`}}>|</span>
+                                                <span style={{fontFamily: `${data.fontFamily}`}}>{data.companyName.text}</span>
+                                                {data.department.text && data.department.status !== 'invisible' && (
+                                                    <span style={{padding: `0 ${TransformFontSize(5, data.fontSize)}`}}>|</span>
+                                                )}
                                             </>
                                         )}
-                                        <span>{data.department}</span>
+                                        {data.department.text && data.department.status !== 'invisible' && (
+                                            <span style={{fontFamily: `${data.fontFamily}`}}>{data.department.text}</span>
+                                        )}
                                     </p>
                                 )}
+
                             </td>
                             <td width={`${TransformFontSize(20, data.fontSize)}`}>
                                 <div/>
@@ -101,20 +111,17 @@ export default function Template6({data}) {
                             <td>
                                 <table cellPadding={0} cellSpacing={0} style={{
                                     verticalAlign: '-webkit-baseline-middle',
-                                    fontSize: 'small',
-                                    fontFamily: 'Arial'
+                                    fontFamily: `${data.fontFamily}`
                                 }}>
                                     <tbody>
 
-
-                                    {data.addresses.length > 0 && (
+                                    { data.addresses.filter((address) => { return address.text && address.status !== 'invisible'}).length > 0 && (
                                         <>
                                             <tr height={`${TransformFontSize(25, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
                                                 <td width={`${TransformFontSize(30, data.fontSize)}`} style={{verticalAlign: 'top'}}>
                                                     <table cellPadding={0} cellSpacing={0} style={{
                                                         verticalAlign: '-webkit-baseline-middle',
-                                                        fontSize: 'small',
-                                                        fontFamily: 'Arial'
+                                                        fontFamily: `${data.fontFamily}`
                                                     }}>
                                                         <tbody>
                                                         <tr>
@@ -137,11 +144,19 @@ export default function Template6({data}) {
                                                     <p color={data.colors.textColor} style={{
                                                         fontSize: `${TransformFontSize(12, data.fontSize)}`,
                                                         margin: '0',
+                                                        fontFamily: `${data.fontFamily}`,
                                                         color: `${data.colors.textColor}`
                                                     }}>
-                                                        {data.addresses && !!data.addresses.length && data.addresses.map((address, id) => {
-                                                            const coma = id + 1 !== data.addresses.length ? ', ' : ''
-                                                            return <><span>{address}</span>{coma}</>
+                                                        {data.addresses.map((address, id) => {
+                                                            if(address.text && address.status !== 'invisible'){
+                                                                let prefix = (id + 1 !== data.addresses.length) &&
+                                                                (data.addresses.some((adr, adrInd) => adrInd > id && adr.status !== 'invisible')) ?
+                                                                    <span>, </span> :
+                                                                    null
+                                                                return <>{address.text}{prefix}</>
+                                                            } else {
+                                                                return null
+                                                            }
                                                         })}
                                                     </p>
                                                 </td>
@@ -150,119 +165,91 @@ export default function Template6({data}) {
                                         </>
                                     )}
 
-                                    {(data.officeNumber || data.officeNumber) && (
+                                    {( (data.officeNumber.text && data.officeNumber.status !== 'invisible') || (data.officeNumber.text && data.officeNumber.status !== 'invisible')) && (
                                         <>
                                             <tr height={`${TransformFontSize(25, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
-                                                <td width={`${TransformFontSize(30, data.fontSize)}`} style={{verticalAlign: 'top'}}>
-                                                    <table cellPadding={0} cellSpacing={0} style={{
-                                                        verticalAlign: '-webkit-baseline-middle',
-                                                        fontSize: 'small',
-                                                        fontFamily: 'Arial'
-                                                    }}>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td style={{verticalAlign: 'bottom'}}>
-
-                                                                    <img width={`${TransformFontSize(13, data.fontSize)}`}
-                                                                         src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/phone-icon-2x.png"
-                                                                         color={data.themeColor} style={{
-                                                                        display: 'block',
-                                                                        backgroundColor: `${data.colors.themeColor}`
-                                                                    }}/>
-                                                            </td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
+                                                <td style={{verticalAlign: 'top'}}>
+                                                        <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                                             src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/phone-icon-2x.png"
+                                                             color={data.themeColor} style={{
+                                                            display: 'block',
+                                                            backgroundColor: `${data.colors.themeColor}`
+                                                    }}/>
                                                 </td>
                                                 <td>
                                                     <div style={{width: `${TransformFontSize(15, data.fontSize)}`}}></div>
                                                 </td>
+
                                                 <td style={{padding: '0px', color: 'rgb(0, 0, 0)'}}>
-                                                    <a href={`tel:${data.officeNumber}`} color={data.colors.linkColor}
-                                                       style={{
-                                                           textDecoration: 'none',
-                                                           color: `${data.colors.linkColor}`,
-                                                           display: 'block',
-                                                           fontSize: `${TransformFontSize(12, data.fontSize)}`
-                                                       }}>
-                                                        <span>{data.officeNumber}</span>
-                                                    </a>
-                                                    <a href={`tel:${data.mobileNumber}`} color={data.colors.linkColor}
-                                                       style={{
-                                                           textDecoration: 'none',
-                                                           color: `${data.colors.linkColor}`,
-                                                           display: 'block',
-                                                           fontSize: `${TransformFontSize(12, data.fontSize)}`
-                                                       }}>
-                                                        <span>{data.mobileNumber}</span>
-                                                    </a>
+
+                                                    {data.officeNumber.text && data.officeNumber.status !== 'invisible' && (
+                                                        <a href={`tel:${data.officeNumber.text}`} color={data.colors.linkColor}
+                                                           style={{
+                                                               textDecoration: 'none',
+                                                               color: `${data.colors.linkColor}`,
+                                                               display: 'block',
+                                                               fontSize: `${TransformFontSize(12, data.fontSize)}`
+                                                           }}>
+                                                            <span>{data.officeNumber.text}</span>
+                                                        </a>
+                                                    )}
+
+                                                    {data.mobileNumber.text && data.mobileNumber.status !== 'invisible' && (
+                                                        <a href={`tel:${data.mobileNumber.text}`} color={data.colors.linkColor}
+                                                           style={{
+                                                               textDecoration: 'none',
+                                                               color: `${data.colors.linkColor}`,
+                                                               display: 'block',
+                                                               fontSize: `${TransformFontSize(12, data.fontSize)}`
+                                                           }}>
+                                                            <span>{data.mobileNumber.text}</span>
+                                                        </a>
+                                                    )}
                                                 </td>
                                             </tr>
                                             <tr height={`${TransformFontSize(9, data.fontSize)}`}/>
                                         </>
                                     )}
 
-                                    {data.email && (
+                                    {data.email.text && data.email.status !== 'invisible' && (
                                         <>
                                             <tr height={`${TransformFontSize(25, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
-                                                <td width={`${TransformFontSize(30, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
-                                                    <table cellPadding={0} cellSpacing={0} style={{
-                                                        verticalAlign: '-webkit-baseline-middle',
-                                                        fontSize: 'small',
-                                                        fontFamily: 'Arial'
-                                                    }}>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td style={{verticalAlign: 'bottom'}}>
-                                                                <img width={`${TransformFontSize(13, data.fontSize)}`}
-                                                                     src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/email-icon-2x.png"
-                                                                     color={data.colors.themeColor} style={{
-                                                                    display: 'block',
-                                                                    backgroundColor: `${data.colors.themeColor}`
-                                                                }}/>
-                                                            </td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
+                                                <td style={{verticalAlign: 'top'}}>
+                                                    <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                                         src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/email-icon-2x.png"
+                                                         color={data.colors.themeColor} style={{
+                                                        display: 'block',
+                                                        backgroundColor: `${data.colors.themeColor}`
+                                                    }}/>
                                                 </td>
                                                 <td>
                                                     <div style={{width: `${TransformFontSize(15, data.fontSize)}`}}></div>
                                                 </td>
                                                 <td style={{padding: '0px'}}>
-                                                    <a href={`mailto:${data.email}`} color={data.colors.linkColor}
+                                                    <a href={`mailto:${data.email.text}`} color={data.colors.linkColor}
                                                        style={{
                                                            textDecoration: 'none',
                                                            color: `${data.colors.linkColor}`,
+                                                           fontFamily: `${data.fontFamily}`,
                                                            fontSize: `${TransformFontSize(12, data.fontSize)}`
                                                        }}>
-                                                        <span>{data.email}</span>
+                                                        <span style={{fontFamily: `${data.fontFamily}`}}>{data.email.text}</span>
                                                     </a>
                                                 </td>
                                             </tr>
                                             <tr height={`${TransformFontSize(9, data.fontSize)}`}/>
                                         </>
                                     )}
-                                    {data.websiteUrl && (
+
+                                    { data.websiteUrl.text && data.websiteUrl.status !== 'invisible' && (
                                         <tr height={`${TransformFontSize(25, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
-                                            <td width={`${TransformFontSize(30, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
-                                                <table cellPadding={0} cellSpacing={0} style={{
-                                                    verticalAlign: '-webkit-baseline-middle',
-                                                    fontSize: 'small',
-                                                    fontFamily: 'Arial'
-                                                }}>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td style={{verticalAlign: 'bottom'}}>
-                                                            <img width={`${TransformFontSize(13, data.fontSize)}`}
-                                                                 src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/link-icon-2x.png"
-                                                                 color={data.colors.themeColor} style={{
-                                                                display: 'block',
-                                                                backgroundColor: `${data.colors.themeColor}`
-                                                            }}/>
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
+                                            <td style={{verticalAlign: 'bottom'}}>
+                                                <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                                     src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/link-icon-2x.png"
+                                                     color={data.colors.themeColor} style={{
+                                                    display: 'block',
+                                                    backgroundColor: `${data.colors.themeColor}`
+                                                }}/>
                                             </td>
                                             <td>
                                                 <div style={{width: `${TransformFontSize(15, data.fontSize)}`}}></div>
@@ -273,7 +260,7 @@ export default function Template6({data}) {
                                                     color: `${data.colors.linkColor}`,
                                                     fontSize: `${TransformFontSize(12, data.fontSize)}`
                                                 }}>
-                                                    <span>{data.websiteUrl}</span>
+                                                    <span style={{fontFamily: `${data.fontFamily}`}}>{data.websiteUrl.text}</span>
                                                 </a>
                                             </td>
                                         </tr>
@@ -304,8 +291,7 @@ export default function Template6({data}) {
                 <td>
                     <table cellPadding={0} cellSpacing={0} style={{
                         verticalAlign: '-webkit-baseline-middle',
-                        fontSize: 'small',
-                        fontFamily: 'Arial',
+                        fontFamily: `${data.fontFamily}`,
                         width: '100%'
                     }}>
                         <tbody>
@@ -313,16 +299,16 @@ export default function Template6({data}) {
                             <td style={{verticalAlign: 'middle', textAlign: 'left'}}>
                                 <table cellPadding={0} cellSpacing={0} style={{
                                     verticalAlign: '-webkit-baseline-middle',
-                                    fontSize: 'small',
-                                    fontFamily: 'Arial',
+                                    fontFamily: `${data.fontFamily}`,
                                     display: 'inline-block'
                                 }}>
                                     <tbody>
                                     <tr style={{textAlign: 'right'}}>
-                                        {data.socialLinks.facebook && (
+
+                                        {data.socialLinks.facebook.text && data.socialLinks.facebook.status !== 'invisible' && (
                                             <td>
                                                 <>
-                                                    <a href={data.socialLinks.facebook} color="#6A78D1" style={{
+                                                    <a href={data.socialLinks.facebook.text} color="#6A78D1" style={{
                                                         display: 'inline-block',
                                                         padding: '0px',
                                                         backgroundColor: `${data.colors.themeColor}`
@@ -340,8 +326,7 @@ export default function Template6({data}) {
                                             </td>
                                         )}
 
-
-                                        {data.socialLinks.twitter && (
+                                        {data.socialLinks.twitter.text && data.socialLinks.twitter.status !== 'invisible' && (
                                             <td>
                                                 <>
                                                     <a href={data.socialLinks.twitter} color="#6A78D1" style={{
@@ -362,7 +347,7 @@ export default function Template6({data}) {
                                             </td>
                                         )}
 
-                                        {data.socialLinks.linkedin && (
+                                        {data.socialLinks.linkedin.text && data.socialLinks.linkedin.status !== 'invisible' && (
                                             <td>
                                                 <>
                                                     <a href={data.socialLinks.linkedin} color="#6A78D1" style={{
@@ -383,8 +368,7 @@ export default function Template6({data}) {
                                             </td>
                                         )}
 
-
-                                        {data.socialLinks.instagram && (
+                                        {data.socialLinks.instagram.text && data.socialLinks.instagram.status !== 'invisible' && (
                                             <td>
                                                 <a href={data.socialLinks.instagram} color="#6A78D1" style={{
                                                     display: 'inline-block',
@@ -405,6 +389,7 @@ export default function Template6({data}) {
                                     </tbody>
                                 </table>
                             </td>
+
                             {data.companyLogo && (
                                 <td style={{verticalAlign: 'top', textAlign: 'right'}}>
                                     <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo} role="presentation"
@@ -423,4 +408,3 @@ export default function Template6({data}) {
         </table>
     )
 }
-

@@ -13,32 +13,6 @@ import { BUILDER_TEMPLATES } from './constants/BuilderTemplates'
 
 BuilderContent.defaultProps = {
     selectType: 0,
-    data: {
-        colors: {
-            themeColor: "#498ee9",
-            textColor: "#000000",
-            linkColor: "#557ED8",
-        },
-        fontSize: 1,
-        profilePhoto: "https://avatarfiles.alphacoders.com/202/202402.png",
-        companyLogo: "https://avatarfiles.alphacoders.com/205/205482.jpg",
-        firstName: "Rad",
-        lastName:  "Pozniakov",
-        jobTitle: "Software Developer",
-        department: "Sales",
-        email: "rad.poznyakov@gmail.com",
-        companyName: "Finty",
-        websiteUrl: "http://finty.com",
-        addresses: ["krmsg lkvrg", "fesrfesg gerjtng", "address3", "address4"],
-        officeNumber: "111 222 333",
-        mobileNumber: "111 222",
-        socialLinks: {
-            facebook: "http://finty.com",
-            twitter: "http://finty.com",
-            instagram: "http://finty.com",
-            linkedin: "http://finty.com"
-        }
-    }
 }
 
 function BuilderContent({ selectType, data}) {
@@ -48,7 +22,6 @@ function BuilderContent({ selectType, data}) {
     function handleEscButton(){
         toggleModal(!isShowedModal)
     }
-
     return (
         <>
             <div className={styles.Wrapper}>
@@ -108,5 +81,37 @@ function BuilderContent({ selectType, data}) {
 }
 
 export default connect(state => ({
-    customTemplateName: get(state, 'form.@form/builder.values.templateName')
+    customTemplateName: get(state, 'form.@form/builder.values.templateName'),
+    data: {
+        colors: {
+            themeColor: get(state, 'form.@form/builder.values.themeColor'),
+            textColor: get(state, 'form.@form/builder.values.textColor'),
+            linkColor: get(state, 'form.@form/builder.values.linkColor'),
+        },
+        fontFamily: get(state, 'form.@form/builder.values.font'),
+        fontSize: get(state, 'form.@form/builder.values.size'),
+        profilePhoto: "https://avatarfiles.alphacoders.com/202/202402.png",
+        companyLogo: "https://avatarfiles.alphacoders.com/205/205482.jpg",
+        firstName: get(state, 'form.@form/builder.values.firstName', ''),
+        lastName:  get(state, 'form.@form/builder.values.lastName', ''),
+        jobTitle: get(state, 'form.@form/builder.values.jobTitle', ''),
+        department: get(state, 'form.@form/builder.values.department', ''),
+        email: get(state, 'form.@form/builder.values.email', ''),
+        companyName: get(state, 'form.@form/builder.values.companyName', ''),
+        websiteUrl: get(state, 'form.@form/builder.values.websiteUrl', ''),
+        addresses: [
+            get(state, 'form.@form/builder.values.addresses[0]', ''),
+            get(state, 'form.@form/builder.values.addresses[1]', ''),
+            get(state, 'form.@form/builder.values.addresses[2]', ''),
+            get(state, 'form.@form/builder.values.addresses[3]', '')
+        ],
+        officeNumber: get(state, 'form.@form/builder.values.officeNumber', ''),
+        mobileNumber: get(state, 'form.@form/builder.values.mobileNumber', ''),
+        socialLinks: {
+            facebook: get(state, 'form.@form/builder.values.socialLinks.facebook', ''),
+            twitter: get(state, 'form.@form/builder.values.socialLinks.twitter', ''),
+            instagram: get(state, 'form.@form/builder.values.socialLinks.instagram', ''),
+            linkedin: get(state, 'form.@form/builder.values.socialLinks.linkedin', '')
+        }
+    }
 }))(BuilderContent)
