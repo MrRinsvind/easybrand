@@ -43,7 +43,7 @@ export default function TemplatePart({ selectType, toggleType }) {
     return (
         <div className={styles.TemplatePartWrapper}>
             { TemplatePartData.map((templateItem, itemInd) => (
-                <>
+                <React.Fragment key={itemInd}>
                     <Typography variant="h4" className={styles.TemplatePartHeading}>
                         {templateItem.label}
                     </Typography>
@@ -59,7 +59,7 @@ export default function TemplatePart({ selectType, toggleType }) {
                     >
                         <IconCheck/>
                     </div>
-                </>
+                </React.Fragment>
             ))}
         </div>
     )

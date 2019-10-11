@@ -28,7 +28,7 @@ export default function Template4({data}) {
                                             <tr height={`${TransformFontSize(5, data.fontSize)}`}/>
                                             <tr>
                                                 <td style={{textAlign: 'center'}}>
-                                                    <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.profilePhoto}/>
+                                                    <img alt="" width={`${TransformFontSize(90, data.fontSize)}`} src={data.profilePhoto}/>
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -136,7 +136,7 @@ export default function Template4({data}) {
                                                     <tbody>
                                                     <tr>
                                                         <td style={{verticalAlign: 'bottom'}}>
-                                                            <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                                            <img alt="" width={`${TransformFontSize(13, data.fontSize)}`}
                                                                  src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/address-icon-2x.png"
                                                                  color={data.colors.themeColor} style={{
                                                                 display: 'block',
@@ -160,7 +160,7 @@ export default function Template4({data}) {
                                                             (data.addresses.some((adr, adrInd) => adrInd > id && adr.status !== 'invisible')) ?
                                                                 <span>, </span> :
                                                                 null
-                                                            return <>{address.text}{prefix}</>
+                                                            return <React.Fragment key={address.text + id}>{address.text}{prefix}</React.Fragment>
                                                         } else {
                                                             return null
                                                         }
@@ -173,7 +173,7 @@ export default function Template4({data}) {
                                     {((data.officeNumber.text && data.officeNumber.status !== 'invisible') || (data.mobileNumber.text && data.mobileNumber.status !== 'invisible')) && (
                                         <tr height={`${TransformFontSize(25, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
                                             <td width={`${TransformFontSize(30, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
-                                                <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                                <img alt="" width={`${TransformFontSize(13, data.fontSize)}`}
                                                      src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/phone-icon-2x.png"
                                                      color={data.colors.themeColor} style={{
                                                     display: 'block',
@@ -224,7 +224,7 @@ export default function Template4({data}) {
                                     {data.email.text && data.email.status !== 'invisible' && (
                                         <tr height={`${TransformFontSize(25, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
                                             <td width={`${TransformFontSize(30, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
-                                                <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                                <img alt="" width={`${TransformFontSize(13, data.fontSize)}`}
                                                      src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/email-icon-2x.png"
                                                      color={data.colors.themeColor} style={{
                                                     display: 'block',
@@ -248,7 +248,7 @@ export default function Template4({data}) {
                                     {data.websiteUrl.text && data.websiteUrl.status !== 'invisible' && (
                                         <tr height={`${TransformFontSize(25, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
                                             <td width={`${TransformFontSize(30, data.fontSize)}`} style={{verticalAlign: 'middle'}}>
-                                                <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                                <img alt="" width={`${TransformFontSize(13, data.fontSize)}`}
                                                      src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/link-icon-2x.png"
                                                      color={data.colors.themeColor} style={{
                                                     display: 'block',
@@ -393,7 +393,7 @@ export default function Template4({data}) {
 
                             {data.companyLogo && data.imageCompany &&(
                                 <td style={{verticalAlign: 'top', textAlign: 'right'}}>
-                                    <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo} role="presentation"
+                                    <img alt="" width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo} role="presentation"
                                          style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`, display: 'inline', textAlign: 'left'}}/>
                                 </td>
                             )}

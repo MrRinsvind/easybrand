@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { ReactComponent as StyleIcon } from 'assets/style-icon.svg'
 import { ReactComponent as ContentIcon } from 'assets/content-icon.svg'
 import { ReactComponent as ImageIcon } from 'assets/image-icon.svg'

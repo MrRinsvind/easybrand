@@ -15,7 +15,7 @@ export default function Template1({data}) {
                         <tbody>
                         <tr>
                             {(data.profilePhoto && data.profilePicture) || (data.companyLogo && data.imageCompany) || (data.socialLinks.facebook.text && data.socialLinks.facebook.status !== 'invisible') || (data.socialLinks.twitter.text && data.socialLinks.twitter.status !== 'invisible') || (data.socialLinks.instagram.text && data.socialLinks.instagram.status !== 'invisible') || (data.socialLinks.linkedin.text && data.socialLinks.linkedin.status !== 'invisible') ? (
-                                <>
+                                <React.Fragment>
                                     <td style={{verticalAlign: 'top'}}>
                                         <table cellPadding={0} cellSpacing={0} style={{
                                             verticalAlign: '-webkit-baseline-middle',
@@ -25,11 +25,11 @@ export default function Template1({data}) {
                                             <tbody>
 
                                             {data.profilePhoto && data.profilePicture && (
-                                                <>
+                                                <React.Fragment>
                                                     <tr>
                                                         <td style={{textAlign: 'center'}}>
                                                             <p style={{textAlign: 'center', margin: 0}}>
-                                                                <img src={data.profilePhoto}
+                                                                <img alt="" src={data.profilePhoto}
                                                                      style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`}}/>
                                                             </p>
                                                         </td>
@@ -37,15 +37,15 @@ export default function Template1({data}) {
                                                     <tr>
                                                         <td height={`${TransformFontSize(15, data.fontSize)}`}/>
                                                     </tr>
-                                                </>
+                                                </React.Fragment>
                                             )}
 
                                             {data.companyLogo && data.imageCompany && (
-                                                <>
+                                                <React.Fragment>
                                                     <tr>
                                                         <td style={{textAlign: 'center'}}>
                                                             <p style={{textAlign: 'center', margin: 0}}>
-                                                                <img width={`${TransformFontSize(90, data.fontSize)}`}
+                                                                <img alt="" width={`${TransformFontSize(90, data.fontSize)}`}
                                                                      src={data.companyLogo}
                                                                      style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`}}/>
                                                             </p>
@@ -54,7 +54,7 @@ export default function Template1({data}) {
                                                     <tr>
                                                         <td height={`${TransformFontSize(15, data.fontSize)}`}/>
                                                     </tr>
-                                                </>
+                                                </React.Fragment>
                                             )}
 
                                             <tr>
@@ -68,7 +68,7 @@ export default function Template1({data}) {
                                                         <tr style={{textAlign: 'center'}}>
                                                             <td>
                                                                 {data.socialLinks.facebook.text && data.socialLinks.facebook.status !== 'invisible' && (
-                                                                    <>
+                                                                    <React.Fragment>
                                                                         <a href={data.socialLinks.facebook.text}
                                                                            color={data.colors.themeColor} style={{
                                                                             display: 'inline-block',
@@ -87,13 +87,13 @@ export default function Template1({data}) {
                                                                         <span style={{
                                                                             width: `${TransformFontSize(8, data.fontSize)}`,
                                                                             display: 'inline-block'
-                                                                        }}></span>
-                                                                    </>
+                                                                        }}/>
+                                                                    </React.Fragment>
                                                                 )}
                                                             </td>
                                                             <td>
                                                                 {data.socialLinks.twitter.text && data.socialLinks.twitter.status !== 'invisible' &&(
-                                                                    <>
+                                                                    <React.Fragment>
                                                                         <a href={data.socialLinks.twitter.text}
                                                                            color={data.colors.themeColor} style={{
                                                                             display: 'inline-block',
@@ -113,13 +113,13 @@ export default function Template1({data}) {
                                                                         <span style={{
                                                                             width: `${TransformFontSize(8, data.fontSize)}`,
                                                                             display: 'inline-block'
-                                                                        }}></span>
-                                                                    </>
+                                                                        }}/>
+                                                                    </React.Fragment>
                                                                 )}
                                                             </td>
                                                             <td>
                                                                 {data.socialLinks.linkedin.text && data.socialLinks.linkedin.status !== 'invisible' && (
-                                                                    <>
+                                                                    <React.Fragment>
                                                                         <a href={data.socialLinks.linkedin}
                                                                            color={data.colors.themeColor} style={{
                                                                             display: 'inline-block',
@@ -139,8 +139,8 @@ export default function Template1({data}) {
                                                                         <span style={{
                                                                             width: `${TransformFontSize(8, data.fontSize)}`,
                                                                             display: 'inline-block'
-                                                                        }}></span>
-                                                                    </>
+                                                                        }}/>
+                                                                    </React.Fragment>
                                                                 )}
                                                             </td>
                                                             <td>
@@ -176,9 +176,8 @@ export default function Template1({data}) {
                                     </td>
                                     <td width={`${TransformFontSize(25, data.fontSize)}`}>
                                     </td>
-                                </>
+                                </React.Fragment>
                             ) : ""}
-                            {/* third column */}
                             <td style={{padding: '0px', verticalAlign: 'top'}}>
                                 <table cellPadding={0} cellSpacing={0}>
                                     <tbody>
@@ -304,7 +303,7 @@ export default function Template1({data}) {
                                                                 <td style={{verticalAlign: 'bottom'}}>
 
                                                                     <img width={`${TransformFontSize(13, data.fontSize)}`}
-                                                                         src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/address-icon-2x.png"
+                                                                         alt="" src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/address-icon-2x.png"
                                                                          color={data.colors.themeColor} style={{
                                                                         display: 'block',
                                                                         backgroundColor: `${data.colors.themeColor}`
@@ -329,7 +328,7 @@ export default function Template1({data}) {
                                                                         (data.addresses.some((adr, adrInd) => adrInd > id && adr.status !== 'invisible')) ?
                                                                         <span>, </span> :
                                                                         null
-                                                                    return <>{address.text}{prefix}</>
+                                                                    return <React.Fragment key={address.text + id}>{address.text}{prefix}</React.Fragment>
                                                                 } else {
                                                                     return null
                                                                 }
@@ -352,7 +351,7 @@ export default function Template1({data}) {
                                                     <tr>
                                                         <td style={{verticalAlign: 'bottom'}}>
                                                             <img width={`${TransformFontSize(13, data.fontSize)}`}
-                                                                 src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/phone-icon-2x.png"
+                                                                 alt="" src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/phone-icon-2x.png"
                                                                  color={data.colors.themeColor} style={{
                                                                 display: 'block',
                                                                 backgroundColor: `${data.colors.themeColor}`
@@ -376,7 +375,7 @@ export default function Template1({data}) {
                                                                 paddingRight: `${TransformFontSize(5, data.fontSize)}`
                                                             }}>
                                                                 {(data.officeNumber.text && data.officeNumber.status !== 'invisible') && (
-                                                                    <>
+                                                                    <React.Fragment>
                                                                         <a href={`tel:${data.officeNumber.text}`}
                                                                            color={data.colors.linkColor}
                                                                            style={{
@@ -397,7 +396,7 @@ export default function Template1({data}) {
                                                                                 paddingRight: `${TransformFontSize(5, data.fontSize)}`,
                                                                             }}> | </span>
                                                                         )}
-                                                                    </>
+                                                                    </React.Fragment>
                                                                 )}
                                                                 {(data.mobileNumber.text && data.mobileNumber.status !== 'invisible') && (
                                                                     <a href={`tel:${data.mobileNumber.text}`}
@@ -433,7 +432,7 @@ export default function Template1({data}) {
                                                         <td style={{verticalAlign: 'bottom'}}>
 
                                                             <img width={`${TransformFontSize(13, data.fontSize)}`}
-                                                                 src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/email-icon-2x.png"
+                                                                 alt="" src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/email-icon-2x.png"
                                                                  color={data.colors.themeColor} style={{
                                                                 display: 'block',
                                                                 backgroundColor: `${data.colors.themeColor}`
@@ -470,7 +469,7 @@ export default function Template1({data}) {
                                                         <td style={{verticalAlign: 'bottom'}}>
 
                                                             <img width={`${TransformFontSize(13, data.fontSize)}`}
-                                                                 src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/link-icon-2x.png"
+                                                                 alt="" src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/link-icon-2x.png"
                                                                  color={data.colors.themeColor} style={{
                                                                 display: 'block',
                                                                 backgroundColor: `${data.colors.themeColor}`

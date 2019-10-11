@@ -5,7 +5,7 @@ import styles from '../Builder.module.scss'
 import Typography from 'common/components/Typography'
 import { ColorField, SliderField, SelectField } from 'common/forms'
 
-export default function StylePart({ }) {
+export default function StylePart() {
     return (
         <div>
             <ColorField

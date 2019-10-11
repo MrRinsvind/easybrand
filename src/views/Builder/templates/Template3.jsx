@@ -22,7 +22,7 @@ export default function Template3({data}) {
                             <tr>
                                 <td>
                                     <p style={{textAlign: 'center', margin: 0}}>
-                                        <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.profilePhoto}/>
+                                        <img alt="" width={`${TransformFontSize(90, data.fontSize)}`} src={data.profilePhoto}/>
                                     </p>
                                 </td>
                             </tr>
@@ -152,7 +152,7 @@ export default function Template3({data}) {
                                             fontSize: `${TransformFontSize(12, data.fontSize)}`,
                                             color: `${data.colors.textColor}`
                                         }}>
-                                            <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                            <img alt="" width={`${TransformFontSize(13, data.fontSize)}`}
                                                  src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/address-icon-2x.png"
                                                  color="rgb(252,165,75)" style={{
                                                 backgroundColor: `${data.colors.themeColor}`,
@@ -165,7 +165,7 @@ export default function Template3({data}) {
                                                     (data.addresses.some((adr, adrInd) => adrInd > id && adr.status !== 'invisible')) ?
                                                         <span>, </span> :
                                                         null
-                                                    return <>{address.text}{prefix}</>
+                                                    return <React.Fragment key={address.text + id}>{address.text}{prefix}</React.Fragment>
                                                 } else {
                                                     return null
                                                 }
@@ -192,7 +192,7 @@ export default function Template3({data}) {
                                             color: data.colors.linkColor,
                                             fontFamily: `${data.fontFamily}`
                                         }}>
-                                            <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                            <img alt="" width={`${TransformFontSize(13, data.fontSize)}`}
                                                  src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/phone-icon-2x.png"
                                                  color={data.colors.themeColor} style={{
                                                 backgroundColor: `${data.colors.themeColor}`,
@@ -253,7 +253,7 @@ export default function Template3({data}) {
                                             fontSize: `${TransformFontSize(12, data.fontSize)}`,
                                             color: `${data.colors.linkColor}`
                                         }}>
-                                            <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                            <img alt="" width={`${TransformFontSize(13, data.fontSize)}`}
                                                  src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/email-icon-2x.png"
                                                  color={data.colors.themeColor} style={{
                                                 backgroundColor: `${data.colors.themeColor}`,
@@ -281,13 +281,13 @@ export default function Template3({data}) {
                                 <tr>
                                     <td style={{marginBottom: `${TransformFontSize(10, data.fontSize)}`,}}>
                                         <p style={{textAlign: 'center', margin: 0, fontSize: `${TransformFontSize(12, data.fontSize)}`, color: '#262626'}}>
-                                            <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                            <img alt="" width={`${TransformFontSize(13, data.fontSize)}`}
                                                  src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/link-icon-2x.png"
                                                  color={data.colors.themeColor} style={{
                                                 backgroundColor: `${data.colors.themeColor}`,
                                                 marginRight: `${TransformFontSize(10, data.fontSize)}`
                                             }}/>
-                                            <a href="#" color={data.colors.linkColor} style={{
+                                            <a href={data.websiteUrl.text} color={data.colors.linkColor} style={{
                                                 textDecoration: 'none',
                                                 color: `${data.colors.linkColor}`,
                                                 fontFamily: `${data.fontFamily}`,
@@ -362,7 +362,7 @@ export default function Template3({data}) {
                             <tr>
                                 <td>
                                     <p style={{margin: 0, textAlign: 'center'}}>
-                                        <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo}/>
+                                        <img alt="" width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo}/>
                                     </p>
                                 </td>
                             </tr>
