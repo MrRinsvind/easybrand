@@ -4,25 +4,13 @@ import { Link } from 'react-router-dom'
 
 import Typography from 'common/components/Typography'
 import styles from './Templates.module.scss'
-import ImageTemplate1 from 'assets/email-template-1.svg'
-import ImageTemplate2 from 'assets/email-template-2.svg'
-import ImageTemplate3 from 'assets/email-template-3.svg'
-import ImageTemplate4 from 'assets/email-template-4.svg'
-import ImageTemplate5 from 'assets/email-template-5.svg'
-import ImageTemplate6 from 'assets/email-template-6.svg'
 import { ReactComponent as EditIcon } from 'assets/edit-icon.svg'
 import { ReactComponent as TrashIcon } from 'assets/trash-icon.svg'
 import { ReactComponent as PlusIcon } from 'assets/plus-icon.svg'
 import Button from 'common/components/Button'
+import { ImageOfTemplates } from 'common/constants/images'
 
-const ImageOfTemplates = [
-    ImageTemplate1,
-    ImageTemplate2,
-    ImageTemplate3,
-    ImageTemplate4,
-    ImageTemplate5,
-    ImageTemplate6,
-]
+
 function Templates({ templates, history }) {
 
     const handleTemplateClick = (param) => (e)=> {
@@ -37,7 +25,6 @@ function Templates({ templates, history }) {
     const handleDeleteButtonClick = (param) => (e) => {
         e.stopPropagation()
     }
-
 
     return (
         <div className={styles.Wrapper}>

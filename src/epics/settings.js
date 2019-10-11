@@ -1,11 +1,12 @@
-import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/mergeMap';
+import { of } from 'rxjs/observable/of'
+import 'rxjs/add/operator/switchMap'
+import 'rxjs/add/operator/mergeMap'
+import { push } from 'connected-react-router'
+import { fromPromise } from 'rxjs/observable/fromPromise'
+import  { toast } from 'react-toastify'
+
 import { LIST_REQUEST, LIST_SUCCESS, LIST_CHANGE_REQUEST, LIST_ERROR } from 'store/settings/actions'
 import { aGet, aPost } from 'api'
-import { fromPromise } from 'rxjs/observable/fromPromise'
-import {push} from "connected-react-router"
-import {toast} from "react-toastify"
 
 
 export const getSettings = (action$) =>
@@ -45,9 +46,12 @@ export const changeSettings = (action$) =>
                         )
                     }
                     toast("settings have been saved", { type: 'success' })
-                    return of({
-                        type: LIST_SUCCESS,
-                        payload: response,
-                    },push("/templates"))
+                    return of(
+                        {
+                            type: LIST_SUCCESS,
+                            payload: response,
+                        },
+                        push("/templates")
+                    )
                 })
         })

@@ -4,6 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import get from 'lodash-es/get'
 import uuidv1 from 'uuid/v1'
+
 import styles from './Builder.module.scss'
 import BuilderAside from './BuilderAside'
 import BuilderContent from './BuilderContent'
@@ -13,9 +14,9 @@ import { changeTemplates } from 'store/templates/actions'
 function BuilderContainer ({ id, formMeta, templatesData, handleSubmit, formValue, history, activeTemplate, loading, changeTemplates }) {
     const [selectedTab, toggleTab] = React.useState(0)
     const [selectType, toggleType] = React.useState(0)
+
     React.useEffect(() => {
         if(id && !activeTemplate && !loading && templatesData) {
-            console.log('redirect is here')
             history.push('/templates')
         }
 
@@ -23,13 +24,25 @@ function BuilderContainer ({ id, formMeta, templatesData, handleSubmit, formValu
             toggleType(activeTemplate.type)
         }
 
-    })
+    }, [id, activeTemplate, loading, templatesData, history, toggleType])
 
     const onSubmit = (data) => {
         changeTemplates({
             "post": "templates",
             data: {
                 ...data,
+                type: selectType,
+                id: data.id || uuidv1()
+            }
+        })
+    }
+
+    const submitAsDraft = (data) => {
+        changeTemplates({
+            "post": "templates",
+            data: {
+                ...data,
+                draft: true,
                 type: selectType,
                 id: data.id || uuidv1()
             }
@@ -48,6 +61,7 @@ function BuilderContainer ({ id, formMeta, templatesData, handleSubmit, formValu
                 <BuilderContent selectType={selectType}
                     handleSubmit={handleSubmit}
                     onSubmit={onSubmit}
+                    submitAsDraft={submitAsDraft}
                 />
             </div>
         </main>
@@ -59,13 +73,13 @@ export default compose(
         const templatesData = get(state, 'templates.data');
         let activeTemplate
         if(templatesData && templatesData.length) {
-            activeTemplate = templatesData.find(template => template.id == get(props, 'match.params.id'))
+            activeTemplate = templatesData.find(template => template.id.toString() === get(props, 'match.params.id'))
         }
 
         const initialValues = activeTemplate
             ? activeTemplate
             :{
-                templateName: "Template initial value",
+                templateName: templatesData ? `Template №${templatesData.length + 1}` : "Template №1",
                 themeColor: '#a6e9cb',
                 textColor: "#cc5562",
                 linkColor: "#557ED8",

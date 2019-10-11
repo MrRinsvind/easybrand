@@ -1,11 +1,13 @@
 import { of } from 'rxjs/observable/of'
 import 'rxjs/add/operator/switchMap'
 import 'rxjs/add/operator/mergeMap'
-import { LIST_REQUEST, LIST_SUCCESS, LIST_CHANGE_REQUEST, LIST_ERROR } from 'store/templates/actions'
-import { aGet, aPost } from 'api'
+
 import { fromPromise } from 'rxjs/observable/fromPromise'
 import { push } from 'connected-react-router'
 import { toast } from 'react-toastify'
+
+import { aGet, aPost } from 'api'
+import { LIST_REQUEST, LIST_SUCCESS, LIST_CHANGE_REQUEST, LIST_ERROR } from 'store/templates/actions'
 
 
 export const getTemplates = (action$) =>
@@ -28,6 +30,7 @@ export const getTemplates = (action$) =>
                     })
                 })
         })
+
 
 export const ChangeTemplates = (action$, store) =>
     action$
@@ -56,9 +59,12 @@ export const ChangeTemplates = (action$, store) =>
                         )
                     }
                     toast("template has been saved", { type: 'success' })
-                    return of({
-                        type: LIST_SUCCESS,
-                        payload: response,
-                    },push("/templates"))
+                    return of(
+                        {
+                            type: LIST_SUCCESS,
+                            payload: response,
+                        },
+                        push("/templates")
+                    )
                 })
         })

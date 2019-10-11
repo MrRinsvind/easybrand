@@ -3,7 +3,7 @@ import React from 'react'
 import { ToggleField } from 'common/forms'
 
 
-export default function ImagePart({ }) {
+export default function ImagePart() {
     return (
         <>
             <ToggleField

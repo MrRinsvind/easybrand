@@ -15,7 +15,7 @@ BuilderContent.defaultProps = {
     selectType: 0,
 }
 
-function BuilderContent({ selectType, data, handleSubmit, onSubmit }) {
+function BuilderContent({ selectType, data, handleSubmit, onSubmit, submitAsDraft }) {
     const [isShowedModal, toggleModal] = React.useState(false)
     const SelectedTemplate = BUILDER_TEMPLATES[selectType].component
 
@@ -35,15 +35,15 @@ function BuilderContent({ selectType, data, handleSubmit, onSubmit }) {
                         <DefaultTextField placeholder={'Template name'} name="templateName"/>
                     </div>
                     <div className={styles.Letters}>
-                        <div className={classnames(styles.Letter,styles[`Letter_First`])}></div>
-                        <div className={classnames(styles.Letter,styles[`Letter_Second`])}></div>
-                        <div className={classnames(styles.Letter,styles[`Letter_Third`])}></div>
+                        <div className={classnames(styles.Letter,styles[`Letter_First`])}/>
+                        <div className={classnames(styles.Letter,styles[`Letter_Second`])}/>
+                        <div className={classnames(styles.Letter,styles[`Letter_Third`])}/>
                         <div className={styles.MainLetter}>
                             <div className={styles.Header}>
                                 <div className={styles.Circles}>
-                                    <div className={classnames(styles.Circle, styles[`Circle_Red`])}></div>
-                                    <div className={classnames(styles.Circle, styles[`Circle_Orange`])}></div>
-                                    <div className={classnames(styles.Circle, styles[`Circle_Green`])}></div>
+                                    <div className={classnames(styles.Circle, styles[`Circle_Red`])}/>
+                                    <div className={classnames(styles.Circle, styles[`Circle_Orange`])}/>
+                                    <div className={classnames(styles.Circle, styles[`Circle_Green`])}/>
                                 </div>
                             </div>
                             <div className={styles.LetterContent}>
@@ -79,7 +79,7 @@ function BuilderContent({ selectType, data, handleSubmit, onSubmit }) {
                     </div>
                 </div>
             </div>
-            <BulderModal show={isShowedModal} handleEscButton={handleEscButton}/>
+            <BulderModal handleSubmit={handleSubmit} onSubmit={submitAsDraft} show={isShowedModal} handleEscButton={handleEscButton}/>
         </>
     )
 }

@@ -23,7 +23,7 @@ export default function Template2({data}) {
                                             <tbody>
                                             <tr>
                                                 <td style={{textAlign: 'center'}}>
-                                                    <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.profilePhoto}
+                                                    <img alt="" width={`${TransformFontSize(90, data.fontSize)}`} src={data.profilePhoto}
                                                          style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`, display: 'block'}}/>
                                                 </td>
                                             </tr>
@@ -142,7 +142,7 @@ export default function Template2({data}) {
                                         </td>
                                         {data.companyLogo && data.imageCompany && (
                                             <td style={{textAlign: 'center', verticalAlign: 'bottom'}}>
-                                                <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo} style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`, float: 'right', display: 'block'}}/>
+                                                <img alt="" width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo} style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`, float: 'right', display: 'block'}}/>
                                             </td>
                                         )}
                                     </tr>
@@ -180,7 +180,7 @@ export default function Template2({data}) {
                                                                             <tbody>
                                                                             <tr>
                                                                                 <td style={{verticalAlign: 'bottom'}}>
-                                                                                            <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                                                                            <img alt="" width={`${TransformFontSize(13, data.fontSize)}`}
                                                                                                  src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/phone-icon-2x.png"
                                                                                                  color={data.colors.themeColor}
                                                                                                  style={{
@@ -258,7 +258,7 @@ export default function Template2({data}) {
                                                                             <tbody>
                                                                             <tr>
                                                                                 <td style={{verticalAlign: 'bottom'}}>
-                                                                                <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                                                                <img alt="" width={`${TransformFontSize(13, data.fontSize)}`}
                                                                                      src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/email-icon-2x.png"
                                                                                      color={data.colors.themeColor}
                                                                                      style={{
@@ -418,7 +418,7 @@ export default function Template2({data}) {
                                                             <tbody>
                                                             <tr>
                                                                 <td style={{verticalAlign: 'bottom'}}>
-                                                                        <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                                                        <img alt="" width={`${TransformFontSize(13, data.fontSize)}`}
                                                                              src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/address-icon-2x.png"
                                                                              color={data.colors.themeColor} style={{
                                                                             display: 'block',
@@ -443,7 +443,7 @@ export default function Template2({data}) {
                                                                         (data.addresses.some((adr, adrInd) => adrInd > id && adr.status !== 'invisible')) ?
                                                                             <span>, </span> :
                                                                             null
-                                                                        return <>{address.text}{prefix}</>
+                                                                        return <React.Fragment key={address.text + id}>{address.text}{prefix}</React.Fragment>
                                                                     } else {
                                                                         return null
                                                                     }
@@ -465,7 +465,7 @@ export default function Template2({data}) {
                                                                 <tbody>
                                                                 <tr>
                                                                     <td style={{verticalAlign: 'bottom'}}>
-                                                                        <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                                                        <img alt="" width={`${TransformFontSize(13, data.fontSize)}`}
                                                                              src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/link-icon-2x.png"
                                                                              color={data.colors.themeColor} style={{
                                                                              display: 'block',

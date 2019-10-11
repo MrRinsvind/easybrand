@@ -11,15 +11,14 @@ import { fetchSettings, changeSettings } from 'store/settings/actions'
 import Button from 'common/components/Button'
 
 
-function Settings({ history, settings, fetchSettings, handleSubmit, changeSettings }) {
+function Settings({ settings, fetchSettings, handleSubmit, changeSettings }) {
 
     React.useEffect(() => {
-
 
         if(!settings.data && !settings.loading) {
             fetchSettings()
         }
-    }, [settings])
+    }, [settings, fetchSettings])
 
     const onSubmit = (data) => {
         changeSettings({

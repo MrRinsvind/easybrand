@@ -68,13 +68,16 @@ export default function Template5({data}) {
                             {data.profilePhoto && data.profilePicture &&(
                                 <td style={{textAlign: 'right'}}>
                                   <span style={{display: 'inline-block', textAlign: 'right', width: '100%'}}>
-                                    <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.profilePhoto}
+                                    <img width={`${TransformFontSize(90, data.fontSize)}`}
+                                         src={data.profilePhoto}
                                          role="presentation"
+                                         alt=""
                                          style={{
                                              maxWidth: `${TransformFontSize(130, data.fontSize)}`,
                                              display: 'inline',
                                              textAlign: 'right'
-                                         }}/>
+                                         }}
+                                    />
                                   </span>
                                 </td>
                             )}
@@ -124,6 +127,7 @@ export default function Template5({data}) {
                                                         <td style={{verticalAlign: 'bottom'}}>
 
                                                             <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                                                 alt=""
                                                                  src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/address-icon-2x.png"
                                                                  color={data.colors.themeColor} style={{
                                                                 display: 'block',
@@ -146,7 +150,7 @@ export default function Template5({data}) {
                                                             (data.addresses.some((adr, adrInd) => adrInd > id && adr.status !== 'invisible')) ?
                                                                 <span>, </span> :
                                                                 null
-                                                            return <>{address.text}{prefix}</>
+                                                            return <React.Fragment key={address.text + id}>{address.text}{prefix}</React.Fragment>
                                                         } else {
                                                             return null
                                                         }
@@ -169,6 +173,7 @@ export default function Template5({data}) {
                                                         <tr>
                                                             <td style={{verticalAlign: 'bottom'}}>
                                                                 <img width={`${TransformFontSize(13, data.fontSize)}`}
+                                                                     alt=""
                                                                      src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/phone-icon-2x.png"
                                                                      color={data.colors.themeColor} style={{
                                                                     display: 'block',
@@ -229,6 +234,7 @@ export default function Template5({data}) {
                                                         <td style={{verticalAlign: 'bottom'}}>
                                                             <img width={`${TransformFontSize(13, data.fontSize)}`}
                                                                  src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/email-icon-2x.png"
+                                                                 alt=""
                                                                  color={data.colors.themeColor} style={{
                                                                 display: 'block',
                                                                 backgroundColor: `${data.colors.themeColor}`
@@ -265,6 +271,7 @@ export default function Template5({data}) {
                                                         <td style={{verticalAlign: 'bottom'}}>
                                                             <img width={`${TransformFontSize(13, data.fontSize)}`}
                                                                  src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/link-icon-2x.png"
+                                                                 alt=""
                                                                  color={data.colors.themeColor} style={{
                                                                 display: 'block',
                                                                 backgroundColor: `${data.colors.themeColor}`
@@ -414,6 +421,7 @@ export default function Template5({data}) {
                                 <td style={{verticalAlign: 'top', textAlign: 'right'}}>
                                     <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo}
                                          role="presentation"
+                                         alt=""
                                          style={{
                                              maxWidth: `${TransformFontSize(90, data.fontSize)}`,
                                              display: 'inline',

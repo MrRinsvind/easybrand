@@ -44,10 +44,9 @@ export default function TextInput({
         ...restProps
     }) {
 
-    const { error, touched, active } = meta
+    const { active } = meta
 
     const handleChange = (e) => {
-        console.log('handleChange')
         onChange({
             ...value,
             text: e.target.value,
