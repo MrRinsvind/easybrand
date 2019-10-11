@@ -42,10 +42,12 @@ function Templates({ templates }) {
                                     <div className={styles.ImageMask}>
                                         <div className={styles.ActionBlock}>
                                             <Button
+                                                variant='icon'
                                                 icon={<EditIcon fill="white"/>}
                                                 className={styles.ActionButton}
                                             />
                                             <Button
+                                                variant='icon'
                                                 icon={<TrashIcon fill="white"/>}
                                                 className={styles.ActionButton}
                                             />
@@ -61,8 +63,6 @@ function Templates({ templates }) {
                 </div>
             </div>
         </div>
-
-
     )
 }
 

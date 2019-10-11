@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 Button.propTypes = {
     size: PropTypes.oneOf(['small', 'medium', 'large']),
-    variant: PropTypes.oneOf(['primary', 'secondary'])
+    variant: PropTypes.oneOf(['primary', 'secondary', 'icon'])
 }
 
 Button.defaultProps = {
@@ -26,14 +26,15 @@ export default function Button({
         key,
         ...props
     }) {
+
     const buttonClassName = classnames(
         className,
         styles.root,
         styles[variant],
-        styles[size]
+        styles[size],
         ),
         icon = Icon
-            ? <span className={styles.icon} key={key || 'default'}>{Icon}</span>
+            ? <span key={key || 'default'}>{Icon}</span>
             : null
     return React.createElement(
         to ? Link : `button`,
