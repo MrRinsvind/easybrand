@@ -7,13 +7,30 @@ import Typography from 'common/components/Typography'
 import styles from './Settings.module.scss'
 import { DefaultTextField } from 'common/forms'
 import { ReactComponent as UploadImage } from 'assets/upload-shape.svg'
-
+import { fetchSettings, changeSettings } from 'store/settings/actions'
 import Button from 'common/components/Button'
 
 
-function Settings({ history }) {
+function Settings({ history, settings, fetchSettings, handleSubmit, changeSettings }) {
+
+    React.useEffect(() => {
+
+
+        if(!settings.data && !settings.loading) {
+            fetchSettings()
+        }
+    }, [settings])
+
+    const onSubmit = (data) => {
+        changeSettings({
+            "post": "settings",
+            data
+        })
+
+    }
+
     return (
-        <div className={styles.PageWrapper}>
+        <form className={styles.PageWrapper} onSubmit={handleSubmit(onSubmit)}>
             <div className="container">
                 <div className={styles.ColWrapper}>
                     <Typography variant="h2" className={styles.PageHeading}>
@@ -65,7 +82,7 @@ function Settings({ history }) {
                                 label="Office Number"
                                 settingStyle
                             />
-                            <Button size="large"  onClick={() => history.push('/templates')}>
+                            <Button size="large"  onClick={handleSubmit(onSubmit)}>
                                 Save
                             </Button>
                         </div>
@@ -117,19 +134,17 @@ function Settings({ history }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     )
 }
 
 export default compose(
     connect((state) => ({
+        settings: state.settings,
         initialValues: {
-            companyName: "Finty",
-            websiteUrl: "www.finty.com",
-            address: "Rue De Candolle 11, CH-1205 Geneva, Switzerland",
-            officeNumber: "+380673680502"
+            ...state.settings.data,
         }
-    })),
+    }), { fetchSettings, changeSettings }),
     reduxForm({
         form: '@form/settings',
         enableReinitialize: true,

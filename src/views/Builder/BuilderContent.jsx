@@ -15,7 +15,7 @@ BuilderContent.defaultProps = {
     selectType: 0,
 }
 
-function BuilderContent({ selectType, data}) {
+function BuilderContent({ selectType, data, handleSubmit, onSubmit }) {
     const [isShowedModal, toggleModal] = React.useState(false)
     const SelectedTemplate = BUILDER_TEMPLATES[selectType].component
 
@@ -73,7 +73,7 @@ function BuilderContent({ selectType, data}) {
                         </div>
                     </div>
                     <div className={styles.actionWrapper}>
-                        <Button className={styles.actionButton}>
+                        <Button className={styles.actionButton} onClick={handleSubmit(onSubmit)}>
                             Save template signature
                         </Button>
                     </div>
