@@ -15,8 +15,7 @@ export const getTemplates = (action$) =>
             return fromPromise(aGet("http://radpoznyakov.96.lt/test1/index.php?get=templates"))
                 .switchMap(( response) => {
                     if(response instanceof Error) {
-                        console.log('все хуево пасаны')
-                        toast("все хуево пасаны")
+                        toast("oops, we have some problems with server", { type: 'warning' })
                         return of(
                             {
                                 type: LIST_ERROR,
@@ -29,7 +28,6 @@ export const getTemplates = (action$) =>
                     })
                 })
         })
-
 
 export const ChangeTemplates = (action$, store) =>
     action$
@@ -48,8 +46,19 @@ export const ChangeTemplates = (action$, store) =>
                 "http://radpoznyakov.96.lt/test1/index.php",
                 newPayload
             ))
-                .switchMap(response => of({
-                    type: LIST_SUCCESS,
-                    payload: response,
-                },push("/templates")))
+                .switchMap(response => {
+                    if(response instanceof Error) {
+                        toast("error with save template", { type: 'error' })
+                        return of(
+                            {
+                                type: LIST_ERROR
+                            },
+                        )
+                    }
+                    toast("template has been saved", { type: 'success' })
+                    return of({
+                        type: LIST_SUCCESS,
+                        payload: response,
+                    },push("/templates"))
+                })
         })

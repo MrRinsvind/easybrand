@@ -23,7 +23,21 @@ const ImageOfTemplates = [
     ImageTemplate5,
     ImageTemplate6,
 ]
-function Templates({ templates }) {
+function Templates({ templates, history }) {
+
+    const handleTemplateClick = (param) => (e)=> {
+        history.push(`/builder/${param}`)
+    }
+
+    const handleEditButtonClick = (param) => (e) => {
+        e.stopPropagation()
+        history.push(`/builder/${param}`)
+    }
+
+    const handleDeleteButtonClick = (param) => (e) => {
+        e.stopPropagation()
+    }
+
 
     return (
         <div className={styles.Wrapper}>
@@ -42,9 +56,9 @@ function Templates({ templates }) {
                             </div>
                         </Link>
                     </div>
-                    { templates.data && templates.data.length && templates.data.map( template => (
+                    { templates.data && !!templates.data.length && templates.data.map( template => (
                         <div className="col-4 mb-4" key={template.id}>
-                            <Link to={`/builder/${template.id}`} className={styles.TemplateItem}>
+                            <div className={styles.TemplateItem} onClick={handleTemplateClick(template.id)}>
                                 {template.draft && (
                                     <Typography variant="caption" className={styles.DraftLabel} align="center">
                                         Draft
@@ -58,11 +72,13 @@ function Templates({ templates }) {
                                                 variant='icon'
                                                 icon={<EditIcon fill="white"/>}
                                                 className={styles.ActionButton}
+                                                onClick={handleEditButtonClick(template.id)}
                                             />
                                             <Button
                                                 variant='icon'
                                                 icon={<TrashIcon fill="white"/>}
                                                 className={styles.ActionButton}
+                                                onClick={handleDeleteButtonClick(template.id)}
                                             />
                                         </div>
                                     </div>
@@ -70,7 +86,7 @@ function Templates({ templates }) {
                                 <Typography variant="h4" className={styles.TemplateHeading} align="center">
                                     {template.templateName}
                                 </Typography>
-                            </Link>
+                            </div>
                         </div>
                     ))}
                 </div>
