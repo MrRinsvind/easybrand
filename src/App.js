@@ -3,12 +3,13 @@ import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { ConnectedRouter } from 'connected-react-router'
 import { StylesProvider } from '@material-ui/styles'
+import { ToastContainer } from "react-toastify"
 
 import { store, persistor, history } from 'store'
 import Router from './Router'
-
-
 import './App.scss'
+import 'react-toastify/dist/ReactToastify.css'
+
 
 function App() {
     return (
@@ -16,7 +17,10 @@ function App() {
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
                     <ConnectedRouter history={history}>
-                        <Router history={history}/>
+                        <React.Fragment>
+                            <Router history={history}/>
+                            <ToastContainer/>
+                        </React.Fragment>
                     </ConnectedRouter>
                 </PersistGate>
             </Provider>

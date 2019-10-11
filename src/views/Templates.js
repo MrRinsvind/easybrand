@@ -4,14 +4,27 @@ import { Link } from 'react-router-dom'
 
 import Typography from 'common/components/Typography'
 import styles from './Templates.module.scss'
-import mockTemplate from 'assets/email-template-1.svg'
+import ImageTemplate1 from 'assets/email-template-1.svg'
+import ImageTemplate2 from 'assets/email-template-2.svg'
+import ImageTemplate3 from 'assets/email-template-3.svg'
+import ImageTemplate4 from 'assets/email-template-4.svg'
+import ImageTemplate5 from 'assets/email-template-5.svg'
+import ImageTemplate6 from 'assets/email-template-6.svg'
 import { ReactComponent as EditIcon } from 'assets/edit-icon.svg'
 import { ReactComponent as TrashIcon } from 'assets/trash-icon.svg'
 import { ReactComponent as PlusIcon } from 'assets/plus-icon.svg'
 import Button from 'common/components/Button'
 
-
+const ImageOfTemplates = [
+    ImageTemplate1,
+    ImageTemplate2,
+    ImageTemplate3,
+    ImageTemplate4,
+    ImageTemplate5,
+    ImageTemplate6,
+]
 function Templates({ templates }) {
+
     return (
         <div className={styles.Wrapper}>
             <div className="container">
@@ -29,16 +42,16 @@ function Templates({ templates }) {
                             </div>
                         </Link>
                     </div>
-                    { templates.length && templates.map( template => (
+                    { templates.data && templates.data.length && templates.data.map( template => (
                         <div className="col-4 mb-4" key={template.id}>
-                            <div className={styles.TemplateItem}>
+                            <Link to={`/builder/${template.id}`} className={styles.TemplateItem}>
                                 {template.draft && (
                                     <Typography variant="caption" className={styles.DraftLabel} align="center">
                                         Draft
                                     </Typography>
                                 )}
                                 <div className={styles.ImageBlock}>
-                                    <img src={template.image} alt=""/>
+                                    <img src={ImageOfTemplates[template.type]} alt=""/>
                                     <div className={styles.ImageMask}>
                                         <div className={styles.ActionBlock}>
                                             <Button
@@ -55,9 +68,9 @@ function Templates({ templates }) {
                                     </div>
                                 </div>
                                 <Typography variant="h4" className={styles.TemplateHeading} align="center">
-                                    {template.title}
+                                    {template.templateName}
                                 </Typography>
-                            </div>
+                            </Link>
                         </div>
                     ))}
                 </div>
@@ -67,24 +80,5 @@ function Templates({ templates }) {
 }
 
 export default connect((state) => ({
-    templates: [
-        {
-            id: 1,
-            title: "Manager template",
-            image: mockTemplate,
-            draft: false,
-        },
-        {
-            id: 2,
-            title: "Product template",
-            image: mockTemplate,
-            draft: false,
-        },
-        {
-            id: 3,
-            title: "Product template2",
-            image: mockTemplate,
-            draft: true,
-        },
-    ]
+    templates: state.templates
 }))(Templates)

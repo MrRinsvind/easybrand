@@ -3,7 +3,7 @@ import 'rxjs/add/operator/mergeMap'
 
 const initialState = {
   loading: false,
-  data: [],
+  data: null,
   item: null,
   error: null,
 }
@@ -18,9 +18,16 @@ export default function (state = initialState, action) {
       case a.LIST_SUCCESS:
           return {
               ...state,
-              data: action.payload.results,
+              data: action.payload,
               loading: false,
               error: null,
+          }
+
+      case a.LIST_ERROR:
+          return {
+              error: true,
+              loading: false,
+              data: [],
           }
       default:
           return state
