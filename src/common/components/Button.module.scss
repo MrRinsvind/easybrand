@@ -7,10 +7,11 @@
   outline: none;
   font-weight: bold;
   letter-spacing: 0.0134rem;
+  padding: 0.84rem 1.8rem;
 }
+
 .primary {
   background-color: map-get($pink, default);
-  padding: 0.84rem 1.8rem;
   color: map_get($colors, white);
   &:hover {
     background-color: map-get($pink, hover);
@@ -45,6 +46,27 @@
   &:focus {
     background-color: map-get($pink, pressed);
     border: 0.125rem solid map-get($pink, pressed);
+  }
+  &:hover, &:active, &:focus, &:disabled {
+    color: map-get($colors, white);
+    text-decoration: none;
+  }
+}
+
+.icon {
+  padding: 0;
+  color: map_get($colors, white);
+  &:hover {
+    background-color: map-get($pink, hover);
+  }
+  &:active {
+    background-color: map-get($pink, pressed);
+  }
+  &:focus {
+    background-color: map-get($pink, pressed);
+  }
+  &:disabled {
+    background-color: map-get($pink, disabled);
   }
   &:hover, &:active, &:focus, &:disabled {
     color: map-get($colors, white);
