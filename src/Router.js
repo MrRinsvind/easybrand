@@ -70,7 +70,7 @@ function AppRouter({ history }) {
                         </RequestLayout>
                     )} />
                 />
-                <Redirect to="/templates"/>
+                <Redirect to="/hello"/>
             </Switch>
         </Router>
     )

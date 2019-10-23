@@ -28,3 +28,23 @@ export function aPost(url, data) {
             return new Error()
         });
 }
+
+export function aPostWithFile(url, data) {
+    for (var value of data.values()) {
+        console.log(value);
+    }
+
+    const headers = {
+        'Accept': 'application/json, */*',
+    }
+    return fetch(url, {
+        method: 'POST',
+        headers,
+        body: data
+    })
+        .then(resp => resp.json())
+        .catch(e => {
+            return new Error()
+        })
+}
+

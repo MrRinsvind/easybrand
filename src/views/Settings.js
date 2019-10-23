@@ -2,6 +2,7 @@ import React from 'react'
 import { reduxForm } from 'redux-form'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import get from 'lodash-es/get'
 
 import Typography from 'common/components/Typography'
 import styles from './Settings.module.scss'
@@ -10,6 +11,38 @@ import { ReactComponent as UploadImage } from 'assets/upload-shape.svg'
 import { fetchSettings, changeSettings } from 'store/settings/actions'
 import Button from 'common/components/Button'
 
+import { useDropzone } from 'react-dropzone'
+
+const thumbsContainer = {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 16
+}
+
+const thumb = {
+    display: 'inline-flex',
+    borderRadius: 2,
+    border: '1px solid #eaeaea',
+    marginBottom: 8,
+    marginRight: 8,
+    width: 100,
+    height: 100,
+    padding: 4,
+    boxSizing: 'border-box'
+}
+
+const thumbInner = {
+    display: 'flex',
+    minWidth: 0,
+    overflow: 'hidden'
+}
+
+const img = {
+    display: 'block',
+    width: 'auto',
+    height: '100%'
+}
 
 function Settings({ settings, fetchSettings, handleSubmit, changeSettings }) {
 
@@ -18,15 +51,35 @@ function Settings({ settings, fetchSettings, handleSubmit, changeSettings }) {
         if(!settings.data && !settings.loading) {
             fetchSettings()
         }
+
     }, [settings, fetchSettings])
 
     const onSubmit = (data) => {
         changeSettings({
             "post": "settings",
-            data
+            data :{
+                ...data,
+                img: files && files.length ? files[0] : null,
+            }
         })
 
     }
+
+    const [files, setFiles] = React.useState([]);
+    const {getRootProps, getInputProps} = useDropzone({
+        accept: 'image/*',
+        onDrop: acceptedFiles => {
+            setFiles(acceptedFiles.map(file => Object.assign(file, {
+                preview: URL.createObjectURL(file)
+            })));
+        }
+    });
+
+    React.useEffect(() => () => {
+        files.forEach(file => URL.revokeObjectURL(file.preview))
+    }, [files])
+
+    const imgSrc = get(files, '[0].preview') || get(settings, 'data.img')
 
     return (
         <form className={styles.PageWrapper} onSubmit={handleSubmit(onSubmit)}>
@@ -122,14 +175,29 @@ function Settings({ settings, fetchSettings, handleSubmit, changeSettings }) {
                             <Typography variant="h5" className={styles.SectionHeading}>
                                 Logo company
                             </Typography>
-                            <button className={styles.Button}>
+                            <div {...getRootProps({className: styles.Button})}>
                                 <div className={styles.Button__Wrapper}>
+                                    <input {...getInputProps()} />
                                     <UploadImage/>
                                     <Typography variant="caption">Drag file here to upload</Typography>
                                     <Typography variant="caption">Max file size: 512 Kb</Typography>
                                 </div>
-                            </button>
+                            </div>
                         </div>
+                        <section className="container">
+                            <aside style={thumbsContainer}>
+                                {imgSrc && (
+                                    <div style={thumb}>
+                                        <div style={thumbInner}>
+                                            <img
+                                                src={imgSrc}
+                                                style={img}
+                                            />
+                                        </div>
+                                    </div>
+                                )}
+                            </aside>
+                        </section>
                     </div>
                 </div>
             </div>
