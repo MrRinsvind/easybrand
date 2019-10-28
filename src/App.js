@@ -4,6 +4,8 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { ConnectedRouter } from 'connected-react-router'
 import { StylesProvider } from '@material-ui/styles'
 import { ToastContainer } from "react-toastify"
+import 'rxjs/add/operator/switchMap'
+import 'rxjs/add/operator/mergeMap'
 
 import { store, persistor, history } from 'store'
 import Router from './Router'

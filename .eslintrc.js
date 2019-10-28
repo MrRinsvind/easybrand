@@ -15,7 +15,7 @@ module.exports = {
     es6: true
   },
   rules: {
-    "react/display-name": "disabled",
-    "react/prop-types": "disabled"
+    "react/display-name": 0,
+    "react/prop-types": 0
   }
 };

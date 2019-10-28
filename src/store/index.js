@@ -1,6 +1,5 @@
 import { applyMiddleware, compose, createStore, combineReducers } from 'redux'
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
-
 import { createEpicMiddleware } from 'redux-observable'
 import { reducer as formReducer } from 'redux-form'
 
@@ -11,7 +10,8 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
 
-import epics from '../epics'
+import epics from 'epics'
+
 import templates from './templates/reducers'
 import settings from './settings/reducers'
 
