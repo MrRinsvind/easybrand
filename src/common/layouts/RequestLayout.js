@@ -3,15 +3,22 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 import { fetchTemplates } from 'store/templates/actions'
+import { fetchSettings } from 'store/settings/actions'
 
-
-function RequestLayout({ children, fetchTemplates, templates }) {
+function RequestLayout({ children, fetchTemplates, fetchSettings, templates, settings }) {
 
     React.useEffect(() => {
+
+        if(!settings.data && !settings.loading) {
+            fetchSettings()
+        }
+
         if(!templates.data && !templates.loading) {
             fetchTemplates()
         }
-    })
+
+
+    },[settings, templates, fetchTemplates, fetchSettings,])
 
     return (
         <>
@@ -23,8 +30,9 @@ function RequestLayout({ children, fetchTemplates, templates }) {
 export default compose(
     connect(
         (state) => ({
-            templates: state.templates
+            templates: state.templates,
+            settings: state.settings,
         }),
-        { fetchTemplates }
+        { fetchTemplates, fetchSettings }
     ),
 )(RequestLayout)

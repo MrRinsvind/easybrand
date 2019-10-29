@@ -10,6 +10,22 @@ import BuilderAside from './BuilderAside'
 import BuilderContent from './BuilderContent'
 import { changeTemplates } from 'store/templates/actions'
 
+const mock = {
+    social: {
+        twitter: "twitter.com",
+        instagram: "instagram.com",
+        linkedin: "linkedin.com",
+        facebook: "facebook.com",
+    },
+    address: "address 1",
+    address2: "address 2",
+    address3: "address 3",
+    address4: "address 4",
+    officeNumber: "+380977762565",
+    websiteUrl: "https://example.com",
+    companyName: "Name of company",
+
+}
 
 function BuilderContainer ({ id, formMeta, templatesData, handleSubmit, formValue, history, activeTemplate, loading, changeTemplates }) {
     const [selectedTab, toggleTab] = React.useState(0)
@@ -108,55 +124,55 @@ export default compose(
                         status: ""
                 },
                 companyName: {
-                    text: "Finty",
-                        status: ""
+                    text: get(state, 'settings.data.companyName', mock.companyName),
+                    status: ""
                 },
                 websiteUrl: {
-                    text: "www.finty.com",
-                        status: ""
+                    text: get(state, 'settings.data.websiteUrl', mock.websiteUrl),
+                    status: "",
                 },
                 officeNumber: {
-                    text: "+380977762565",
-                        status: ""
+                    text: get(state, 'settings.data.officeNumber', mock.officeNumber),
+                    status: "",
                 },
                 mobileNumber: {
                     text: "+380993330214",
-                        status: ""
+                    status: "",
                 },
                 addresses: {
                     0: {
-                        text: get(state, 'settings.data.address', ""),
-                            status: ""
+                        text: get(state, 'settings.data.address', mock.address),
+                        status: "",
                     },
                     1: {
-                        text: get(state, 'settings.data.address2', ""),
-                            status: ""
+                        text: get(state, 'settings.data.address2', mock.address2),
+                        status: "",
                     },
                     2: {
-                        text: get(state, 'settings.data.address3', ""),
-                            status: ""
+                        text: get(state, 'settings.data.address3', mock.address3),
+                        status: "",
                     },
                     3: {
-                        text: get(state, 'settings.data.address4', ""),
-                            status: ""
+                        text: get(state, 'settings.data.address4', mock.address4),
+                        status: "",
                     }
                 },
                 socialLinks: {
                     facebook: {
-                        text: "facebook.com",
-                            status: ""
+                        text: get(state, 'settings.data.social.facebook', mock.social.facebook),
+                        status: "",
                     },
                     twitter: {
-                        text: "twitter.com",
-                            status: ""
+                        text: get(state, 'settings.data.social.twitter', mock.social.twitter),
+                        status: "",
                     },
                     instagram: {
-                        text: "instagram.com",
-                            status: ""
+                        text: get(state, 'settings.data.social.instagram', mock.social.instagram),
+                        status: "",
                     },
                     linkedin: {
-                        text: "linkedin.com",
-                            status: ""
+                        text: get(state, 'settings.data.social.linkedin',  mock.social.linkedin),
+                        status: "",
                     }
                 }
             }
