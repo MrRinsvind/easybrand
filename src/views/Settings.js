@@ -8,7 +8,7 @@ import Typography from 'common/components/Typography'
 import styles from './Settings.module.scss'
 import { DefaultTextField } from 'common/forms'
 import { ReactComponent as UploadImage } from 'assets/upload-shape.svg'
-import { fetchSettings, changeSettings } from 'store/settings/actions'
+import { changeSettings } from 'store/settings/actions'
 import Button from 'common/components/Button'
 
 import { useDropzone } from 'react-dropzone'
@@ -44,22 +44,14 @@ const img = {
     height: '100%'
 }
 
-function Settings({ settings, fetchSettings, handleSubmit, changeSettings }) {
-
-    React.useEffect(() => {
-
-        if(!settings.data && !settings.loading) {
-            fetchSettings()
-        }
-
-    }, [settings, fetchSettings])
+function Settings({ settings, handleSubmit, changeSettings }) {
 
     const onSubmit = (data) => {
         changeSettings({
             "post": "settings",
-            data :{
+            data : {
                 ...data,
-                img: files && files.length ? files[0] : null,
+                img: files && files.length ? files[0] : get(settings, 'data.img', null),
             }
         })
 
@@ -211,7 +203,7 @@ export default compose(
         initialValues: {
             ...state.settings.data,
         }
-    }), { fetchSettings, changeSettings }),
+    }), { changeSettings }),
     reduxForm({
         form: '@form/settings',
         enableReinitialize: true,

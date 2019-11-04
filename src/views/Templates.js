@@ -9,9 +9,9 @@ import { ReactComponent as TrashIcon } from 'assets/trash-icon.svg'
 import { ReactComponent as PlusIcon } from 'assets/plus-icon.svg'
 import Button from 'common/components/Button'
 import { ImageOfTemplates } from 'common/constants/images'
+import { removeTemplate } from 'store/templates/actions'
 
-
-function Templates({ templates, history }) {
+function Templates({ templates, history, removeTemplate }) {
 
     const handleTemplateClick = (param) => (e)=> {
         history.push(`/builder/${param}`)
@@ -24,6 +24,7 @@ function Templates({ templates, history }) {
 
     const handleDeleteButtonClick = (param) => (e) => {
         e.stopPropagation()
+        removeTemplate(param)
     }
 
     return (
@@ -84,4 +85,4 @@ function Templates({ templates, history }) {
 
 export default connect((state) => ({
     templates: state.templates
-}))(Templates)
+}),{ removeTemplate })(Templates)
