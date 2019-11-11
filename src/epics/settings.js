@@ -86,12 +86,15 @@ export const sendingSettings = (action$) =>
                         )
                     }
                     toast("settings have been saved", { type: 'success' })
+
                     return of(
                         {
                             type: LIST_SUCCESS,
                             payload: response,
                         },
-                        push("/templates")
+                        payload.needRedirect ? push("/templates") : {
+                            type: "mock",
+                        }
                     )
                 })
         })

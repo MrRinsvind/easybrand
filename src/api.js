@@ -30,9 +30,6 @@ export function aPost(url, data) {
 }
 
 export function aPostWithFile(url, data) {
-    for (var value of data.values()) {
-        console.log(value);
-    }
 
     const headers = {
         'Accept': 'application/json, */*',
