@@ -8,11 +8,8 @@ import thinkingMan from 'assets/company-logo.svg'
 export default function TopBar() {
     return (
         <header className={style.topBar}>
-            <Link to="/hello">
+            <Link to="/templates">
                 <img src={thinkingMan} alt="company name"/>
-            </Link>
-            <Link to="/settings" className={style.settingsBtn}><span>Settings</span>
-                <div className={style.settingsIcon}></div>
             </Link>
         </header>
     )
