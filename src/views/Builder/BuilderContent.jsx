@@ -4,24 +4,19 @@ import { connect } from 'react-redux'
 import get from 'lodash-es/get'
 
 import styles from './BuilderContent.module.scss'
-import BulderModal from './BulderModal'
 import closeIcon from 'assets/x-shape.svg'
 import Typography from 'common/components/Typography'
 import Button from 'common/components/Button'
-import { DefaultTextField } from 'common/forms'
 import { BUILDER_TEMPLATES } from './constants/BuilderTemplates'
 
 BuilderContent.defaultProps = {
     selectType: 0,
 }
 
-function BuilderContent({ selectType, data, handleDiscard, handleSubmit, onSubmit, submitAsDraft }) {
-    const [isShowedModal, toggleModal] = React.useState(false)
+function BuilderContent({ selectType, copySignature, getHelp, activeTemplate,  data, handleEscButton }) {
+
     const SelectedTemplate = BUILDER_TEMPLATES[selectType].component
 
-    function handleEscButton(){
-        toggleModal(!isShowedModal)
-    }
     return (
         <>
             <div className={styles.Wrapper}>
@@ -32,7 +27,7 @@ function BuilderContent({ selectType, data, handleDiscard, handleSubmit, onSubmi
                 <div className={styles.Template}>
                     <Typography variant={'subhead'}>Preview</Typography>
                     <div className={styles.TemplateName}>
-                        <DefaultTextField placeholder={'Template name'} name="templateName"/>
+                        {activeTemplate && activeTemplate.templateName}
                     </div>
                     <div className={styles.Letters}>
                         <div className={classnames(styles.Letter,styles[`Letter_First`])}/>
@@ -73,14 +68,16 @@ function BuilderContent({ selectType, data, handleDiscard, handleSubmit, onSubmi
                         </div>
                     </div>
                     <div className={styles.actionWrapper}>
-                        <Button className={styles.actionButton} onClick={handleSubmit(onSubmit)}>
-                            Save template signature
+                        <Button className={styles.actionButton} onClick={copySignature}>
+                            Copy signature
+                        </Button>
+                        <Button className={styles.actionButton} onClick={getHelp}>
+                            go on
                         </Button>
                     </div>
                 </div>
             </div>
-            <BulderModal handleDiscard={handleDiscard} handleSubmit={handleSubmit} onSubmit={submitAsDraft} show={isShowedModal} handleEscButton={handleEscButton}/>
-        </>
+         </>
     )
 }
 

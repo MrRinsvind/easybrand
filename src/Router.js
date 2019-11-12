@@ -5,9 +5,7 @@ import { Router, Switch, Redirect, Route } from 'react-router-dom'
 import BaseLayout from 'common/layouts/BaseLayout'
 import RequestLayout from 'common/layouts/RequestLayout'
 // views
-import Settings from 'views/Settings'
 import Templates from 'views/Templates'
-import Hello from 'views/Hello'
 import Builder from 'views/Builder'
 
 
@@ -16,20 +14,9 @@ function AppRouter({ history }) {
     return (
         <Router history={history}>
             <Route exact path="/" render={() => (
-                <Redirect to="/hello"/>
+                <Redirect to="/templates"/>
             )}/>
             <Switch>
-                <Route
-                    path="/settings"
-                    exact
-                    render={(routeProps) => (
-                        <RequestLayout>
-                            <BaseLayout>
-                                <Settings {...routeProps}/>
-                            </BaseLayout>
-                        </RequestLayout>
-                    )} />
-                />
                 <Route
                     path="/templates"
                     exact
@@ -42,18 +29,7 @@ function AppRouter({ history }) {
                     )} />
                 />
                 <Route
-                    path="/hello"
-                    exact
-                    render={(routeProps) => (
-                        <RequestLayout>
-                            <BaseLayout>
-                                <Hello {...routeProps}/>
-                            </BaseLayout>
-                        </RequestLayout>
-                    )} />
-                />
-                <Route
-                    path="/builder"
+                    path="/template/:id"
                     exact
                     render={(routeProps) => (
                         <RequestLayout>
@@ -61,16 +37,6 @@ function AppRouter({ history }) {
                         </RequestLayout>
                     )} />
                 />
-                <Route
-                    path="/builder/:id"
-                    exact
-                    render={(routeProps) => (
-                        <RequestLayout>
-                            <Builder {...routeProps}/>
-                        </RequestLayout>
-                    )} />
-                />
-                <Redirect to="/hello"/>
             </Switch>
         </Router>
     )

@@ -1,14 +1,15 @@
 import React from 'react'
-import { reduxForm } from 'redux-form'
+import { reduxForm, getFormValues } from 'redux-form'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import get from 'lodash-es/get'
-import uuidv1 from 'uuid/v1'
 
+import { CopyToClipboard } from 'common/utils/helpers'
 import styles from './Builder.module.scss'
 import BuilderAside from './BuilderAside'
 import BuilderContent from './BuilderContent'
 import { changeTemplates } from 'store/templates/actions'
+import HelpGuide from './HelpGuide'
 
 const mock = {
     social: {
@@ -29,15 +30,13 @@ const mock = {
 
 function BuilderContainer ({
    id,
-   reset,
    templatesData,
    handleSubmit,
    history,
    activeTemplate,
    loading,
-   changeTemplates
 }) {
-    const [selectedTab, toggleTab] = React.useState(0)
+    const [helpOpen, toggleHelp] = React.useState(false)
     const [selectType, toggleType] = React.useState(0)
 
     React.useEffect(() => {
@@ -51,53 +50,43 @@ function BuilderContainer ({
 
     }, [id, activeTemplate, loading, templatesData, history, toggleType])
 
-    const onSubmit = (data) => {
-        changeTemplates({
-            "post": "templates",
-            data: {
-                ...data,
-                type: selectType,
-                draft: false,
-                id: data.id || uuidv1()
-            }
-        })
-    }
-
-    const submitAsDraft = (data) => {
-        changeTemplates({
-            "post": "templates",
-            data: {
-                ...data,
-                draft: true,
-                type: selectType,
-                id: data.id || uuidv1()
-            }
-        })
-    }
-
-    const handleDiscard = () => {
-        reset()
+    const handleEscButton = () => {
         history.push('/templates')
     }
 
-    return (
-        <main className={styles.BuilderWrapper}>
-            <BuilderAside
-                selectedTab={selectedTab}
-                toggleTab={toggleTab}
-                selectType={selectType}
-                toggleType={toggleType}
-            />
-            <div className={styles.BuilderContent}>
-                <BuilderContent selectType={selectType}
-                    handleSubmit={handleSubmit}
-                    onSubmit={onSubmit}
-                    submitAsDraft={submitAsDraft}
-                    handleDiscard={handleDiscard}
-                />
-            </div>
-        </main>
-    )
+    const getHelp = () => {
+        toggleHelp(true)
+    }
+
+    const copySignature = () => {
+        CopyToClipboard("copyTemplate")
+    }
+
+    const returnToBuilder = () => {
+        toggleHelp(false)
+    }
+
+        return (
+            <>
+                {helpOpen && <HelpGuide returnToBuilder={returnToBuilder}/>}
+                <main className={styles.BuilderWrapper}>
+                    <BuilderAside
+                        selectType={selectType}
+                        toggleType={toggleType}
+                    />
+                    <div className={styles.BuilderContent}>
+                        <BuilderContent selectType={selectType}
+                                        handleSubmit={handleSubmit}
+                                        handleEscButton={handleEscButton}
+                                        copySignature={copySignature}
+                                        activeTemplate={activeTemplate}
+                                        getHelp={getHelp}
+                        />
+                    </div>
+                </main>
+            </>
+
+        )
 }
 
 export default compose(
@@ -200,7 +189,7 @@ export default compose(
             templatesData: !!templatesData,
             initialValues: {
                 ...initialValues,
-            }
+            },
         })
     }, { changeTemplates }),
     reduxForm({
