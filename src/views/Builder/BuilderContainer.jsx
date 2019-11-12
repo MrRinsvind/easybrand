@@ -27,7 +27,16 @@ const mock = {
 
 }
 
-function BuilderContainer ({ id, formMeta, templatesData, handleSubmit, formValue, history, activeTemplate, loading, changeTemplates }) {
+function BuilderContainer ({
+   id,
+   reset,
+   templatesData,
+   handleSubmit,
+   history,
+   activeTemplate,
+   loading,
+   changeTemplates
+}) {
     const [selectedTab, toggleTab] = React.useState(0)
     const [selectType, toggleType] = React.useState(0)
 
@@ -48,6 +57,7 @@ function BuilderContainer ({ id, formMeta, templatesData, handleSubmit, formValu
             data: {
                 ...data,
                 type: selectType,
+                draft: false,
                 id: data.id || uuidv1()
             }
         })
@@ -65,6 +75,11 @@ function BuilderContainer ({ id, formMeta, templatesData, handleSubmit, formValu
         })
     }
 
+    const handleDiscard = () => {
+        reset()
+        history.push('/templates')
+    }
+
     return (
         <main className={styles.BuilderWrapper}>
             <BuilderAside
@@ -78,6 +93,7 @@ function BuilderContainer ({ id, formMeta, templatesData, handleSubmit, formValu
                     handleSubmit={handleSubmit}
                     onSubmit={onSubmit}
                     submitAsDraft={submitAsDraft}
+                    handleDiscard={handleDiscard}
                 />
             </div>
         </main>
@@ -121,11 +137,11 @@ export default compose(
                 },
                 email: {
                     text: "rad@pozniakov.com",
-                        status: ""
+                    status: "",
                 },
                 companyName: {
                     text: get(state, 'settings.data.companyName', mock.companyName),
-                    status: ""
+                    status: "",
                 },
                 websiteUrl: {
                     text: get(state, 'settings.data.websiteUrl', mock.websiteUrl),
@@ -174,7 +190,8 @@ export default compose(
                         text: get(state, 'settings.data.social.linkedin',  mock.social.linkedin),
                         status: "",
                     }
-                }
+                },
+                logoCompany: get(state, 'settings.data.img', "https://avatarfiles.alphacoders.com/205/205482.jpg"),
             }
         return ({
             id: get(props, 'match.params.id'),
