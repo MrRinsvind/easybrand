@@ -301,14 +301,12 @@ export default function Template1({data}) {
                                                             <tbody>
                                                             <tr>
                                                                 <td style={{verticalAlign: 'bottom'}}>
-
                                                                     <img width={`${TransformFontSize(13, data.fontSize)}`}
                                                                          alt="" src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/address-icon-2x.png"
                                                                          color={data.colors.themeColor} style={{
                                                                         display: 'block',
                                                                         backgroundColor: `${data.colors.themeColor}`
                                                                     }}/>
-
                                                                 </td>
                                                             </tr>
                                                             </tbody>
@@ -324,10 +322,8 @@ export default function Template1({data}) {
                                                         }}>
                                                             {data.addresses.map((address, id) => {
                                                                 if(address.text && address.status !== 'invisible'){
-                                                                    let prefix = (id + 1 !== data.addresses.length) &&
-                                                                        (data.addresses.some((adr, adrInd) => adrInd > id && adr.status !== 'invisible')) ?
-                                                                        <span>, </span> :
-                                                                        null
+                                                                    let filteredAddresses = data.addresses.filter(item => item.text && item.status !== 'invisible')
+                                                                    let prefix = (filteredAddresses[id] && filteredAddresses[id].text) && filteredAddresses.length !== id + 1 ? <span>, </span> : null
                                                                     return <React.Fragment key={address.text + id}>{address.text}{prefix}</React.Fragment>
                                                                 } else {
                                                                     return null

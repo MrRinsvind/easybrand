@@ -437,17 +437,17 @@ export default function Template2({data}) {
                                                                 color: `${data.colors.textColor}`,
                                                                 fontSize: `${TransformFontSize(12, data.fontSize)}`
                                                             }}>
+
                                                                 {data.addresses.map((address, id) => {
                                                                     if(address.text && address.status !== 'invisible'){
-                                                                        let prefix = (id + 1 !== data.addresses.length) &&
-                                                                        (data.addresses.some((adr, adrInd) => adrInd > id && adr.status !== 'invisible')) ?
-                                                                            <span>, </span> :
-                                                                            null
+                                                                        let filteredAddresses = data.addresses.filter(item => item.text && item.status !== 'invisible')
+                                                                        let prefix = (filteredAddresses[id] && filteredAddresses[id].text) && filteredAddresses.length !== id + 1 ? <span>, </span> : null
                                                                         return <React.Fragment key={address.text + id}>{address.text}{prefix}</React.Fragment>
                                                                     } else {
                                                                         return null
                                                                     }
                                                                 })}
+
                                                             </p>
                                                         </td>
                                                     )}
