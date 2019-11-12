@@ -15,7 +15,7 @@ BuilderContent.defaultProps = {
     selectType: 0,
 }
 
-function BuilderContent({ selectType, data, handleSubmit, onSubmit, submitAsDraft }) {
+function BuilderContent({ selectType, data, handleDiscard, handleSubmit, onSubmit, submitAsDraft }) {
     const [isShowedModal, toggleModal] = React.useState(false)
     const SelectedTemplate = BUILDER_TEMPLATES[selectType].component
 
@@ -79,7 +79,7 @@ function BuilderContent({ selectType, data, handleSubmit, onSubmit, submitAsDraf
                     </div>
                 </div>
             </div>
-            <BulderModal handleSubmit={handleSubmit} onSubmit={submitAsDraft} show={isShowedModal} handleEscButton={handleEscButton}/>
+            <BulderModal handleDiscard={handleDiscard} handleSubmit={handleSubmit} onSubmit={submitAsDraft} show={isShowedModal} handleEscButton={handleEscButton}/>
         </>
     )
 }
@@ -97,7 +97,7 @@ export default connect(state => ({
         fontFamily: get(state, 'form.@form/builder.values.font'),
         fontSize: get(state, 'form.@form/builder.values.size'),
         profilePhoto: "https://avatarfiles.alphacoders.com/202/202402.png",
-        companyLogo: "https://avatarfiles.alphacoders.com/205/205482.jpg",
+        companyLogo: get(state, 'form.@form/builder.values.logoCompany'),
         firstName: get(state, 'form.@form/builder.values.firstName', ''),
         lastName:  get(state, 'form.@form/builder.values.lastName', ''),
         jobTitle: get(state, 'form.@form/builder.values.jobTitle', ''),

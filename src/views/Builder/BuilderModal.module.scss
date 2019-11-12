@@ -18,6 +18,7 @@
     height: 17.3rem;
     background-color: white;
     padding-top: 6rem;
+    position: relative;
 }
 
 .Title {
@@ -28,10 +29,13 @@
 .Actions {
     display: flex;
     justify-content: center;
+
+    & > button:not(:last-of-type) {
+        margin-right: 1.8rem;
+    }
 }
 
 .BackButton {
-    margin-right: 1.8rem;
     padding-left: 4.7rem;
     padding-right: 4.7rem;
 }
@@ -39,4 +43,24 @@
 .SaveButton {
     padding-left: 4.7rem;
     padding-right: 4.7rem;
+}
+
+.CloseButton {
+    position: absolute;
+    top: 7px;
+    right: 2px;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    justify-content: center;
+    align-items: center;
+
+    &__Text {
+        text-transform: uppercase;
+        font-size: 0.5625rem;
+        padding-top: 0.2rem;
+        color: #7A7C8E;
+        font-weight: 700;
+        letter-spacing: 0.08rem;
+    }
 }
