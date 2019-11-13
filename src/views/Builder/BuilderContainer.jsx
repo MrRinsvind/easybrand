@@ -121,74 +121,74 @@ export default compose(
                 imageCompany: true,
                 firstName: {
                     text: "Rad",
-                    status: ""
+                    status: "edit",
                 },
                 lastName: {
                     text: "Pozniakov",
-                        status: ""
+                    status: "edit",
                 },
                 department: {
                     text: "Sales",
-                        status: ""
+                    status: "edit",
                 },
                 jobTitle: {
                     text: "Sofware developer",
-                        status: ""
+                    status: "edit",
                 },
                 email: {
                     text: "rad@pozniakov.com",
-                    status: "",
+                    status: "edit",
                 },
                 companyName: {
                     text: get(state, 'settings.data.companyName', mock.companyName),
-                    status: "",
+                    status: "edit",
                 },
                 websiteUrl: {
                     text: get(state, 'settings.data.websiteUrl', mock.websiteUrl),
-                    status: "",
+                    status: "edit",
                 },
                 officeNumber: {
                     text: get(state, 'settings.data.officeNumber', mock.officeNumber),
-                    status: "",
+                    status: "edit",
                 },
                 mobileNumber: {
                     text: "+380993330214",
-                    status: "",
+                    status: "edit",
                 },
                 addresses: {
                     0: {
                         text: get(state, 'settings.data.address', mock.address),
-                        status: "",
+                        status: "edit",
                     },
                     1: {
                         text: get(state, 'settings.data.address2', mock.address2),
-                        status: "",
+                        status: "edit",
                     },
                     2: {
                         text: get(state, 'settings.data.address3', mock.address3),
-                        status: "",
+                        status: "edit",
                     },
                     3: {
                         text: get(state, 'settings.data.address4', mock.address4),
-                        status: "",
+                        status: "edit",
                     }
                 },
                 socialLinks: {
                     facebook: {
                         text: get(state, 'settings.data.social.facebook', mock.social.facebook),
-                        status: "",
+                        status: "edit",
                     },
                     twitter: {
                         text: get(state, 'settings.data.social.twitter', mock.social.twitter),
-                        status: "",
+                        status: "edit",
                     },
                     instagram: {
                         text: get(state, 'settings.data.social.instagram', mock.social.instagram),
-                        status: "",
+                        status: "edit",
                     },
                     linkedin: {
                         text: get(state, 'settings.data.social.linkedin',  mock.social.linkedin),
-                        status: "",
+                        status: "edit",
                     }
                 },
                 logoCompany: get(state, 'settings.data.img', "https://avatarfiles.alphacoders.com/205/205482.jpg"),
