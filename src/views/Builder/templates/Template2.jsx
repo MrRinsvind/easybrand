@@ -4,7 +4,7 @@ import { TransformFontSize } from 'common/utils/helpers'
 
 export default function Template2({data}) {
     return (
-        <table id="template2" cellPadding={0} cellSpacing={0}
+        <table id="copyTemplate" cellPadding={0} cellSpacing={0}
                style={{verticalAlign: '-webkit-baseline-middle', fontFamily: `${data.fontFamily}`}}>
             <tbody>
             <tr>

@@ -53,26 +53,6 @@ export default function TextInput({
         })
     }
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
-
-    const handleClick = event => {
-        setAnchorEl(event.currentTarget)
-    }
-
-    const handleClose = () => {
-        setAnchorEl(null)
-    }
-
-    const handleChangeStatus = (type) => (data) => {
-        onChange({
-                ...value,
-            status: type,
-        })
-        setAnchorEl(null)
-    }
-
-    const ActiveIcon = inputIcons[value.status] || inputIcons.edit
-
     return (
         <div className={classnames(
             styles.InputWrapper,
@@ -89,64 +69,8 @@ export default function TextInput({
                 className={styles.InputField}
                 autoComplete="off"
                 placeholder={placeholder}
+                disabled={value.status === 'view'}
             />
-            <button
-                aria-controls="simple-menu"
-                aria-haspopup="true"
-                onClick={handleClick}
-                className={styles.InputDropDown}
-            >
-                <ActiveIcon fill="#9590D9"/>
-                <IconTriangle fill="#9590D9 "/>
-            </button>
-            <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-                classes={{
-                    list: styles.DropDownMenuList,
-                    paper: styles.DropDownMenuPaper,
-                }}
-            >
-                <MenuItem
-                    onClick={handleChangeStatus('edit')}
-                    classes={{
-                        root: styles.MenuItem,
-                        selected: styles['MenuItem--Active'],
-                    }}
-                >
-                    <span className={styles.SpanMenuItem}>
-                         <IconEdit fill="#464375"/>
-                    </span>
-                    Can Edit
-                </MenuItem>
-                <MenuItem
-                    onClick={handleChangeStatus('view')}
-                    classes={{
-                        root: styles.MenuItem,
-                        selected: styles['MenuItem--Active'],
-                    }}
-                >
-                    <span className={styles.SpanMenuItem}>
-                        <IconVisibility fill="#464375"/>
-                    </span>
-                    View
-                </MenuItem>
-                <MenuItem
-                    onClick={handleChangeStatus('invisible')}
-                    classes={{
-                        root: styles.MenuItem,
-                        selected: styles['MenuItem--Active'],
-                    }}
-                >
-                    <span className={styles.SpanMenuItem}>
-                        <IconLock fill="#464375"/>
-                    </span>
-                    Invisible
-                </MenuItem>
-            </Menu>
         </div>
     )
 }

@@ -4,7 +4,7 @@ import { TransformFontSize } from 'common/utils/helpers'
 
 export default function Template6({data}) {
     return (
-        <table id="template6" cellPadding={0} cellSpacing={0} style={{
+        <table id="copyTemplate" cellPadding={0} cellSpacing={0} style={{
             verticalAlign: '-webkit-baseline-middle',
             fontFamily: `${data.fontFamily}`,
             width: `${TransformFontSize(360, data.fontSize)}`
@@ -306,11 +306,9 @@ export default function Template6({data}) {
                                     display: 'inline-block'
                                 }}>
                                     <tbody>
-                                    <tr style={{textAlign: 'right'}}>
-
-                                        {data.socialLinks.facebook.text && data.socialLinks.facebook.status !== 'invisible' && (
-                                            <td>
-                                                <>
+                                        <tr key="tr-1" style={{textAlign: 'right'}}>
+                                            {data.socialLinks.facebook.text && data.socialLinks.facebook.status !== 'invisible' ? (
+                                                <td key="td-1">
                                                     <a href={data.socialLinks.facebook.text} color="#6A78D1" style={{
                                                         display: 'inline-block',
                                                         padding: '0px',
@@ -325,13 +323,10 @@ export default function Template6({data}) {
                                                         }}/>
                                                     </a>
                                                     <span style={{width: `${TransformFontSize(8, data.fontSize)}`, display: 'inline-block'}}></span>
-                                                </>
-                                            </td>
-                                        )}
-
-                                        {data.socialLinks.twitter.text && data.socialLinks.twitter.status !== 'invisible' && (
-                                            <td>
-                                                <>
+                                                </td>
+                                            ): null}
+                                            {data.socialLinks.twitter.text && data.socialLinks.twitter.status !== 'invisible' ? (
+                                                <td  key="td-2">
                                                     <a href={data.socialLinks.twitter} color="#6A78D1" style={{
                                                         display: 'inline-block',
                                                         padding: '0px',
@@ -346,13 +341,10 @@ export default function Template6({data}) {
                                                         }}/>
                                                     </a>
                                                     <span style={{width: `${TransformFontSize(8, data.fontSize)}`, display: 'inline-block'}}></span>
-                                                </>
-                                            </td>
-                                        )}
-
-                                        {data.socialLinks.linkedin.text && data.socialLinks.linkedin.status !== 'invisible' && (
-                                            <td>
-                                                <>
+                                                </td>
+                                            ): null}
+                                            {data.socialLinks.linkedin.text && data.socialLinks.linkedin.status !== 'invisible' ? (
+                                                <td>
                                                     <a href={data.socialLinks.linkedin} color="#6A78D1" style={{
                                                         display: 'inline-block',
                                                         padding: '0px',
@@ -367,28 +359,26 @@ export default function Template6({data}) {
                                                         }}/>
                                                     </a>
                                                     <span style={{width: `${TransformFontSize(8, data.fontSize)}`, display: 'inline-block'}}></span>
-                                                </>
-                                            </td>
-                                        )}
-
-                                        {data.socialLinks.instagram.text && data.socialLinks.instagram.status !== 'invisible' && (
-                                            <td>
-                                                <a href={data.socialLinks.instagram} color="#6A78D1" style={{
-                                                    display: 'inline-block',
-                                                    padding: '0px',
-                                                    backgroundColor: `${data.colors.themeColor}`
-                                                }}>
-                                                    <img height={`${TransformFontSize(24, data.fontSize)}`}
-                                                         src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/instagram-icon-2x.png"
-                                                         alt="instagram" color={data.colors.themeColor} style={{
-                                                        backgroundColor: `${data.colors.themeColor}`,
-                                                        maxWidth: `${TransformFontSize(135, data.fontSize)}`,
-                                                        display: 'block'
-                                                    }}/>
-                                                </a>
-                                            </td>
-                                        )}
-                                    </tr>
+                                                </td>
+                                            ): null}
+                                            {data.socialLinks.instagram.text && data.socialLinks.instagram.status !== 'invisible' ? (
+                                                <td>
+                                                    <a href={data.socialLinks.instagram} color="#6A78D1" style={{
+                                                        display: 'inline-block',
+                                                        padding: '0px',
+                                                        backgroundColor: `${data.colors.themeColor}`
+                                                    }}>
+                                                        <img height={`${TransformFontSize(24, data.fontSize)}`}
+                                                             src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/instagram-icon-2x.png"
+                                                             alt="instagram" color={data.colors.themeColor} style={{
+                                                            backgroundColor: `${data.colors.themeColor}`,
+                                                            maxWidth: `${TransformFontSize(135, data.fontSize)}`,
+                                                            display: 'block'
+                                                        }}/>
+                                                    </a>
+                                                </td>
+                                            ): null}
+                                        </tr>
                                     </tbody>
                                 </table>
                             </td>
