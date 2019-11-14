@@ -28,3 +28,36 @@ p {
   flex-direction: column;
   height: 100%;
 }
+
+.TransitionAction {
+  &-enter {
+    transform: translateY(-100vh)!important;
+
+    svg {
+      transform: matrix(1, 0, 0, 0, 0, 0);
+    }
+  }
+  &-enter-done {
+    transform: translateY(-0vh)!important;
+    transition: transform 500ms;
+
+    svg {
+      transform: matrix(1, 0, 0, 1.5, 0, 0);
+    }
+  }
+  &-exit {
+    transform: translateY(-0vh)!important;
+    transition: transform 500ms;
+    svg {
+      transform: matrix(1, 0, 0, 1.5, 0, 0);
+    }
+  }
+  &-exit-done {
+    transform: translateY(-100vh)!important;
+    transition: transform 500ms;
+
+    svg {
+      transform: matrix(1, 0, 0, 0, 0, 0);
+    }
+  }
+}
