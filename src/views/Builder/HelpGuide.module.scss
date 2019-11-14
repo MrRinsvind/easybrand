@@ -1,7 +1,21 @@
 .GuideWrapper {
-  position: absolute;
-  min-width: 100vw;
-  min-height: 100vh;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
   background-color: white;
   z-index: 50;
+  transform: translateY(-100vh);
+}
+
+.Wave {
+  position: absolute;
+  top: 99%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  transform-origin: 50% 0 0;
+  transform: matrix(1, 0, 0, 0, 0, 0);
+  max-width: 100%;
+  overflow: hidden;
 }

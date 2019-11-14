@@ -1,5 +1,6 @@
 import React from 'react'
-import { reduxForm, getFormValues } from 'redux-form'
+import { reduxForm } from 'redux-form'
+import { CSSTransition } from 'react-transition-group'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import get from 'lodash-es/get'
@@ -38,6 +39,7 @@ function BuilderContainer ({
 }) {
     const [helpOpen, toggleHelp] = React.useState(false)
     const [selectType, toggleType] = React.useState(0)
+    const [animationStatus, changeAnimation] = React.useState(false)
 
     React.useEffect(() => {
         if(id && !activeTemplate && !loading && templatesData) {
@@ -66,33 +68,84 @@ function BuilderContainer ({
         toggleHelp(false)
     }
 
-        return (
-            <>
-                {helpOpen && <HelpGuide returnToBuilder={returnToBuilder}/>}
-                <main className={styles.BuilderWrapper}>
-                    <BuilderAside
-                        selectType={selectType}
-                        toggleType={toggleType}
-                    />
-                    <div className={styles.BuilderContent}>
-                        <BuilderContent selectType={selectType}
-                                        handleSubmit={handleSubmit}
-                                        handleEscButton={handleEscButton}
-                                        copySignature={copySignature}
-                                        activeTemplate={activeTemplate}
-                                        getHelp={getHelp}
-                        />
-                    </div>
-                </main>
-            </>
+    const openAnimationWave = (wrapper) => {
+        const el = wrapper.children[1]
+        if(!animationStatus) {
+            let interval = 0
+            el.style.transform = `matrix(1, 0, 0, ${interval}, 0, 0)`
+            let intern = setInterval(() => {
 
-        )
+                el.style.transform = `scale(1, ${interval})`
+                interval = +(interval + 0.01).toFixed(2)
+
+                if (interval >= 1.5) {
+                    clearInterval(intern)
+                    changeAnimation(false)
+                    el.style.transform = null
+                }
+            }, 2)
+            changeAnimation(true)
+        }
+    }
+
+    const closeAnimationWave = (wrapper) => {
+        const el = wrapper.children[1]
+        if(!animationStatus) {
+            let interval = 1.5
+            el.style.transform =  `matrix(1, 0, 0, ${interval}, 0, 0)`
+
+            let intern =  setInterval(() => {
+
+                el.style.transform =  `scale(1, ${interval})`
+                interval = +(interval - 0.01).toFixed(2)
+
+                if(interval <= 0) {
+                    clearInterval(intern)
+                    el.style.transform = null
+                    changeAnimation(false)
+                }
+            }, 10)
+            changeAnimation(true)
+        }
+
+    }
+
+    return (
+        <>
+            <CSSTransition
+                in={helpOpen}
+                timeout={500}
+                classNames={"TransitionAction"}
+                onEnter={openAnimationWave}
+                onExit={closeAnimationWave}
+            >
+                <HelpGuide returnToBuilder={returnToBuilder}/>
+            </CSSTransition>
+            <main className={styles.BuilderWrapper}>
+                <BuilderAside
+                    selectType={selectType}
+                    toggleType={toggleType}
+                />
+                <div className={styles.BuilderContent}>
+                    <BuilderContent
+                        selectType={selectType}
+                        handleSubmit={handleSubmit}
+                        handleEscButton={handleEscButton}
+                        copySignature={copySignature}
+                        activeTemplate={activeTemplate}
+                        getHelp={getHelp}
+                    />
+                </div>
+            </main>
+        </>
+    )
 }
 
 export default compose(
     connect((state, props) => {
         const templatesData = get(state, 'templates.data');
         let activeTemplate
+
         if(templatesData && templatesData.length) {
             activeTemplate = templatesData.find(template => template.id.toString() === get(props, 'match.params.id'))
         }
