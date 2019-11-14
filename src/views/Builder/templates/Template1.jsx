@@ -325,7 +325,7 @@ export default function Template1({data}) {
                                                             {data.addresses.map((address, id) => {
                                                                 if(address.text && address.status !== 'invisible'){
                                                                     let prefix = (id + 1 !== data.addresses.length) &&
-                                                                        (data.addresses.some((adr, adrInd) => adrInd > id && adr.status !== 'invisible')) ?
+                                                                        (data.addresses.some((adr, adrInd) => adrInd > id && adr.status !== 'invisible' && adr.text)) ?
                                                                         <span>, </span> :
                                                                         null
                                                                     return <React.Fragment key={address.text + id}>{address.text}{prefix}</React.Fragment>

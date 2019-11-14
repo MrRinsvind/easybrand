@@ -5,6 +5,11 @@ import get from 'lodash-es/get'
 
 import styles from './BuilderContent.module.scss'
 import closeIcon from 'assets/x-shape.svg'
+import appleLogoIcon from 'assets/apple-logo.svg'
+import gmailLogoicon from 'assets/gmail.svg'
+import outlookLogoIcon from 'assets/microsoft-outlook.svg'
+import yahoo from 'assets/yahoo.svg'
+
 import Typography from 'common/components/Typography'
 import Button from 'common/components/Button'
 import { BUILDER_TEMPLATES } from './constants/BuilderTemplates'
@@ -27,7 +32,7 @@ function BuilderContent({ selectType, copySignature, getHelp, activeTemplate,  d
                 <div className={styles.Template}>
                     <Typography variant={'subhead'}>Preview</Typography>
                     <div className={styles.TemplateName}>
-                        {activeTemplate && activeTemplate.templateName}
+                        <Typography variant={'h3'}>{activeTemplate && activeTemplate.templateName}</Typography>
                     </div>
                     <div className={styles.Letters}>
                         <div className={classnames(styles.Letter,styles[`Letter_First`])}/>
@@ -67,13 +72,43 @@ function BuilderContent({ selectType, copySignature, getHelp, activeTemplate,  d
                             </div>
                         </div>
                     </div>
-                    <div className={styles.actionWrapper}>
-                        <Button className={styles.actionButton} onClick={copySignature}>
-                            Copy signature
-                        </Button>
-                        <Button className={styles.actionButton} onClick={getHelp}>
-                            go on
-                        </Button>
+                    <div className={styles.ActionsWrapper}>
+                        <div className={styles.ActionsTipInfo}>
+                            <Typography variant={'body'} className={styles.TipText}>
+                                Follow the links below to copy your signature and add it to your email client.
+                            </Typography>
+                        </div>
+                        <div className={styles.ButtonsWrapper}>
+                            <div className={styles.PrimaryButtons}>
+                                <Button className={styles.ProtonMailBTN} variant={'secondary'} onClick={copySignature}>
+                                    Add to ProtonMail
+                                </Button>
+                                <Button className={styles.CopySignatureBTN} onClick={getHelp}>
+                                    Copy signature
+                                </Button>
+                            </div>
+                            <div className={styles.IconButtons}>
+                                <button className={styles.MailCLientBTN}>
+                                    <img className={styles.MailClientLogo} src={gmailLogoicon} alt="Google gmail logo"/>
+                                    <Typography variant={'body'}>Add to Gmail</Typography>
+                                </button>
+
+                                <button className={styles.MailCLientBTN}>
+                                    <img className={styles.MailClientLogo} src={outlookLogoIcon} alt="Outlook logo"/>
+                                    <Typography variant={'body'}>Add to Outlook</Typography>
+                                </button>
+
+                                <button className={styles.MailCLientBTN}>
+                                    <img className={styles.MailClientLogo} src={appleLogoIcon} alt="Apple logo"/>
+                                    <Typography variant={'body'}>Add to Apple Mail</Typography>
+                                </button>
+
+                                <button className={styles.MailCLientBTN}>
+                                    <img className={styles.MailClientLogo} src={yahoo} alt="Yahoo logo"/>
+                                    <Typography variant={'body'}>Add to Yahoo Mail</Typography>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

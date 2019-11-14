@@ -52,7 +52,7 @@
 
 .Letter {
   position: absolute;
-  background-color: white;
+  background-color: map_get($colors, white);
   border-radius: 0.2rem;
   height: 12.5rem;
   box-shadow: 0 0.125rem 0.75rem 0 rgba(0, 0, 0, 0.1);
@@ -77,20 +77,23 @@
   width: 100%;
   margin: auto;
   top: 2.1rem;
-  background-color: white;
+  background-color: map_get($colors, white);
   border-radius: 0.2rem;
   box-shadow: 0 0.125rem 0.75rem 0 rgba(0, 0, 0, 0.1);
 }
+
 .Header{
   height: 2.6rem;
   border-bottom: solid 0.0625rem #CFD5E5;
 }
+
 .Circles {
   padding-left: 1.8rem;
   display: flex;
   height: 100%;
   align-items: center;
 }
+
 .Circle {
   width: 0.7rem;
   height: 0.7rem;
@@ -110,31 +113,129 @@
     background-color: #F2545B;
   }
 }
+
 .LetterContent {
   padding: 0.9375rem 1.6875rem;
 }
+
 .MetaHeaderItem {
   margin-bottom: 0.9rem;
   display: flex;
   align-items: baseline;
 }
+
 .MetaHeaderTitle {
   margin-right: 1rem;
 }
+
 .Recipient {
-  background-color: #E3E8F4;
+  background-color: map_get($colors, grey-light);
   border-radius: 1rem;
   padding: 0.2rem 1rem;
 }
+
 .DummyData {
   padding: 1.5rem 0 4rem;
 }
-.actionWrapper {
+
+.ActionsWrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   position: relative;
   top: 4rem;
 }
-.actionButton{
+
+.ActionsTipInfo {
+  padding: 1.3rem 1.3rem;
+  background-color: map_get($colors, grey-superlight);
+  border-bottom: solid 1px map_get($colors, grey-light);
+  border-top: solid 1px map_get($colors, grey-light);
+  border-left: solid 1px map_get($colors, grey-light);
+  position: relative;
+  margin-right: 6rem;
+  width: 25%;
+  height: 5.75rem;
+  &:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -2.25rem;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 2.6rem 0 3rem 2.3rem;
+    border-color: transparent transparent transparent map_get($colors, grey-superlight);
+    z-index: 1;
+  }
+  &:after{
+    content: '';
+    position: absolute;
+    top: -0.04rem;
+    right: -2.3rem;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 2.65rem 0 3rem 2.3rem;
+    border-color: transparent transparent transparent map_get($colors, grey-light);
+  }
+}
+
+.TipText{
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: map_get($colors, gray);
+}
+
+.ActionButton{
   display: inherit;
+}
+
+.ProtonMailBTN {
+  margin-right: 1.3125rem;
+  min-width: 19.5rem;
+}
+
+.CopySignatureBTN {
+  min-width: 19.5rem;
+}
+
+.ButtonsWrapper {
+  display: flex;
+  width: 75%;
+  flex-wrap: wrap;
+}
+
+.PrimaryButtons {
+  display: flex;
+
+}
+
+.IconButtons {
+  margin-top: 1.6rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.MailCLientBTN {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: map_get($colors, grey);;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.MailClientLogo {
+  height: 1.5rem;
+  margin-right: 0.75rem;
+  position: relative;
+  bottom: 0.2rem;
 }

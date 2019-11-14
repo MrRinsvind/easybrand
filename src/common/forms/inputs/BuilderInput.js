@@ -57,7 +57,8 @@ export default function TextInput({
         <div className={classnames(
             styles.InputWrapper,
             {
-                [styles['InputWrapper--active']]: active
+                [styles['InputWrapper--active']]: active,
+                [styles['InputWrapper--disable']]: value.status !== 'edit',
             }
         )}>
             <input
