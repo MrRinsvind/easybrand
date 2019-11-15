@@ -140,20 +140,24 @@
 
 .ActionsWrapper {
   display: flex;
+  max-width: 60rem;
   justify-content: space-between;
   position: relative;
   top: 4rem;
 }
 
 .ActionsTipInfo {
-  padding: 1.3rem 1.3rem;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: map_get($colors, grey-superlight);
   border-bottom: solid 1px map_get($colors, grey-light);
   border-top: solid 1px map_get($colors, grey-light);
   border-left: solid 1px map_get($colors, grey-light);
   position: relative;
   margin-right: 6rem;
-  width: 25%;
+  width: 11.5rem;
   height: 5.75rem;
   &:before{
     content: '';
@@ -191,23 +195,23 @@
 }
 
 .ProtonMailBTN {
-  margin-right: 1.3125rem;
-  min-width: 19.5rem;
+  margin-right: 2%;
+  min-width: 49%;
 }
 
 .CopySignatureBTN {
-  min-width: 19.5rem;
+  min-width: 49%;
 }
 
 .ButtonsWrapper {
   display: flex;
-  width: 75%;
   flex-wrap: wrap;
+  flex: 1;
 }
 
 .PrimaryButtons {
   display: flex;
-
+  width: 100%;
 }
 
 .IconButtons {
@@ -221,7 +225,7 @@
   background-color: transparent;
   outline: none;
   border: none;
-  color: map_get($colors, grey);;
+  color: map_get($colors, grey);
   font-size: 0.7rem;
   display: flex;
   align-items: center;
