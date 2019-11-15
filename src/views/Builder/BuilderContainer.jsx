@@ -40,6 +40,7 @@ function BuilderContainer ({
     const [helpOpen, toggleHelp] = React.useState(false)
     const [selectType, toggleType] = React.useState(0)
     const [animationStatus, changeAnimation] = React.useState(false)
+    const [picture, setFiles] = React.useState(false)
 
     React.useEffect(() => {
         if(id && !activeTemplate && !loading && templatesData) {
@@ -125,6 +126,8 @@ function BuilderContainer ({
                 <BuilderAside
                     selectType={selectType}
                     toggleType={toggleType}
+                    picture={picture}
+                    setFiles={setFiles}
                 />
                 <div className={styles.BuilderContent}>
                     <BuilderContent
@@ -134,6 +137,7 @@ function BuilderContainer ({
                         copySignature={copySignature}
                         activeTemplate={activeTemplate}
                         getHelp={getHelp}
+                        picture={picture}
                     />
                 </div>
             </main>
