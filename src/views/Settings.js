@@ -4,6 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import get from 'lodash-es/get'
 import { useDropzone } from 'react-dropzone'
+import { toast } from 'react-toastify'
 
 import Typography from 'common/components/Typography'
 import styles from './Settings.module.scss'
@@ -30,6 +31,10 @@ function Settings({ settings, handleSubmit, changeSettings }) {
     const [files, setFiles] = React.useState([])
     const {getRootProps, getInputProps} = useDropzone({
         accept: 'image/*',
+        maxSize: 512000,
+        onDropRejected: () => {
+            toast("Wrong format file", { type: 'error' })
+        },
         onDrop: acceptedFiles => {
             setFiles(acceptedFiles.map(file => Object.assign(file, {
                 preview: URL.createObjectURL(file)
