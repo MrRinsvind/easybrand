@@ -116,7 +116,7 @@ function BuilderContent({ selectType, copySignature, getHelp, activeTemplate,  d
     )
 }
 
-export default connect(state => ({
+export default connect((state, props) => ({
     customTemplateName: get(state, 'form.@form/builder.values.templateName'),
     data: {
         colors: {
@@ -128,7 +128,7 @@ export default connect(state => ({
         imageCompany: get(state, 'form.@form/builder.values.imageCompany'),
         fontFamily: get(state, 'form.@form/builder.values.font'),
         fontSize: get(state, 'form.@form/builder.values.size'),
-        profilePhoto: "https://avatarfiles.alphacoders.com/202/202402.png",
+        profilePhoto: props.picture || "https://avatarfiles.alphacoders.com/202/202402.png",
         companyLogo: get(state, 'form.@form/builder.values.logoCompany'),
         firstName: get(state, 'form.@form/builder.values.firstName', ''),
         lastName:  get(state, 'form.@form/builder.values.lastName', ''),
