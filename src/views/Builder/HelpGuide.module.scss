@@ -1,7 +1,9 @@
+@import "../../styles/variables";
+
 .GuideWrapper {
   position: fixed;
-  width: 100vw;
   height: 100vh;
+  width: 100vw;
   background-color: white;
   z-index: 50;
   transform: translateY(-100vh);
@@ -17,5 +19,85 @@
   transform-origin: 50% 0 0;
   transform: matrix(1, 0, 0, 0, 0, 0);
   max-width: 100%;
-  overflow: hidden;
+}
+
+.Section {
+  margin-bottom: 8rem;
+}
+
+.GuidePage {
+  padding-top: 7rem;
+  height: 100%;
+  overflow: scroll;
+}
+
+.GuideContent {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.Heading {
+  margin-bottom: 50px;
+}
+
+.StepList {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: my-awesome-counter;
+  margin-bottom: 50px;
+}
+
+
+.CloseButton {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  align-items: center;
+  border: none;
+  background: transparent;
+  outline: none;
+  transition: opacity 0.2s;
+  &:hover{
+    opacity: 0.8;
+  }
+  &__Text {
+    text-transform: uppercase;
+    font-size: 0.5625rem;
+    padding-top: 0.2rem;
+    color: map_get($colors, gray);
+    font-weight: 700;
+    letter-spacing: 0.08rem;
+  }
+}
+
+.StepItem {
+  counter-increment: my-awesome-counter;
+  position: relative;
+  padding-left: 4.0625rem;
+  margin-bottom: 2.5rem;
+  font-size: 0.875rem;
+  &::before {
+    content: counter(my-awesome-counter) "";
+    font-family: 'Montserrat', Helvetica, sans-serif;
+    font-weight: 700;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    top: -8px;
+    width: 1.875rem;
+    height: 30px;
+    line-height: 1.5rem;
+    background-color: #E42664;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+}
+
+.GuideImage {
+  max-width: 100%;
 }

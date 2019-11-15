@@ -80,10 +80,10 @@ function BuilderContent({ selectType, copySignature, getHelp, activeTemplate,  d
                         </div>
                         <div className={styles.ButtonsWrapper}>
                             <div className={styles.PrimaryButtons}>
-                                <Button className={styles.ProtonMailBTN} variant={'secondary'} onClick={copySignature}>
+                                <Button className={styles.ProtonMailBTN} variant={'secondary'} onClick={getHelp}>
                                     Add to ProtonMail
                                 </Button>
-                                <Button className={styles.CopySignatureBTN} onClick={getHelp}>
+                                <Button className={styles.CopySignatureBTN} onClick={copySignature}>
                                     Copy signature
                                 </Button>
                             </div>
