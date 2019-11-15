@@ -70,7 +70,7 @@ function BuilderContainer ({
     }
 
     const openAnimationWave = (wrapper) => {
-        const el = wrapper.children[1]
+        const el = wrapper.children[2]
         if(!animationStatus) {
             let interval = 0
             el.style.transform = `matrix(1, 0, 0, ${interval}, 0, 0)`
@@ -90,7 +90,7 @@ function BuilderContainer ({
     }
 
     const closeAnimationWave = (wrapper) => {
-        const el = wrapper.children[1]
+        const el = wrapper.children[2]
         if(!animationStatus) {
             let interval = 1.5
             el.style.transform =  `matrix(1, 0, 0, ${interval}, 0, 0)`
