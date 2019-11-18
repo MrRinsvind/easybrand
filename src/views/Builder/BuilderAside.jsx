@@ -11,6 +11,7 @@ import { ReactComponent as UploadImage } from 'assets/upload-shape.svg'
 import { ReactComponent as CloseImage } from 'assets/x-shape.svg'
 import { aPostWithFile } from 'api'
 
+
 export default function BuilderAside({ picture, setFiles }) {
     const {getRootProps, getInputProps} = useDropzone({
         accept: 'image/*',
@@ -40,10 +41,6 @@ export default function BuilderAside({ picture, setFiles }) {
     const closeButton = () => {
         setFiles(false)
     }
-
-    React.useEffect(() =>  {
-       console.log(picture)
-    }, [picture])
 
     return (
         <aside className={styles.BuilderAside}>

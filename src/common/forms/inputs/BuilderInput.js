@@ -1,15 +1,8 @@
 import React from 'react'
 import toBe from 'prop-types'
 import classnames from 'classnames'
-import Menu from '@material-ui/core/Menu'
-import MenuItem from '@material-ui/core/MenuItem'
 
 import styles from './BuilderInput.module.scss'
-import { ReactComponent as IconEdit } from 'assets/edit-icon.svg'
-import { ReactComponent as IconTriangle } from 'assets/triangle.svg'
-import { ReactComponent as IconLock } from 'assets/tooltiop-lock-icon.svg'
-import { ReactComponent as IconVisibility } from 'assets/ic_visibility.svg'
-
 
 
 TextInput.toBe = {
@@ -24,12 +17,6 @@ TextInput.defaultProps = {
     error: false,
     name: null,
     placeholder: '',
-}
-
-const inputIcons = {
-    "edit": IconEdit,
-    "invisible": IconLock,
-    "view": IconVisibility,
 }
 
 

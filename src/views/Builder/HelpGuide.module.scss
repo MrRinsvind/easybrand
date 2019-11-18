@@ -22,11 +22,12 @@
 }
 
 .Section {
-  margin-bottom: 8rem;
+  padding-top: 2rem;
+  margin-bottom: 6rem;
 }
 
 .GuidePage {
-  padding-top: 7rem;
+  padding-top: 5rem;
   height: 100%;
   overflow: auto;
 }
@@ -34,6 +35,8 @@
 .GuideContent {
   max-width: 40rem;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .Heading {

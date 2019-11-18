@@ -7,7 +7,17 @@ import closeIcon from 'assets/x-shape.svg'
 import { ReactComponent as WaveAnimationComponent } from 'assets/wave.svg'
 import styles from './HelpGuide.module.scss'
 
-export default function HelpGuide({returnToBuilder}) {
+export default function HelpGuide({returnToBuilder, anchor}) {
+
+    React.useEffect(() => {
+        document.querySelector(`#${anchor}`).scrollIntoView()
+
+    }, [anchor])
+
+    const ids = [
+        "gmail", "protonmail", "outlook", "apple", "yahoo"
+    ]
+
     return (
         <div className={styles.GuideWrapper}>
             <button onClick={returnToBuilder} className={styles.CloseButton}>
@@ -17,7 +27,7 @@ export default function HelpGuide({returnToBuilder}) {
                 <div className={styles.GuidePage}>
                     <div className={styles.GuideContent}>
                         {DATA_GUIDE.map((sectionItem, sectionIndex) => (
-                            <section className={styles.Section} key={sectionIndex}>
+                            <section className={styles.Section} key={sectionIndex} id={ids[sectionIndex]}>
                                 <Typography className={styles.Heading} variant={'h3'}>{sectionItem.title}</Typography>
                                 <ol className={styles.StepList}>
                                     {sectionItem.list.map((listItem, listIndex) => (
@@ -27,7 +37,7 @@ export default function HelpGuide({returnToBuilder}) {
                                     ))}
                                 </ol>
                                 {sectionItem.img && (
-                                    <img className={styles.GuideImage} src={sectionItem.img}/>
+                                    <img className={styles.GuideImage} src={sectionItem.img} alt="mailer logo"/>
                                 )}
                             </section>
                         ))}

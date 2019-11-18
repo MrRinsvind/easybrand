@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import get from 'lodash-es/get'
+import { toast } from 'react-toastify'
 
 import { CopyToClipboard } from 'common/utils/helpers'
 import styles from './Builder.module.scss'
@@ -11,6 +12,7 @@ import BuilderAside from './BuilderAside'
 import BuilderContent from './BuilderContent'
 import { changeTemplates } from 'store/templates/actions'
 import HelpGuide from './HelpGuide'
+
 
 const mock = {
     social: {
@@ -29,6 +31,7 @@ const mock = {
 
 }
 
+
 function BuilderContainer ({
    id,
    templatesData,
@@ -36,6 +39,8 @@ function BuilderContainer ({
    history,
    activeTemplate,
    loading,
+   location,
+   anchor,
 }) {
     const [helpOpen, toggleHelp] = React.useState(false)
     const [selectType, toggleType] = React.useState(0)
@@ -57,12 +62,22 @@ function BuilderContainer ({
         history.push('/templates')
     }
 
-    const getHelp = () => {
-        toggleHelp(true)
+    const getHelp = (anchor) => () => {
+        toggleHelp({
+            status: true,
+            anchor,
+        })
+        history.push(location.pathname, { anchor })
     }
 
     const copySignature = () => {
-        CopyToClipboard("copyTemplate")
+        try {
+            CopyToClipboard("copyTemplate")
+            toast("Signature copied successfully", { type: 'success' })
+        } catch(e) {
+            toast("Some troubles with copy template", { type: 'error' })
+        }
+
     }
 
     const returnToBuilder = () => {
@@ -114,13 +129,16 @@ function BuilderContainer ({
     return (
         <>
             <CSSTransition
-                in={helpOpen}
+                in={!!helpOpen}
                 timeout={500}
                 classNames={"TransitionAction"}
                 onEnter={openAnimationWave}
                 onExit={closeAnimationWave}
             >
-                <HelpGuide returnToBuilder={returnToBuilder}/>
+                <HelpGuide
+                    returnToBuilder={returnToBuilder}
+                    anchor={anchor}
+                />
             </CSSTransition>
             <main className={styles.BuilderWrapper}>
                 <BuilderAside
@@ -244,6 +262,7 @@ export default compose(
             activeTemplate,
             loading: state.templates.loading,
             templatesData: !!templatesData,
+            anchor: get(props.location, 'state.anchor'),
             initialValues: {
                 ...initialValues,
             },

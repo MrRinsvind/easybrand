@@ -80,7 +80,7 @@ function BuilderContent({ selectType, copySignature, getHelp, activeTemplate,  d
                         </div>
                         <div className={styles.ButtonsWrapper}>
                             <div className={styles.PrimaryButtons}>
-                                <Button className={styles.ProtonMailBTN} variant={'secondary'} onClick={getHelp}>
+                                <Button className={styles.ProtonMailBTN} variant={'secondary'} onClick={getHelp()}>
                                     Add to ProtonMail
                                 </Button>
                                 <Button className={styles.CopySignatureBTN} onClick={copySignature}>
@@ -88,22 +88,22 @@ function BuilderContent({ selectType, copySignature, getHelp, activeTemplate,  d
                                 </Button>
                             </div>
                             <div className={styles.IconButtons}>
-                                <button className={styles.MailCLientBTN}>
+                                <button className={styles.MailCLientBTN} onClick={getHelp('gmail')}>
                                     <img className={styles.MailClientLogo} src={gmailLogoicon} alt="Google gmail logo"/>
                                     <Typography variant={'body'}>Add to Gmail</Typography>
                                 </button>
 
-                                <button className={styles.MailCLientBTN}>
+                                <button className={styles.MailCLientBTN} onClick={getHelp('outlook')}>
                                     <img className={styles.MailClientLogo} src={outlookLogoIcon} alt="Outlook logo"/>
                                     <Typography variant={'body'}>Add to Outlook</Typography>
                                 </button>
 
-                                <button className={styles.MailCLientBTN}>
+                                <button className={styles.MailCLientBTN}  onClick={getHelp('apple')}>
                                     <img className={styles.MailClientLogo} src={appleLogoIcon} alt="Apple logo"/>
                                     <Typography variant={'body'}>Add to Apple Mail</Typography>
                                 </button>
 
-                                <button className={styles.MailCLientBTN}>
+                                <button className={styles.MailCLientBTN}  onClick={getHelp('yahoo')}>
                                     <img className={styles.MailClientLogo} src={yahoo} alt="Yahoo logo"/>
                                     <Typography variant={'body'}>Add to Yahoo Mail</Typography>
                                 </button>
