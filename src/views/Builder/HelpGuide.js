@@ -10,7 +10,11 @@ import styles from './HelpGuide.module.scss'
 export default function HelpGuide({returnToBuilder, anchor}) {
 
     React.useEffect(() => {
-        document.querySelector(`#${anchor}`).scrollIntoView()
+        try {
+            document.querySelector(`#${anchor}`).scrollIntoView()
+        } catch (e) {
+            console.log('anchor element not found in dom:(')
+        }
 
     }, [anchor])
 
