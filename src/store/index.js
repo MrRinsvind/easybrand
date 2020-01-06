@@ -12,7 +12,6 @@ import { createBrowserHistory } from 'history'
 
 import epics from 'epics'
 
-import templates from './templates/reducers'
 
 const initialStore = {}
 
@@ -27,8 +26,6 @@ const persistConfig = {
 const createRootReducer = (history) =>  persistReducer(persistConfig,combineReducers({
   router: connectRouter(history),
   form: formReducer,
-  //reducers
-  templates,
 }))
 
 export const history = createBrowserHistory()

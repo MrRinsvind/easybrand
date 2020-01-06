@@ -10,22 +10,36 @@
 
 .BuilderAside {
   background-color: map-get($purple, default);
-  width: 27.5rem;
+  width:  23rem;
   min-height: 100%;
   display: flex;
+  flex-direction: column;
 }
 
 .BuilderContent {
   background-color: white;
-  width: calc(100% - 27.5rem);
+  width: calc(100% - 23rem);
   min-height: 100%;
 }
 
 .TabAsideNavigation {
-  width: 4.375rem;
-  min-height: 100%;
+  width: 100%;
+  display: flex;
   background-color: map-get($purple, secondary);
+  position: relative;
 }
+
+.TabAsideNavigationActiveItem {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 5rem;
+  width: 25%;
+  transform: translateX(0%);
+  transition: transform 0.3s ease-in-out 0s;
+  background-color: map-get($purple, default);
+}
+
 .TabAsideNavigationItem {
   height: 4.8125rem;
   background-color: map-get($purple, secondary);
@@ -49,11 +63,12 @@
   }
 
   &--active {
-    background-color: map-get($purple, default);
+
 
     svg, span {
       fill: white;
       color: white;
+      z-index: 5;
     }
   }
 }
@@ -62,12 +77,13 @@
   width: 100%;
   padding: 1.6875rem 1.875rem 1.5625rem 1.75rem;
   overflow-y: scroll;
+  height: 100%;
 }
 
 .AsideContentHeading {
   color: white;
   font-weight: 800;
-  margin-bottom: 2rem;
+  margin-bottom: 2rem!important;
 }
 
 
@@ -82,7 +98,7 @@
   color: #B8B5EA;
   letter-spacing: 0;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem!important;
 }
 
 .TemplatePartItem {

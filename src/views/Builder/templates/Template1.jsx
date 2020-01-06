@@ -2,7 +2,7 @@ import React from 'react'
 
 import { TransformFontSize } from 'common/utils/helpers'
 
-export default function Template1({data}) {
+export default function Template1({ data, onErrorImg }) {
 
     return (
         <table id="copyTemplate" cellPadding={0} cellSpacing={0}
@@ -29,7 +29,7 @@ export default function Template1({data}) {
                                                     <tr>
                                                         <td style={{textAlign: 'center'}}>
                                                             <p style={{textAlign: 'center', margin: 0}}>
-                                                                <img alt="" src={data.profilePhoto}
+                                                                <img onError={onErrorImg} alt="" src={data.profilePhoto}
                                                                      style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`}}/>
                                                             </p>
                                                         </td>
@@ -47,6 +47,7 @@ export default function Template1({data}) {
                                                             <p style={{textAlign: 'center', margin: 0}}>
                                                                 <img alt="" width={`${TransformFontSize(90, data.fontSize)}`}
                                                                      src={data.companyLogo}
+                                                                     onError={onErrorImg}
                                                                      style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`}}/>
                                                             </p>
                                                         </td>

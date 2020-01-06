@@ -2,9 +2,12 @@ import React from 'react'
 import classnames from 'classnames'
 import { connect } from 'react-redux'
 import get from 'lodash-es/get'
+import { toast } from 'react-toastify'
+import { change } from 'redux-form'
 
 import styles from './BuilderContent.module.scss'
-import closeIcon from 'assets/x-shape.svg'
+import acidLogo from 'assets/acid.png'
+import nologo from 'assets/nologo.jpg'
 import appleLogoIcon from 'assets/apple-logo.svg'
 import gmailLogoicon from 'assets/gmail.svg'
 import outlookLogoIcon from 'assets/microsoft-outlook.svg'
@@ -18,19 +21,17 @@ BuilderContent.defaultProps = {
     selectType: 0,
 }
 
-function BuilderContent({ selectType, copySignature, getHelp, activeTemplate,  data, handleEscButton }) {
+function BuilderContent({ selectType, change, copySignature, getHelp, activeTemplate,  data }) {
 
     const SelectedTemplate = BUILDER_TEMPLATES[selectType].component
+    const onErrorImg = () => {
+      toast("Wrong image url", { type: 'error' })
+    }
 
     return (
         <>
             <div className={styles.Wrapper}>
-                <button onClick={handleEscButton} className={styles.CloseButton}>
-                    <img src={closeIcon} alt="close"/>
-                    <Typography className={styles[`CloseButton__Text`]} variant={'subhead'}>esc</Typography>
-                </button>
                 <div className={styles.Template}>
-                    <Typography variant={'subhead'}>Preview</Typography>
                     <div className={styles.TemplateName}>
                         <Typography variant={'h3'}>{activeTemplate && activeTemplate.templateName}</Typography>
                     </div>
@@ -66,7 +67,7 @@ function BuilderContent({ selectType, copySignature, getHelp, activeTemplate,  d
                                 </div>
                                 <div data-flip-id="browser" data-flip-config="{&quot;translate&quot;:true,&quot;scale&quot;:true,&quot;opacity&quot;:true}" data-portal-key="portal">
                                     <div fontSize="medium" style={{ userSelect: "all" }}>
-                                        <SelectedTemplate data={data}/>
+                                        <SelectedTemplate data={data} onErrorImg={onErrorImg}/>
                                     </div>
                                 </div>
                             </div>
@@ -80,8 +81,8 @@ function BuilderContent({ selectType, copySignature, getHelp, activeTemplate,  d
                         </div>
                         <div className={styles.ButtonsWrapper}>
                             <div className={styles.PrimaryButtons}>
-                                <Button className={styles.ProtonMailBTN} variant={'secondary'} onClick={getHelp()}>
-                                    Add to ProtonMail
+                                <Button className={styles.ProtonMailBTN} variant={'secondary'} onClick={getHelp('gmail')}>
+                                    Read instruction
                                 </Button>
                                 <Button className={styles.CopySignatureBTN} onClick={copySignature}>
                                     Copy signature
@@ -116,7 +117,7 @@ function BuilderContent({ selectType, copySignature, getHelp, activeTemplate,  d
     )
 }
 
-export default connect((state, props) => ({
+export default connect((state) => ({
     customTemplateName: get(state, 'form.@form/builder.values.templateName'),
     data: {
         colors: {
@@ -128,8 +129,8 @@ export default connect((state, props) => ({
         imageCompany: get(state, 'form.@form/builder.values.imageCompany'),
         fontFamily: get(state, 'form.@form/builder.values.font'),
         fontSize: get(state, 'form.@form/builder.values.size'),
-        profilePhoto: props.picture || "https://avatarfiles.alphacoders.com/202/202402.png",
-        companyLogo: get(state, 'form.@form/builder.values.logoCompany'),
+        profilePhoto: get(state, 'form.@form/builder.values.profileCompanySrc.text') || acidLogo,
+        companyLogo: get(state, 'form.@form/builder.values.logoCompanySrc.text')  || nologo,
         firstName: get(state, 'form.@form/builder.values.firstName', ''),
         lastName:  get(state, 'form.@form/builder.values.lastName', ''),
         jobTitle: get(state, 'form.@form/builder.values.jobTitle', ''),
@@ -152,4 +153,4 @@ export default connect((state, props) => ({
             linkedin: get(state, 'form.@form/builder.values.socialLinks.linkedin', '')
         }
     }
-}))(BuilderContent)
+}), { change })(BuilderContent)

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { TransformFontSize } from 'common/utils/helpers'
 
-export default function Template6({data}) {
+export default function Template6({ data, onErrorImg }) {
     return (
         <table id="copyTemplate" cellPadding={0} cellSpacing={0} style={{
             verticalAlign: '-webkit-baseline-middle',
@@ -22,7 +22,7 @@ export default function Template6({data}) {
                                 <tbody>
                                 <tr>
                                     <td style={{textAlign: 'center'}}>
-                                        <img width={`${TransformFontSize(90, data.fontSize)}`} src={data.profilePhoto} alt="profile logo" role="presentation"
+                                        <img onError={onErrorImg} width={`${TransformFontSize(90, data.fontSize)}`} src={data.profilePhoto} alt="profile logo" role="presentation"
                                              style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`, display: 'inline-block'}}/>
                                     </td>
                                 </tr>
@@ -385,7 +385,7 @@ export default function Template6({data}) {
 
                             {data.companyLogo && data.imageCompany &&(
                                 <td style={{verticalAlign: 'top', textAlign: 'right'}}>
-                                    <img width={`${TransformFontSize(90, data.fontSize)}`} alt="" src={data.companyLogo} role="presentation"
+                                    <img onError={onErrorImg} width={`${TransformFontSize(90, data.fontSize)}`} alt="" src={data.companyLogo} role="presentation"
                                          style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`, display: 'inline', textAlign: 'left'}}/>
                                 </td>
                             )}

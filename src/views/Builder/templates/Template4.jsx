@@ -2,7 +2,7 @@ import React from 'react'
 
 import { TransformFontSize } from 'common/utils/helpers'
 
-export default function Template4({data}) {
+export default function Template4({ data, onErrorImg }) {
     return (
         <table id="copyTemplate" cellPadding={0} cellSpacing={0} style={{
             verticalAlign: '-webkit-baseline-middle',
@@ -28,7 +28,7 @@ export default function Template4({data}) {
                                             <tr height={`${TransformFontSize(5, data.fontSize)}`}/>
                                             <tr>
                                                 <td style={{textAlign: 'center'}}>
-                                                    <img alt="" width={`${TransformFontSize(90, data.fontSize)}`} src={data.profilePhoto}/>
+                                                    <img onError={onErrorImg} alt="" width={`${TransformFontSize(90, data.fontSize)}`} src={data.profilePhoto}/>
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -393,7 +393,7 @@ export default function Template4({data}) {
 
                             {data.companyLogo && data.imageCompany &&(
                                 <td style={{verticalAlign: 'top', textAlign: 'right'}}>
-                                    <img alt="" width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo} role="presentation"
+                                    <img onError={onErrorImg} alt="" width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo} role="presentation"
                                          style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`, display: 'inline', textAlign: 'left'}}/>
                                 </td>
                             )}

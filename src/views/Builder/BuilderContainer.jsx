@@ -10,7 +10,6 @@ import { CopyToClipboard } from 'common/utils/helpers'
 import styles from './Builder.module.scss'
 import BuilderAside from './BuilderAside'
 import BuilderContent from './BuilderContent'
-import { changeTemplates } from 'store/templates/actions'
 import HelpGuide from './HelpGuide'
 
 
@@ -46,11 +45,9 @@ function BuilderContainer ({
     const [selectType, toggleType] = React.useState(0)
     const [animationStatus, changeAnimation] = React.useState(false)
     const [picture, setFiles] = React.useState(false)
+    const [selectedTab, toggleTab] = React.useState(0)
 
     React.useEffect(() => {
-        if(id && !activeTemplate && !loading && templatesData) {
-            history.push('/templates')
-        }
 
         if(activeTemplate){
             toggleType(activeTemplate.type)
@@ -58,9 +55,6 @@ function BuilderContainer ({
 
     }, [id, activeTemplate, loading, templatesData, history, toggleType])
 
-    const handleEscButton = () => {
-        history.push('/templates')
-    }
 
     const getHelp = (anchor) => () => {
         toggleHelp({
@@ -146,12 +140,13 @@ function BuilderContainer ({
                     toggleType={toggleType}
                     picture={picture}
                     setFiles={setFiles}
+                    selectedTab={selectedTab}
+                    toggleTab={toggleTab}
                 />
                 <div className={styles.BuilderContent}>
                     <BuilderContent
                         selectType={selectType}
                         handleSubmit={handleSubmit}
-                        handleEscButton={handleEscButton}
                         copySignature={copySignature}
                         activeTemplate={activeTemplate}
                         getHelp={getHelp}
@@ -175,7 +170,6 @@ export default compose(
         const initialValues = activeTemplate
             ? activeTemplate
             :{
-                templateName: templatesData ? `Template №${templatesData.length + 1}` : "Template №1",
                 themeColor: '#a6e9cb',
                 textColor: "#cc5562",
                 linkColor: "#557ED8",
@@ -184,7 +178,7 @@ export default compose(
                 profilePicture: true,
                 imageCompany: true,
                 firstName: {
-                    text: "Rad",
+                    text: "Illia",
                     status: ""
                 },
                 lastName: {
@@ -258,16 +252,14 @@ export default compose(
                 logoCompany: get(state, 'settings.data.img', "https://avatarfiles.alphacoders.com/205/205482.jpg"),
             }
         return ({
-            id: get(props, 'match.params.id'),
             activeTemplate,
-            loading: state.templates.loading,
             templatesData: !!templatesData,
             anchor: get(props.location, 'state.anchor'),
             initialValues: {
                 ...initialValues,
             },
         })
-    }, { changeTemplates }),
+    }),
     reduxForm({
         form: '@form/builder',
         enableReinitialize: true,

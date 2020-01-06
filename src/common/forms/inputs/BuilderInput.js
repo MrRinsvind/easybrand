@@ -4,7 +4,6 @@ import classnames from 'classnames'
 
 import styles from './BuilderInput.module.scss'
 
-
 TextInput.toBe = {
     type: toBe.string,
     name: toBe.string,
@@ -28,7 +27,6 @@ export default function TextInput({
         meta,
         onFocus,
         placeholder,
-        ...restProps
     }) {
 
     const { active } = meta
@@ -40,12 +38,12 @@ export default function TextInput({
         })
     }
 
+
     return (
         <div className={classnames(
             styles.InputWrapper,
             {
-                [styles['InputWrapper--active']]: active,
-                [styles['InputWrapper--disable']]: value.status !== 'edit',
+                [styles['InputWrapper--active']]: active
             }
         )}>
             <input
@@ -57,7 +55,6 @@ export default function TextInput({
                 className={styles.InputField}
                 autoComplete="off"
                 placeholder={placeholder}
-                disabled={value.status === 'view'}
             />
         </div>
     )

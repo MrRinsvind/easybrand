@@ -2,7 +2,7 @@ import React from 'react'
 
 import { TransformFontSize } from 'common/utils/helpers'
 
-export default function Template2({data}) {
+export default function Template2({ data, onErrorImg }) {
     return (
         <table id="copyTemplate" cellPadding={0} cellSpacing={0}
                style={{verticalAlign: '-webkit-baseline-middle', fontFamily: `${data.fontFamily}`}}>
@@ -23,7 +23,7 @@ export default function Template2({data}) {
                                             <tbody>
                                             <tr>
                                                 <td style={{textAlign: 'center'}}>
-                                                    <img alt="" width={`${TransformFontSize(90, data.fontSize)}`} src={data.profilePhoto}
+                                                    <img onError={onErrorImg} alt="" width={`${TransformFontSize(90, data.fontSize)}`} src={data.profilePhoto}
                                                          style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`, display: 'block'}}/>
                                                 </td>
                                             </tr>
@@ -142,7 +142,7 @@ export default function Template2({data}) {
                                         </td>
                                         {data.companyLogo && data.imageCompany && (
                                             <td style={{textAlign: 'center', verticalAlign: 'bottom'}}>
-                                                <img alt="" width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo} style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`, float: 'right', display: 'block'}}/>
+                                                <img onError={onErrorImg} alt="" width={`${TransformFontSize(90, data.fontSize)}`} src={data.companyLogo} style={{maxWidth: `${TransformFontSize(90, data.fontSize)}`, float: 'right', display: 'block'}}/>
                                             </td>
                                         )}
                                     </tr>

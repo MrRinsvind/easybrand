@@ -1,0 +1,25 @@
+
+.Select {
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #E8E4F1;
+  letter-spacing: 0;
+  line-height: 1.625rem;
+}
+
+.Wrapper {
+    &> div {
+      &::before, &::after {
+        border-color: #4A349C;
+      }
+      &:hover::before,  &:hover::after{
+        border-bottom: 0.125rem solid #4A349C!important;
+      }
+    }
+  margin-bottom: 1.25rem;
+}
+
+.Icon {
+  color: #B8B5EA;
+}
